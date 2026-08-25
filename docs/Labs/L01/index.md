@@ -11,10 +11,6 @@ Understand what is the goal of this portfolio, understand how and why it should 
 **Task A**
 In this section I am asked to find two portfolios, and analyze them.
 
-I chose the following:
-https://github.com/smcconoughey/sean-mcconoughey-portfolio
-https://katieheinemann.space/portfolio
-
 **Navigability** 
 In terms of navigability, both of the portfolios are excellent. Right in the home page of the first one there is a big button that takes you to their work, probably took me 2 seconds to get to the projects page. In the second portfolio the homepage itself is the project showcase, which makes it, if possible, easier than the first one. They both have menus where you can find contact information and other useful information about them.
 
