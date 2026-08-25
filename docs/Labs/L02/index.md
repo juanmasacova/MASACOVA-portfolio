@@ -19,4 +19,5 @@ Polymaker. (n.d.). Poor layer adhesion. Polymaker Wiki. Retrieved August 25, 202
 
 
 **Discussion**
+
 My classmate Luz explained to me the importance of orientation in printing in order to save time, money (by saving material) and increase the chances of the print to succeed. We also discussed overhang and how different materials and temperature settings allow for more overhang.
