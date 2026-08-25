@@ -18,4 +18,5 @@ Layer adhesion is an incredibly annoying problem in FDM printing. You have been 
 Polymaker. (n.d.). Poor layer adhesion. Polymaker Wiki. Retrieved August 25, 2026, from https://wiki.polymaker.com/printing-tips/common-printing-issues/poor-layer-adhesion
 
 
+**Discussion**
 My classmate Luz explained to me the importance of orientation in printing in order to save time, money (by saving material) and increase the chances of the print to succeed. We also discussed overhang and how different materials and temperature settings allow for more overhang.
