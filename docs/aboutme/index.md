@@ -8,4 +8,4 @@ I’m especially interested in **robotics, aerospace, and product development**,
 
 **Lets get in touch**
 jmart408@charlotte.edu | 
-[View my LinkedIn](www.linkedin.com/in/juan-martinez-sagarra-coullaut-valera-042990342)
+[View my LinkedIn](https://www.linkedin.com/in/juan-martinez-sagarra-coullaut-valera-042990342)
