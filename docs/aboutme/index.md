@@ -1,11 +1,18 @@
 #About Me
 ![Me](yo.jpg)
-I’ve always been drawn to engineering because I like understanding how things work, and then figuring out how to make them work for me. That curiosity started with hands-on projects in robotics and has grown into an interest in mechanical design, manufacturing, and the big engineering problems.
+I am a mechanical engineer driven by the process of turning ideas into functional tangible systems. What first drew me to engineering was a desire to understand how things work. Not necessarily to analyze them, but to use that understanding to design, build, and improve them. Hands-on experience in robotics developed that curiosity into a strong interest in mechanical design, manufacturing, and multidisciplinary engineering.
 
-Studying Mechanical Engineering at UNC Charlotte has given me the tools behind that curiosity, while my experience with robotics, DIYing and internships has taught me how much of engineering isn't necessarily technical, but rather human. I enjoy taking an idea from a concept, working through it, and turning it into something that can actually be built.
+Through Mechanical Engineering at UNC Charlotte, internships, robotics, and independent projects, I have learned that engineering requires more than technical knowledge. It requires understanding constraints, communicating across disciplines, making practical design decisions, and considering how a solution will actually be manufactured and used by real people. I am most engaged when I can take a problem from an early concept through analysis, iteration, prototyping, and ultimately a physical product.
 
-I’m especially interested in **robotics, aerospace, and product development**, where mechanical design connects with electronics, controls, and manufacturing. 
+I am becoming an engineer focused on robotics, aerospace, and product development, particularly where mechanical design intersects with electronics, controls, and manufacturing. I want to work on systems where thoughtful mechanical design and practical problem-solving can make ideas into actually useful products.
 
 **Lets get in touch**
 jmart408@charlotte.edu | 
 [View my LinkedIn](https://www.linkedin.com/in/juan-martinez-sagarra-coullaut-valera-042990342)
+
+
+
+**What does it mean to defend an engineering decision : and do you currently know how to do it?**
+I believe that to successfully defend your engineering decisions, they have to be backed by technical truth and user perspective. Technical truth would be the theory (physics, math, science) behind your solution, without this, it simply doesn't work as a solution. By user perspective I mean that the user of this solution, whether human or not, should understand the solution and agree that it is a positive way to fix the problem. 
+
+I believe I know how to do it to an extent. I would be able to defend solutions regarding things I have a big interest for, or that I have worked on in the past. Each problem has it's nuances and before being able to defend a solution I should be able to understand these very well.
