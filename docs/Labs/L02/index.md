@@ -90,6 +90,8 @@ I printed with James McAdam and Joel Holder, using a Prusa Core one numbered #.
 3. Another cool thing I noticed is that while searching for ideal PLA temperature settings, I read that different colors of the same material actually have slightly different print temperatures. This makes sense since they would retain heat slightly differently.
 4. The printer isn't that smart. Although the one used does have cool features like auto-calibration, the print quality is really based on what settings and information you give the printer. It will blindly follow orders and the results of your print will be determined by the quality of the slice (within the hardware limitations of the machine, of course).
 
+From the moment I downloaded the model until I grabbed the part from the printer, approximately 1h had passed. I want to thank James and Joel for working with me, and Dr. Fagan for helping me.
+
 
 **Resources**
 
