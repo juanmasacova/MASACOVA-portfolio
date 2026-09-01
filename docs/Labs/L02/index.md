@@ -55,11 +55,19 @@ I decided to go for this 2x2 Lego brick (https://www.printables.com/model/114291
 
 So I downloaded the STL and opened it on the Prusa Slicer. Now I have to decide what settings to use for the part. I decided to print it with the bottom of the part on the print bed. This is because regardless of how I orient it there will be a small overhang, and oriented this way the overhang will be in a non-visible surface, which is good because I don't want supports and the slight stringing won't be noticeable.
 
+![Lego Orientation](lego%20orientation.png)
 
 I didn't scale it because it fit size and time criteria, and because if I make it any bigger or smaller it won't work with the rest of my Legos. I didn't bother changing the infill either because with the wall thickness of the part, there wouldn't really be infill anyway. I did make sure that the nozzle and bed temperature, as well as print speed and acceleration, were good for PLA used. The following are my settings.
 
+![Settings1](settings1.png)
 
+![Settings2](settings2.png)
 
+![Settings3](settings3.png)
+
+![Settings4](settings4.png)
+
+![Settings5](settings5.png)
 
 
 Then I hit "slice now" and downloaded the G-code. I didn't run into any errors, the print was simple and I have some experience printing PLA.
