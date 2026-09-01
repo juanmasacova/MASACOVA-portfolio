@@ -40,7 +40,7 @@ Some of the finalists were:
 
 A bird whistle that imitates a cuckoo...Cool, but decided not to go for it because it would definitely end up being put in the back of a drawer after 2 minutes of use.
 
-![Cuckoo Call](cuckoo_call.png)
+![Cuckoo Call](cuckoo%20call.png)
 
 A flying disc that promised a very long range, for a very cheap amount of time and resources. But after thinking about it for about 4 seconds, I realized I was going to take about 4 seconds to loose it, and it would take about 4000 years to decompose. Didn't feel like a good decision.
 
