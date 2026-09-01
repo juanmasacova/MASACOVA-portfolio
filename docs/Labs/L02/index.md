@@ -70,7 +70,7 @@ The print was simple, once the G-code was downloaded into the pen drive, and the
 I printed with James McAdam and Joel Holder, using a Prusa Core one numbered #.
 
 
-*Lessons Learned**
+**Lessons Learned**
 
 1. One cool thing I noticed from this print is that, even though the overhang is too big of an angle, it didn't really mess up the layer because the overhang distance was so small.
 2. Additive manufacturing isn't perfect. After getting back home with my brand new Lego brick I decided to test-fit it with another brick I had, and quickly realized that commercial printers like the Prusa Core One, although it is a great commercial printer, cannot rival an injection molded part like a real Lego brick. In comparison, the walls are uneven and don't fit perfectly flush like a real Lego would.
