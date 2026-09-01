@@ -48,6 +48,7 @@ A flying disc that promised a very long range, for a very cheap amount of time a
 
 I decided to go for this 2x2 Lego brick (https://www.printables.com/model/1142914-lego-2x2). It adhered to all the rules perfectly, and since my team mates agreed to print Lego bricks too, by the end of the lab we could build...something?? I don't mind keeping it since I already have a Lego box, and maybe it will come in handy sometime. Either to me or the heir of the Lego box.
 
+![Lego Brick](lego%20brick.png)
 
 
 **Processor**
