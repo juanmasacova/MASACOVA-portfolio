@@ -115,4 +115,3 @@ https://forum.makerforums.info/t/is-it-possible-that-coloured-pla-filament-requi
 **Aknowledgements:**
 
 1. PLA doesn't take 4000 years to decompose, it is more like 100-1000 years, but I used the initial figure for dramatic purposes.
-2. The printer used in the print process section is not the one used for the lab, but the footage from the lab has been lost and I recreated the process with my home printer.
