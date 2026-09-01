@@ -85,7 +85,7 @@ Once the G-code was downloaded into the pen drive, and the drive ejected safely,
 
 ![Print Process 3](printprocess3.png)
 
-I printed with James McAdam and Joel Holder, using a Prusa Core one numbered #.
+I printed with James McAdam and Joel Holder, using a Prusa Core one numbered 3.
 
 [*add printing video*](https://github.com/user-attachments/assets/3a0c019b-b7cc-4eb5-a2c0-f4f60dd40586)
 
