@@ -43,7 +43,7 @@ A bird whistle that imitates a cuckoo...Cool, but decided not to go for it becau
 ![Cuckoo Call](cuckoo%20call.png)
 
 A flying disc that promised a very long range, for a very cheap amount of time and resources. But after thinking about it for about 4 seconds, I realized I was going to take about 4 seconds to loose it, and it would take about 4000 years to decompose. Didn't feel like a good decision.
-
+![Flying Disk](flying%20disk.png)
 
 I decided to go for this 2x2 Lego brick (https://www.printables.com/model/1142914-lego-2x2). It adhered to all the rules perfectly, and since my team mates agreed to print Lego bricks too, by the end of the lab we could build...something?? I don't mind keeping it since I already have a Lego box, and maybe it will come in handy sometime. Either to me or the heir of the Lego box.
 
