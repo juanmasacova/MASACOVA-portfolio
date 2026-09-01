@@ -1,3 +1,5 @@
+
+
 # L2 – Print Something Small
 
 8/25/2026
@@ -85,7 +87,8 @@ Once the G-code was downloaded into the pen drive, and the drive ejected safely,
 
 I printed with James McAdam and Joel Holder, using a Prusa Core one numbered #.
 
-*add printing video*
+[*add printing video*](https://github.com/user-attachments/assets/3a0c019b-b7cc-4eb5-a2c0-f4f60dd40586)
+
 
 **Lessons Learned**
 
