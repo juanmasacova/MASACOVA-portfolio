@@ -79,9 +79,7 @@ Then I hit "slice now" and downloaded the G-code. I didn't run into any errors, 
 
 Once the G-code was downloaded into the pen drive, and the drive ejected safely, it's simply a matter a plugging it into the printer and pressing "print". The Printer has autocalibration. 
 
-![Print Process 1](IMG_7375.HEIC)
-
-![Print Process 2](IMG_7376.HEIC)
+![Print Process 1](process1.png)
 
 
 I printed with James McAdam and Joel Holder, using a Prusa Core one numbered 4.
