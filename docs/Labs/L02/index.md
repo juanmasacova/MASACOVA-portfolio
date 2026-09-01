@@ -75,7 +75,7 @@ Then I hit "slice now" and downloaded the G-code. I didn't run into any errors, 
 
 **Print**
 
-The print was simple, once the G-code was downloaded into the pen drive, and the drive ejected safely, it's simply a matter a plugging it into the printer and pressing "print". The Printer has autocalibration. 
+Once the G-code was downloaded into the pen drive, and the drive ejected safely, it's simply a matter a plugging it into the printer and pressing "print". The Printer has autocalibration. 
 
 
 I printed with James McAdam and Joel Holder, using a Prusa Core one numbered #.
