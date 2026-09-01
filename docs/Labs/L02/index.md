@@ -34,7 +34,7 @@ I was tasked to go on printables.com and find a part to print in class. The rule
 4. Print time < 1.5 hours
 5. Must have a flat surface to build on
 
-And personally, I didn't want to print something that was going to end in the trash immediately. It's surprising the amount of useless junk that can be found in these pages.
+And personally, I didn't want to print something that was going to end up in the trash immediately. It's surprising the amount of useless junk that can be found in these pages.
 
 Some of the finalists were:
 
@@ -91,3 +91,6 @@ https://help.prusa3d.com/article/pla_2062
 
 https://forum.makerforums.info/t/is-it-possible-that-coloured-pla-filament-require-more-heat-than-black-filament/46442
 
+
+**Aknowledgement:**
+PLA doesn't take 4000 years to decompose, it is more like 100-1000 years, but I used the initial figure for dramatic purposes. 
