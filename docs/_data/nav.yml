@@ -1,0 +1,36 @@
+- title: Home
+  url: /
+
+- title: About Me
+  url: /aboutme/
+
+- title: Portfolio Overview
+  url: /portfolio-overview.html
+
+- title: Labs
+  children:
+    - title: L1
+      url: /Labs/L01/
+    - title: L2
+      url: /Labs/L02/
+    - title: L3
+      url: /Labs/L03/
+    - title: L4
+      url: /Labs/L04/
+    - title: L5
+      url: /Labs/L05/
+    - title: L6
+      url: /Labs/L06/
+    - title: L7
+      url: /Labs/L07/
+    - title: L8
+      url: /Labs/L08/
+    - title: L9
+      url: /Labs/L09/
+    - title: L10
+      url: /Labs/L10/
+    - title: L11
+      url: /Labs/L11/
+
+- title: Final Project
+  url: /finalproject/

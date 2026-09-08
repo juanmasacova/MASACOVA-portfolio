@@ -1,70 +1,74 @@
-# MEGR 2157 – Design Portfolio Template
+# MEGR 2156 – Design Portfolio
 
-This repository is an MkDocs site (same engine Fab Academy uses) with the Analyze / Decide / Communicate framework built into every assignment page. The rendered site — with the left-hand navigation to every assignment — lives in `docs/`; this README is just for people working with the repo itself.
+This repository is a plain-HTML site built with Jekyll (which GitHub Pages runs natively) with the Analyze / Decide / Communicate framework built into every lab page. Every page is hand-written HTML — the shared sidebar/header live in `docs/_includes/`, so you get full CSS/JS freedom on each page without duplicating the nav everywhere. The rendered site lives in `docs/`; this README is just for people working with the repo itself.
 
+## Preview locally
 
-## Don't do, possible save for later. Preview locally
+Requires Ruby and Bundler.
 
 ```bash
-pip install -r requirements.txt
-mkdocs serve
+bundle install
+bundle exec jekyll serve --source docs --destination _site
 ```
-### sub header
 
-Then open http://127.0.0.1:8000 in your browser. The sidebar nav updates automatically from `mkdocs.yml`.
+Then open http://127.0.0.1:4000 in your browser. Editing any `.html` file, or `docs/assets/css/style.css`, reloads live.
 
 ## Publish
 
-Push to `main` — the included GitHub Actions workflow (`.github/workflows/deploy.yml`) builds the site and publishes it to GitHub Pages automatically.
+Push to `main` — the included GitHub Actions workflow (`.github/workflows/deploy.yml`) builds the site with Jekyll and publishes it to GitHub Pages automatically.
 
 ## Structure
 
 ```
-MEGR-2156-7-template/
+MASACOVA-portfolio/
 ├── .github/
 │   └── workflows/
 │       └── deploy.yml          <- GitHub Actions: auto-builds and deploys to Pages on every push
-├── docs/
-│   ├── index.md                <- Portfolio homepage (About Me, Homepage Identity, Decision Standard)
-│   ├── portfolio-overview.md   <- Running index of all assignments with status
+├── docs/                       <- Jekyll source root
+│   ├── _config.yml             <- site title/description/baseurl
+│   ├── _data/nav.yml           <- sidebar nav entries (edit this to add/reorder nav links)
+│   ├── _includes/              <- shared head/nav/footer HTML
+│   ├── _layouts/default.html   <- page wrapper (head + nav + content + footer)
+│   ├── assets/
+│   │   ├── css/style.css       <- all site styling — edit freely
+│   │   └── js/nav.js           <- mobile nav toggle
+│   ├── index.html              <- Portfolio homepage
+│   ├── portfolio-overview.html <- Running index of all labs with status
 │   ├── aboutme/
-│   │   └── index.md            <- About Me page
-│   └── assignments/
-│       ├── A01/
-│       │   └── index.md        <- A1: Build Your Professional Portfolio
-│       ├── A02/
-│       │   └── index.md        <- A2: Truss Stress Analysis
-│       ├── A03/
-│       │   └── index.md        <- A3: Parametric Design and FEA
-│       ├── A04/
-│       │   └── index.md        <- A4: Motor Mount
-│       ├── A05/
-│       │   └── index.md        <- A5: Bracket Stress
-│       ├── A06/
-│       │   └── index.md        <- A6: Bracket Drawing
-│       ├── A07/
-│       │   └── index.md        <- A7: Bracket FEA
-│       ├── A08/
-│       │   └── index.md        <- A8: Gear Box
-│       ├── A09/
-│       │   └── index.md        <- A9: Pulley System
-│       ├── A09x-concept-selection/
-│       │   └── index.md        <- A9x: Pugh Matrix — Gear vs. Pulley vs. Lead Screw
-│       ├── A10/
-│       │   └── index.md        <- A10: Lead Screw Part 1
-│       ├── A11/
-│       │   └── index.md        <- A11: Lead Screw Part 2 / Motor Selection
-│       └── A12/
-│           └── index.md        <- A12: [Final Assignment]
+│   │   └── index.html          <- About Me page
+│   ├── finalproject/
+│   │   └── index.html          <- Final Project page
+│   └── Labs/
+│       ├── L01/
+│       │   └── index.html      <- L1: Create Portfolio
+│       ├── L02/
+│       │   └── index.html      <- L2: Print Something Small
+│       ├── L03/
+│       │   └── index.html      <- L3: [Topic]
+│       ├── L04/
+│       │   └── index.html      <- L4: [Topic]
+│       ├── L05/
+│       │   └── index.html      <- L5: [Topic]
+│       ├── L06/
+│       │   └── index.html      <- L6: [Topic]
+│       ├── L07/
+│       │   └── index.html      <- L7: [Topic]
+│       ├── L08/
+│       │   └── index.html      <- L8: Gears
+│       ├── L09/
+│       │   └── index.html      <- L9: Pulleys
+│       ├── L10/
+│       │   └── index.html      <- L10: Lead Screw Translating System
+│       └── L11/
+│           └── index.html      <- L11: Motor Selection
 ├── templates/
-│   └── assignment-template.md  <- Blank assignment page for reference (not published)
+│   └── assignment-template.html <- Blank lab page for reference (not published)
 ├── .gitignore
-├── mkdocs.yml                  <- Controls site nav (left sidebar) — do not restructure
-├── requirements.txt            <- Python dependencies for MkDocs Material
+├── Gemfile                     <- Ruby/Jekyll dependency
 └── README.md                   <- This file
 ```
 
-## Adding or renaming an assignment
+## Adding or renaming a lab
 
-1. Add a new folder under `docs/assignments/` with an `index.md`.
-2. Add a matching line to the `nav:` section of `mkdocs.yml` — this is what makes it appear in the sidebar on every page.
+1. Add a new folder under `docs/Labs/` with an `index.html` (copy `templates/assignment-template.html` as a starting point).
+2. Add a matching entry to `docs/_data/nav.yml` under `Labs: children:` — this is what makes it appear in the sidebar on every page.
