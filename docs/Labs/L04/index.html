@@ -45,7 +45,7 @@ title: "L4 – Tolerance Fit Checker"
   <li><strong>Brim:</strong> off</li>
 </ul>
 
-<img src="printplateslicer.png" alt="PrusaSlicer plate view with the peg plate, the socket, and a third part laid flat on the bed">
+<img src="printplateslicer.png" alt="PrusaSlicer plate view with the peg plate and socket laid flat on the bed">
 <p><strong>Build orientation:</strong> Everything is laying flat on the bed. The peg plate has its pegs pointing straight up, and the socket sits flat with the square hole going straight down through it. That way the sides of every peg and the walls of the hole all get printed in X and Y, which is the same direction I measure with the calipers and the same direction the pegs slide into the socket. You can also kind of see in this screenshot how tiny the numbers in front of the pegs are.</p>
 
 <p><strong>Supports:</strong> Set to "for support enforcers only," so PrusaSlicer only puts supports where you specifically tell it to. Laying everything flat meant there weren't any overhangs that needed them anyway, and supports touching the pegs or the inside of the hole would've messed with the exact surfaces I was trying to measure.</p>
@@ -57,10 +57,18 @@ title: "L4 – Tolerance Fit Checker"
 <img src="infillsettings.png" alt="PrusaSlicer infill settings showing 25 percent Gyroid infill with Archimedean Chords top and bottom fill">
 <p><strong>Infill:</strong> 25% Gyroid, with the infill anchor at 2 mm and a max anchor length of 12. I also switched the top and bottom fill pattern to Archimedean Chords, which is the spiral looking one. Infill doesn't really matter much for this test since everything I'm measuring is on the outside walls, so 25% is plenty to keep the parts solid and the top surfaces from sagging.</p>
 
-<h2>Print</h2>
-<p>I printed this on Thursday, September 10th on Prusa Core One #2 with my lab partner James McAdam. The print took about 40 minutes, so it made it under the one hour limit with room to spare.</p>
+<h2>Print Artifact</h2>
+<p>I printed this on Thursday, September 10th on Prusa Core One #2 with my lab partner James McAdam. The print took about 40 minutes, so it made it under the one hour limit with room to spare. Here's the whole thing printing:</p>
 
-<p><strong>Mistake:</strong> the numbers I cut into the plate were way too small. They technically printed, but they came out rough and don't look good at all. Looking at the chart afterwards, engraved details on FDM are supposed to be at least 0.6 mm wide and 2 mm high, so that's something I should've checked before slicing.</p>
+<video controls preload="metadata">
+  <source src="printingvideo.mp4" type="video/mp4">
+</video>
+
+<img src="finishedprint.jpeg" alt="Finished peg plate and socket sitting on the print bed">
+<p>And here it is right when it finished. The peg plate with all five pegs is in the back and the socket is on the right. The whole artifact is there to answer one question: which peg is the first one that actually slides into the socket, and how far off is each part from its CAD size?</p>
+
+<img class="img-portrait" src="failednumbers.jpeg" alt="Peg plate with the socket stuck on the end peg and the engraved size labels printed as unreadable blobs">
+<p><strong>Mistake:</strong> the numbers I cut into the plate were way too small. You can see it in this picture, they came out as little blobs and you can't really read any of them. Looking at the chart afterwards, engraved details on FDM are supposed to be at least 0.6 mm wide and 2 mm high, so that's something I should've checked before slicing.</p>
 
 <h2>Results</h2>
 <p>I measured everything with calipers. They were reading in inches, so I converted it all to millimeters (1 in = 25.4 mm) to keep everything metric. The "room in socket" column is the measured socket hole (10.06 mm) minus the measured peg.</p>
@@ -89,7 +97,7 @@ title: "L4 – Tolerance Fit Checker"
 </table>
 </div>
 
-<p>Only the 9.92 mm peg went in, and it went in so tight that I can't get it back out. It's pretty much a press fit now. So the smallest designed gap that worked was 0.08 mm total, which is 0.04 mm per side, and even that was too tight for anything that's supposed to come apart.</p>
+<p>Only the 9.92 mm peg went in, and it went in so tight that I can't get it back out. It's pretty much a press fit now, and that's the socket still stuck on the end peg in the picture up in the Print Artifact section. So the smallest designed gap that worked was 0.08 mm total, which is 0.04 mm per side, and even that was too tight for anything that's supposed to come apart.</p>
 
 <p><strong>So why didn't 9.96 and 9.94 fit?</strong></p>
 <p>This part confused me at first. The first two pegs make sense, one is bigger than the hole and the other is the same size. But on paper the 9.96 peg had 0.05 mm of room and the 9.94 peg had 0.13 mm, and neither of them would go in.</p>

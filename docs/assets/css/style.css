@@ -41,6 +41,22 @@ img {
   border-radius: 6px;
 }
 
+.img-portrait {
+  display: block;
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.content video {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 1rem 0;
+  border-radius: 6px;
+  background: #000;
+}
+
 /*
  * Shows only the middle 40% (vertically) of an image, cropping 30% off
  * the top and 30% off the bottom without distorting the image.
