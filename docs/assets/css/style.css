@@ -180,6 +180,29 @@ img {
   color: var(--muted-text);
 }
 
+.table-wrap {
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+
+.content table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.95rem;
+}
+
+.content th,
+.content td {
+  border: 1px solid var(--border-color);
+  padding: 0.45rem 0.7rem;
+  text-align: left;
+}
+
+.content th {
+  background: #f1f8f1;
+  color: var(--green-darker);
+}
+
 .site-footer {
   margin-top: 3rem;
   padding-top: 1rem;
