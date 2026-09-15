@@ -3,8 +3,6 @@ title: "L4 – Tolerance Fit Checker"
 ---
 <h1>L4 – Tolerance Fit Checker</h1>
 
-<p><em>9/10/2026</em></p>
-
 <h2>Objective</h2>
 <p>This week's job was to design my own benchmark part to figure out where the Prusa Core One actually hits its limits, then compare what I found to the FDM row of the class Design Rules for 3D Printing chart. The only catch was that the print couldn't go over an hour, since everybody is fighting for time on the machines.</p>
 
@@ -43,6 +41,7 @@ title: "L4 – Tolerance Fit Checker"
   <li><strong>Supports:</strong> for support enforcers only</li>
   <li><strong>Infill:</strong> 25%</li>
   <li><strong>Brim:</strong> off</li>
+  <li><strong>Scale:</strong> 100%</li>
 </ul>
 
 <img src="printplateslicer.png" alt="PrusaSlicer plate view with the peg plate and socket laid flat on the bed">
@@ -51,6 +50,8 @@ title: "L4 – Tolerance Fit Checker"
 <p><strong>Supports:</strong> Set to "for support enforcers only," so PrusaSlicer only puts supports where you specifically tell it to. Laying everything flat meant there weren't any overhangs that needed them anyway, and supports touching the pegs or the inside of the hole would've messed with the exact surfaces I was trying to measure.</p>
 
 <p><strong>Brim:</strong> Off. The parts are flat with a big footprint on the bed, so they didn't need the extra grip.</p>
+
+<p><strong>Scale:</strong> 100%, no scaling up or down. The whole point of the test is to see if the printed size matches the CAD size, so scaling it would've thrown off every single peg and the socket and made the test pointless.</p>
 
 <p><strong>Layer height:</strong> 0.20 mm from the BALANCED profile. Layer height mostly affects things in Z, and this test is all about X and Y, so going finer wouldn't have helped much and would've just made the print take longer.</p>
 
