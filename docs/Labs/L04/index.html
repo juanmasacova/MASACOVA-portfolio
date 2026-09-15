@@ -12,13 +12,15 @@ title: "L4 – Tolerance Fit Checker"
 <p>There were four options: overhang angle, pull strength, tolerance gauge, and dimension calibration. I went with the tolerance gauge. Basically the question is, how close does the printed part come to what I drew in CAD?</p>
 <p>This one felt the most useful to me. A part can look totally fine and still be off by just enough that it won't go into the thing it's supposed to fit in. If I ever design two pieces that slide or snap together, I need to know how much room to leave between them, and guessing isn't really a plan.</p>
 
-<h2>Research: What the Design Rules Say</h2>
+<h2>Research: What the Sources Say</h2>
 <p>Before designing anything I checked the FDM row of the Design Rules for 3D Printing chart. Two boxes matter for this test:</p>
 <ul>
   <li><strong>Tolerance:</strong> &plusmn;0.3%, with a lower limit of &plusmn;0.3 mm. On something as small as a 10 mm peg, 0.3% is only 0.03 mm, which is way under the lower limit. So the number that actually applies to my part is &plusmn;0.3 mm.</li>
   <li><strong>Connecting/moving parts:</strong> 0.5 mm of clearance between two parts that fit together.</li>
 </ul>
-<p>Remember that 0.5 mm. It comes back later.</p>
+<p>I also looked at a couple other sources to see if they agreed. Prusa's own FAQ says a well-built Prusa printer should hold about 0.3 mm on X and Y and 0.1 mm on Z, and it can get down to around 0.05 mm with extra calibration. So Prusa and the chart land on the same 0.3 mm for X and Y, which is the direction my pegs get measured in.</p>
+<p>The Protolabs Network article on dimensional accuracy is a little more relaxed about desktop FDM machines, giving &plusmn;0.5% with a lower limit of &plusmn;0.5 mm. It also says plastic usually shrinks somewhere around 0.2 to 1% depending on the material, and it recommends putting radii on sharp edges and corners.</p>
+<p>Remember that 0.5 mm of clearance from the chart. It comes back later.</p>
 
 <h2>Prediction</h2>
 <p>Before printing, I figured the 9.96 mm peg would be the first one to fit. My thinking was that the nozzle on the Core One is 0.4 mm, so I just assumed the dimensional tolerance would be on that same kind of scale, and a peg 0.04 mm under the hole would be enough. Honestly I thought the whole thing was going to fit a lot better than it did.</p>
@@ -32,19 +34,31 @@ title: "L4 – Tolerance Fit Checker"
 <p>The idea is pretty simple. Try every peg in the socket, and the first one that goes in tells you how much clearance the printer really needs. The 10 mm peg is exactly the size of the hole, so it's there as the "no way this fits" baseline.</p>
 
 <h2>Preprocessor: PrusaSlicer Settings</h2>
-<p>Printer: Prusa CORE One, 0.4 mm nozzle. Material: [to fill in]. Print profile: [to fill in].</p>
+<img src="printerandmaterialslicer.png" alt="PrusaSlicer panel showing the print profile, filament, printer, supports, infill, and brim settings">
+<p>Here's what I ran:</p>
+<ul>
+  <li><strong>Printer:</strong> Prusa CORE One, 0.4 mm nozzle</li>
+  <li><strong>Filament:</strong> Generic PETG</li>
+  <li><strong>Print profile:</strong> 0.20 mm BALANCED (modified)</li>
+  <li><strong>Supports:</strong> for support enforcers only</li>
+  <li><strong>Infill:</strong> 25%</li>
+  <li><strong>Brim:</strong> off</li>
+</ul>
 
-<p><strong>Build orientation:</strong> [to fill in]</p>
-<p><strong>Infill:</strong> [to fill in]</p>
-<p><strong>Supports:</strong> [to fill in]</p>
-<p><strong>Scale:</strong> [to fill in]</p>
+<img src="printplateslicer.png" alt="PrusaSlicer plate view with the peg plate, the socket, and a third part laid flat on the bed">
+<p><strong>Build orientation:</strong> Everything is laying flat on the bed. The peg plate has its pegs pointing straight up, and the socket sits flat with the square hole going straight down through it. That way the sides of every peg and the walls of the hole all get printed in X and Y, which is the same direction I measure with the calipers and the same direction the pegs slide into the socket. You can also kind of see in this screenshot how tiny the numbers in front of the pegs are.</p>
 
-<p>Sliced result: [filament used, estimated print time]</p>
+<p><strong>Supports:</strong> Set to "for support enforcers only," so PrusaSlicer only puts supports where you specifically tell it to. Laying everything flat meant there weren't any overhangs that needed them anyway, and supports touching the pegs or the inside of the hole would've messed with the exact surfaces I was trying to measure.</p>
+
+<p><strong>Brim:</strong> Off. The parts are flat with a big footprint on the bed, so they didn't need the extra grip.</p>
+
+<p><strong>Layer height:</strong> 0.20 mm from the BALANCED profile. Layer height mostly affects things in Z, and this test is all about X and Y, so going finer wouldn't have helped much and would've just made the print take longer.</p>
+
+<img src="infillsettings.png" alt="PrusaSlicer infill settings showing 25 percent Gyroid infill with Archimedean Chords top and bottom fill">
+<p><strong>Infill:</strong> 25% Gyroid, with the infill anchor at 2 mm and a max anchor length of 12. I also switched the top and bottom fill pattern to Archimedean Chords, which is the spiral looking one. Infill doesn't really matter much for this test since everything I'm measuring is on the outside walls, so 25% is plenty to keep the parts solid and the top surfaces from sagging.</p>
 
 <h2>Print</h2>
 <p>I printed this on Thursday, September 10th on Prusa Core One #2 with my lab partner James McAdam. The print took about 40 minutes, so it made it under the one hour limit with room to spare.</p>
-
-<p>[Video Here]</p>
 
 <p><strong>Mistake:</strong> the numbers I cut into the plate were way too small. They technically printed, but they came out rough and don't look good at all. Looking at the chart afterwards, engraved details on FDM are supposed to be at least 0.6 mm wide and 2 mm high, so that's something I should've checked before slicing.</p>
 
@@ -84,14 +98,14 @@ title: "L4 – Tolerance Fit Checker"
 <h2>Lessons Learned</h2>
 <p><strong>Was it different from what I thought?</strong> Yep. I guessed 9.96 would fit and it wasn't even close. It took going all the way down to 9.92 before anything went in, and that one barely did.</p>
 
-<p><strong>How does it compare to the design rules?</strong> For dimensional accuracy the Core One actually did fine. The worst peg was off by 0.11 mm, which is well inside the &plusmn;0.3 mm the chart gives for FDM. If you only look at percentages, three of the pegs were over 0.3%, but that's exactly why the chart has the &plusmn;0.3 mm lower limit, since percentages get tiny on small parts. So for accuracy, the printer met the spec.</p>
+<p><strong>How does it compare to the design rules?</strong> For dimensional accuracy the Core One actually did fine. The worst peg was off by 0.11 mm, which is well inside the &plusmn;0.3 mm the chart gives for FDM. If you only look at percentages, three of the pegs were over 0.3%, but that's exactly why the chart has the &plusmn;0.3 mm lower limit, since percentages get tiny on small parts. So for accuracy, the printer met the spec. It also lands inside Prusa's own 0.3 mm number for X and Y, and way inside the &plusmn;0.5 mm the Protolabs Network article gives for desktop FDM.</p>
 <p>Where I fell short was clearance. The chart says 0.5 mm between connecting parts, and my biggest designed gap was 0.08 mm. I basically built my whole test inside the range the chart already said wouldn't work, and my results agreed with the chart.</p>
 
 <p><strong>Things I'd change next time:</strong></p>
 <ol>
   <li><strong>Way bigger clearance range.</strong> My gaps went from 0 to 0.08 mm. Next time I'd go from something like 0.1 mm up to 0.5 mm, so I can actually find where it switches from press fit to slip fit instead of only catching the super tight end.</li>
   <li><strong>Bigger steps between pegs.</strong> My calipers read to 0.001 in, which is about 0.025 mm, and my pegs only changed by 0.02 mm each. So the differences between pegs were right at the edge of what I could even measure, which is probably why the measured sizes don't step down evenly.</li>
-  <li><strong>Get rid of the sharp corners.</strong> Square pegs are extra sensitive to corner bulging. Round pegs, or squares with small fillets or chamfers on the vertical edges, would take the corners out of the picture so I'm testing the actual fit and not the corner bumps.</li>
+  <li><strong>Get rid of the sharp corners.</strong> Square pegs are extra sensitive to corner bulging. Round pegs, or squares with small fillets or chamfers on the vertical edges, would take the corners out of the picture so I'm testing the actual fit and not the corner bumps. The Protolabs Network article literally recommends radii on sharp corners, so I kind of learned that one the hard way.</li>
   <li><strong>Bigger numbers.</strong> Check any engraved text against the 0.6 mm wide and 2 mm high minimum from the chart so the labels actually come out readable.</li>
   <li><strong>Nozzle size isn't tolerance.</strong> My prediction was based on the 0.4 mm nozzle, but the nozzle diameter really just sets how wide each line is. It doesn't tell you how close the printer lands to a dimension. Stuff like corner bulging and how the plastic squishes out matters more.</li>
   <li><strong>Plan for getting the part back out.</strong> My 9.92 peg is now stuck in the socket for good. A little tab to grab, or a hole in the bottom of the socket to push it out, would've saved it.</li>
@@ -101,5 +115,9 @@ title: "L4 – Tolerance Fit Checker"
 
 <h2>Resources</h2>
 <p>Protolabs, <em>Design Rules for 3D Printing</em> (class PDF)</p>
+<p><a href="https://help.prusa3d.com/article/faq-frequently-asked-questions_1932">Prusa Knowledge Base, FAQ (Frequently Asked Questions)</a></p>
+<p><a href="https://www.hubs.com/knowledge-base/dimensional-accuracy-3d-printed-parts/">Protolabs Network, What is dimensional accuracy in 3D printing and how do you achieve it?</a></p>
 
 <h2>Download</h2>
+<p>Peg plate: <a href="FitGage.STL">FitGage.STL</a></p>
+<p>Socket: <a href="TestBlock.STL">TestBlock.STL</a></p>
