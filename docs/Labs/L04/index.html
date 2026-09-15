@@ -1,153 +1,105 @@
 ---
-title: "L4 – Tolerance Gauge Test"
+title: "L4 – Tolerance Fit Checker"
 ---
-<h1>L4 – Tolerance Gauge Test</h1>
+<h1>L4 – Tolerance Fit Checker</h1>
 
 <p><em>9/10/2026</em></p>
 
 <h2>Objective</h2>
-<p>Find out what the Prusa CORE One can actually hold for a dimension, instead of assuming. Design a gauge, print it, measure it, and then hold that number up against the FDM row of the class design rules chart to see how the real printer compares to the documented spec.</p>
+<p>This week's job was to design my own benchmark part to figure out where the Prusa Core One actually hits its limits, then compare what I found to the FDM row of the class Design Rules for 3D Printing chart. The only catch was that the print couldn't go over an hour, since everybody is fighting for time on the machines.</p>
 
 <h2>Parameter</h2>
-<p>There were four benchmark tests to pick from and I went with the <strong>tolerance gauge test</strong>. It checks how close a printed dimension lands to the number you typed into CAD, and past that, how much clearance two parts need before they will go together at all.</p>
-<p>That second half is the part I cared about. A part can look completely fine sitting on the bed and still be dimensionally wrong, and you usually do not find out until you try to assemble it and it will not go.</p>
+<p>There were four options: overhang angle, pull strength, tolerance gauge, and dimension calibration. I went with the tolerance gauge. Basically the question is, how close does the printed part come to what I drew in CAD?</p>
+<p>This one felt the most useful to me. A part can look totally fine and still be off by just enough that it won't go into the thing it's supposed to fit in. If I ever design two pieces that slide or snap together, I need to know how much room to leave between them, and guessing isn't really a plan.</p>
 
-<h3>Prediction</h3>
-<p>Before I sliced anything I wrote down that <strong>9.96 mm</strong> would be the first peg to drop into the 10.00 mm socket. My logic was that the nozzle is 0.4 mm, so I figured the printer's dimensional accuracy was somewhere around that scale, and 0.04 mm of undersize would leave plenty of room.</p>
-<p>I was expecting this thing to do better than it did. That is not how it went.</p>
+<h2>Research: What the Design Rules Say</h2>
+<p>Before designing anything I checked the FDM row of the Design Rules for 3D Printing chart. Two boxes matter for this test:</p>
+<ul>
+  <li><strong>Tolerance:</strong> &plusmn;0.3%, with a lower limit of &plusmn;0.3 mm. On something as small as a 10 mm peg, 0.3% is only 0.03 mm, which is way under the lower limit. So the number that actually applies to my part is &plusmn;0.3 mm.</li>
+  <li><strong>Connecting/moving parts:</strong> 0.5 mm of clearance between two parts that fit together.</li>
+</ul>
+<p>Remember that 0.5 mm. It comes back later.</p>
+
+<h2>Prediction</h2>
+<p>Before printing, I figured the 9.96 mm peg would be the first one to fit. My thinking was that the nozzle on the Core One is 0.4 mm, so I just assumed the dimensional tolerance would be on that same kind of scale, and a peg 0.04 mm under the hole would be enough. Honestly I thought the whole thing was going to fit a lot better than it did.</p>
 
 <h2>Design</h2>
-<p>The artifact is a two piece peg and socket gauge. Simple on purpose.</p>
+<p>I went with a peg and socket gauge, split into two parts:</p>
 <ul>
-  <li><strong>Socket:</strong> one block with a single square pocket at a nominal <strong>10.00 mm &times; 10.00 mm</strong>. This is the reference and it never changes.</li>
-  <li><strong>Peg plate:</strong> one plate with five square pegs sticking up off it, at <strong>10.00, 9.98, 9.96, 9.94, and 9.92 mm</strong> on a side. All of them square, so both sides always match.</li>
-  <li><strong>Labels:</strong> the size of each peg cut into the plate right in front of it, so I could tell which one I was holding.</li>
+  <li><strong>The peg plate:</strong> a flat base with five square pegs sticking up out of it. Every peg has equal sides, and each one is 0.02 mm smaller than the one before it: 10.00, 9.98, 9.96, 9.94, and 9.92 mm. I cut each peg's size into the plate right in front of it so I'd know which was which.</li>
+  <li><strong>The socket:</strong> a separate piece with a 10 &times; 10 mm square hole, the exact size of the biggest peg.</li>
 </ul>
-<p>I stepped the pegs by 0.02 mm, which spreads five data points across a 0.08 mm range. I picked that because I expected the answer to land in the first step or two, and anything coarser would have jumped straight over it. Spoiler, that step size turned out to be a problem for a totally different reason, which I get into in the lessons.</p>
-<p>I went with squares instead of round pins on purpose. A square peg has four flat faces and it can only go in four ways, so if anything is off it binds and you know right away. A round pin can spin to whatever angle fits best and hide a small error, which would have made the printer look better than it is. Turns out picking squares mattered a lot more than I thought it would.</p>
-
-<p>[CAD screenshot of the peg plate here]</p>
-<p>[CAD screenshot or sketch of the socket showing the 10.00 mm pocket here]</p>
+<p>The idea is pretty simple. Try every peg in the socket, and the first one that goes in tells you how much clearance the printer really needs. The 10 mm peg is exactly the size of the hole, so it's there as the "no way this fits" baseline.</p>
 
 <h2>Preprocessor: PrusaSlicer Settings</h2>
-<p>Printer: Prusa CORE ONE, 0.4 mm nozzle. Material: [material].</p>
+<p>Printer: Prusa CORE One, 0.4 mm nozzle. Material: [to fill in]. Print profile: [to fill in].</p>
 
-<p><strong>Print profile / layer height:</strong> [layer height]</p>
-<p>[screenshot]</p>
-<p>[why this layer height, tied to what the test is measuring]</p>
+<p><strong>Build orientation:</strong> [to fill in]</p>
+<p><strong>Infill:</strong> [to fill in]</p>
+<p><strong>Supports:</strong> [to fill in]</p>
+<p><strong>Scale:</strong> [to fill in]</p>
 
-<p><strong>Infill:</strong> [density and pattern]</p>
-<p>[screenshot]</p>
-<p>[why]</p>
+<p>Sliced result: [filament used, estimated print time]</p>
 
-<p><strong>Perimeters:</strong> [count]</p>
-<p>[screenshot]</p>
-<p>[why]</p>
+<h2>Print</h2>
+<p>I printed this on Thursday, September 10th on Prusa Core One #2 with my lab partner James McAdam. The print took about 40 minutes, so it made it under the one hour limit with room to spare.</p>
 
-<p><strong>Build orientation:</strong> [orientation]</p>
-<p>[screenshot]</p>
-<p>[why]</p>
-
-<p><strong>Supports:</strong> [yes or no, and how they were added]</p>
-<p><strong>Scale:</strong> [scale, and why]</p>
-<p><strong>Brim:</strong> [brim setting]</p>
-
-<p>Sliced result: [filament g / m], estimated cost [cost], estimated print time [time].</p>
-<p>[sliced preview screenshot with the stats panel]</p>
-
-<h2>Print Artifact</h2>
-<p>Printed Thursday, September 10 on Prusa CORE One #2 with my lab partner James McAdam. About 40 minutes on the machine.</p>
-<p>[photo of the printer mid print]</p>
 <p>[Video Here]</p>
-<p>[photo of the finished parts]</p>
 
-<h2>Results: The Fit Test</h2>
-<p>First thing I did off the bed was run every peg at the socket, biggest to smallest.</p>
+<p><strong>Mistake:</strong> the numbers I cut into the plate were way too small. They technically printed, but they came out rough and don't look good at all. Looking at the chart afterwards, engraved details on FDM are supposed to be at least 0.6 mm wide and 2 mm high, so that's something I should've checked before slicing.</p>
 
+<h2>Results</h2>
+<p>I measured everything with calipers. They were reading in inches, so I converted it all to millimeters (1 in = 25.4 mm) to keep everything metric. The "room in socket" column is the measured socket hole (10.06 mm) minus the measured peg.</p>
+
+<div class="table-wrap">
 <table>
-  <tr><th>Peg (CAD)</th><th>Result</th></tr>
-  <tr><td>10.00 mm</td><td>Would not enter</td></tr>
-  <tr><td>9.98 mm</td><td>Would not enter</td></tr>
-  <tr><td>9.96 mm</td><td>Would not enter</td></tr>
-  <tr><td>9.94 mm</td><td>Would not enter</td></tr>
-  <tr><td>9.92 mm</td><td>Entered, extremely tight</td></tr>
+  <thead>
+    <tr>
+      <th>Part</th>
+      <th>CAD size</th>
+      <th>Measured</th>
+      <th>Difference</th>
+      <th>% off</th>
+      <th>Room in socket</th>
+      <th>Fits?</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>Peg 1</td><td>10.00 mm</td><td>10.11 mm</td><td>+0.11 mm</td><td>+1.1%</td><td>&minus;0.05 mm</td><td>No</td></tr>
+    <tr><td>Peg 2</td><td>9.98 mm</td><td>10.06 mm</td><td>+0.08 mm</td><td>+0.8%</td><td>0.00 mm</td><td>No</td></tr>
+    <tr><td>Peg 3</td><td>9.96 mm</td><td>10.01 mm</td><td>+0.05 mm</td><td>+0.5%</td><td>+0.05 mm</td><td>No</td></tr>
+    <tr><td>Peg 4</td><td>9.94 mm</td><td>9.93 mm</td><td>&minus;0.01 mm</td><td>&minus;0.1%</td><td>+0.13 mm</td><td>No</td></tr>
+    <tr><td>Peg 5</td><td>9.92 mm</td><td>9.91 mm</td><td>&minus;0.01 mm</td><td>&minus;0.1%</td><td>+0.15 mm</td><td>Yes (super tight)</td></tr>
+    <tr><td>Socket hole</td><td>10.00 mm</td><td>10.06 mm</td><td>+0.06 mm</td><td>+0.6%</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+  </tbody>
 </table>
+</div>
 
-<p>Only <strong>9.92</strong> went in. It went in so tight that I still have not gotten it back out. It is a permanent press fit now, which is funny but also not what I was going for.</p>
-<p>[photo of the 9.92 peg stuck in the socket]</p>
-<p>[photo of a rejected peg sitting on top of the socket, not going in]</p>
+<p>Only the 9.92 mm peg went in, and it went in so tight that I can't get it back out. It's pretty much a press fit now. So the smallest designed gap that worked was 0.08 mm total, which is 0.04 mm per side, and even that was too tight for anything that's supposed to come apart.</p>
 
-<h2>Results: The Caliper Measurements</h2>
-<p>My caliper was reading in inches, so everything below is converted to mm at 25.4 mm per inch. Nominal is what I drew in CAD.</p>
-
-<table>
-  <tr><th>Feature</th><th>Nominal</th><th>Measured (in)</th><th>Measured (mm)</th><th>Deviation</th></tr>
-  <tr><td>Socket pocket</td><td>10.00 mm</td><td>0.396</td><td>10.058</td><td>+0.058 mm</td></tr>
-  <tr><td>Peg 1</td><td>10.00 mm</td><td>0.398</td><td>10.109</td><td>+0.109 mm</td></tr>
-  <tr><td>Peg 2</td><td>9.98 mm</td><td>0.396</td><td>10.058</td><td>+0.078 mm</td></tr>
-  <tr><td>Peg 3</td><td>9.96 mm</td><td>0.394</td><td>10.008</td><td>+0.048 mm</td></tr>
-  <tr><td>Peg 4</td><td>9.94 mm</td><td>0.391</td><td>9.931</td><td>-0.009 mm</td></tr>
-  <tr><td>Peg 5</td><td>9.92 mm</td><td>0.390</td><td>9.906</td><td>-0.014 mm</td></tr>
-</table>
-
-<p>[caliper photos if I have them]</p>
-
-<p>Biggest miss is the 10.00 peg at <strong>+0.109 mm</strong> oversize. Everything drifts down from there and the last two pegs actually came out slightly under. The socket pocket printed <strong>0.058 mm oversize</strong>, which surprised me, because holes in FDM usually come out small, not big.</p>
-
-<h2>The Part That Did Not Add Up</h2>
-<p>Here is where it got interesting. I subtracted each peg from the socket to see how much room there should have been.</p>
-
-<table>
-  <tr><th>Peg</th><th>Measured</th><th>Clearance vs. 10.058 socket</th><th>Should it fit?</th><th>Did it?</th></tr>
-  <tr><td>10.00</td><td>10.109</td><td>-0.051 mm</td><td>No, it is bigger than the hole</td><td>No</td></tr>
-  <tr><td>9.98</td><td>10.058</td><td>0.000 mm</td><td>No, exactly the same size</td><td>No</td></tr>
-  <tr><td>9.96</td><td>10.008</td><td>+0.050 mm</td><td>Yes</td><td><strong>No</strong></td></tr>
-  <tr><td>9.94</td><td>9.931</td><td>+0.127 mm</td><td>Yes</td><td><strong>No</strong></td></tr>
-  <tr><td>9.92</td><td>9.906</td><td>+0.152 mm</td><td>Yes</td><td>Yes, barely</td></tr>
-</table>
-
-<p>The first two make sense. The 10.00 peg is physically fatter than the hole and the 9.98 is exactly the same size as the hole, so neither one was ever going in.</p>
-<p>But the 9.96 and the 9.94 both measured smaller than the socket, one of them by 0.127 mm, and they still would not go. By the caliper those two should have dropped right in. So whatever was stopping them was not showing up in my measurement.</p>
-
-<h3>It was the corners</h3>
-<p>When I looked at the pegs closely there is visible bulging at the four corners. The flats are fine, the corners are fat. And a caliper laid across two flat faces will never see that, because it is measuring the skinniest part of the peg and completely ignoring the part that is actually doing the binding.</p>
-<p>A square peg in a square hole jams at the corners before it jams anywhere else, so the corners are the only dimension that really mattered here and they are the one dimension I did not measure.</p>
-<p>There are two things stacking up:</p>
-<ol>
-  <li><strong>The peg corners bulge outward.</strong> Where the nozzle turns a 90 degree corner it slows down and the plastic piles up a little, so the corner ends up with more material on it than the straight sections.</li>
-  <li><strong>The socket corners are rounded inward.</strong> This one is just physics. A 0.4 mm round nozzle cannot cut a sharp inside corner. The best it can do is leave a radius of about 0.2 mm in each corner of that pocket, so the pocket is not really a square, it is a square with four rounded corners.</li>
-</ol>
-<p>That second one is worth doing the math on. If a square pocket has a 0.2 mm radius in each corner, a peg with sharp corners has to shrink by about <strong>0.117 mm</strong> across the flats before its corners clear that radius. That number lands right between my 9.94 peg, which had 0.127 mm of clearance and did not fit, and my 9.92 peg, which had 0.152 mm and barely did.</p>
-<p>So the corner geometry pretty much accounts for the entire gap between what the caliper predicted and what actually happened. The printer was not as far off as the fit test made it look. My part geometry was just fighting the process.</p>
-
-<h2>Comparison to the FDM Design Rules</h2>
-<p>The Protolabs chart lists FDM tolerance as <strong>&plusmn;0.3% with a lower limit of &plusmn;0.3 mm</strong>. On a 10 mm feature, 0.3% is only 0.03 mm, which is under the 0.3 mm floor, so the number that actually applies to my part is <strong>&plusmn;0.3 mm</strong>.</p>
-<p>My worst measured deviation was <strong>0.109 mm</strong>. That is about a third of the documented limit, so on the number that governs, the CORE One <strong>beat the spec</strong> and it was not close.</p>
-<p>Run it as a percentage and it flips. 0.109 mm on a 10 mm feature is <strong>1.09%</strong>, which is more than three times the 0.3% figure. The chart says take whichever of the two is larger, so the printer still passes, but it is worth noticing that the percentage half of that spec is written for parts way bigger than a 10 mm cube. At this size the absolute floor is doing all the work and the percentage is basically meaningless.</p>
-<p>The other row that matters here is <strong>connecting / moving parts</strong>, which lists <strong>0.5 mm</strong> of recommended clearance for FDM. My tightest actual clearance was 0.152 mm and that one is welded in place permanently. So I never even got into the range the chart recommends, and the part that did assemble is exactly the failure the 0.5 mm number exists to prevent. If I had designed a real assembly off my own gauge result instead of off the chart, I would have built something that goes together one time and never comes apart.</p>
+<p><strong>So why didn't 9.96 and 9.94 fit?</strong></p>
+<p>This part confused me at first. The first two pegs make sense, one is bigger than the hole and the other is the same size. But on paper the 9.96 peg had 0.05 mm of room and the 9.94 peg had 0.13 mm, and neither of them would go in.</p>
+<p>My best guess is the corners. Looking closely, there's some bulging at the corners of the pegs and inside the socket. When the nozzle goes around a sharp corner it has to slow down and change direction, and a little extra plastic gets pushed out right there. Calipers measure flat side to flat side, so they completely miss those bumps. The peg corners bulge out and the socket corners bulge in, so the two squares end up hitting each other at the corners even when the flat sides have plenty of room.</p>
 
 <h2>Lessons Learned</h2>
+<p><strong>Was it different from what I thought?</strong> Yep. I guessed 9.96 would fit and it wasn't even close. It took going all the way down to 9.92 before anything went in, and that one barely did.</p>
 
-<p><strong>1. Nozzle diameter is not a tolerance number.</strong> This is the one that killed my prediction. I assumed 0.4 mm of nozzle meant something about accuracy. It does not. Nozzle diameter is a resolution number, it tells you the thinnest line the machine can put down. It says nothing about how close the finished dimension lands to what you drew. Mixing those two up is how you design a press fit you cannot assemble, which is more or less what I did.</p>
+<p><strong>How does it compare to the design rules?</strong> For dimensional accuracy the Core One actually did fine. The worst peg was off by 0.11 mm, which is well inside the &plusmn;0.3 mm the chart gives for FDM. If you only look at percentages, three of the pegs were over 0.3%, but that's exactly why the chart has the &plusmn;0.3 mm lower limit, since percentages get tiny on small parts. So for accuracy, the printer met the spec.</p>
+<p>Where I fell short was clearance. The chart says 0.5 mm between connecting parts, and my biggest designed gap was 0.08 mm. I basically built my whole test inside the range the chart already said wouldn't work, and my results agreed with the chart.</p>
 
-<p><strong>2. Measure the dimension that actually controls the fit.</strong> I measured across the flats because that is the obvious thing to put a caliper on. But a square peg binds at the corners, so the flats were never the controlling dimension. That is why my numbers said two pegs should fit and reality said no. Next time I measure corner to corner across the diagonal, or I put pins in the socket corners, or I just do not use a sharp square peg in the first place.</p>
+<p><strong>Things I'd change next time:</strong></p>
+<ol>
+  <li><strong>Way bigger clearance range.</strong> My gaps went from 0 to 0.08 mm. Next time I'd go from something like 0.1 mm up to 0.5 mm, so I can actually find where it switches from press fit to slip fit instead of only catching the super tight end.</li>
+  <li><strong>Bigger steps between pegs.</strong> My calipers read to 0.001 in, which is about 0.025 mm, and my pegs only changed by 0.02 mm each. So the differences between pegs were right at the edge of what I could even measure, which is probably why the measured sizes don't step down evenly.</li>
+  <li><strong>Get rid of the sharp corners.</strong> Square pegs are extra sensitive to corner bulging. Round pegs, or squares with small fillets or chamfers on the vertical edges, would take the corners out of the picture so I'm testing the actual fit and not the corner bumps.</li>
+  <li><strong>Bigger numbers.</strong> Check any engraved text against the 0.6 mm wide and 2 mm high minimum from the chart so the labels actually come out readable.</li>
+  <li><strong>Nozzle size isn't tolerance.</strong> My prediction was based on the 0.4 mm nozzle, but the nozzle diameter really just sets how wide each line is. It doesn't tell you how close the printer lands to a dimension. Stuff like corner bulging and how the plastic squishes out matters more.</li>
+  <li><strong>Plan for getting the part back out.</strong> My 9.92 peg is now stuck in the socket for good. A little tab to grab, or a hole in the bottom of the socket to push it out, would've saved it.</li>
+</ol>
 
-<p><strong>3. Square peg in a square hole is a bad fit geometry for FDM, and there is a standard fix.</strong> Machinists ran into this on end mills a long time ago and solved it with corner relief, little extra cuts at each inside corner so a sharp corner has somewhere to go. Same idea works here. Either put a chamfer or radius on the peg corners so they stop fighting the pocket radius, or cut relief into the socket corners. If I redid this I would relieve the corners and the whole test would be measuring the printer instead of measuring corner geometry.</p>
-
-<p><strong>4. My caliper could not resolve my own design steps.</strong> It reads to 0.001 in, which is 0.0254 mm. I designed the pegs 0.02 mm apart. So my increments were smaller than one tick on the tool I was checking them with, which means I could not have told two neighboring pegs apart even if they printed perfectly. I should have flipped the caliper into mm, and I should have used a step size my instrument could actually see, something like 0.05 mm.</p>
-
-<p><strong>5. The error is not a constant offset, so you cannot just fudge it in CAD.</strong> I commanded a 0.08 mm spread across the five pegs and got a 0.203 mm spread back, about two and a half times what I asked for. If the printer were just running fat by a fixed amount, every deviation would be the same number and it is not, it walks from +0.109 down to -0.014. That says the slicer is quantizing something, probably shuffling perimeter widths as the target size crosses a threshold. Which means you cannot fix this by subtracting one magic number in CAD, you have to test at the size you care about.</p>
-
-<p><strong>6. My labels were too small and the chart already told me so.</strong> The size numbers I cut into the base came out mushy and hard to read. The design rules chart lists FDM engraved detail at <strong>0.6 mm wide and 2 mm high</strong> and mine were under that. Annoying part is I had the chart the entire time and still eyeballed the text size. Next time I pull the feature size straight off the chart before cutting anything, and I move the labels onto the top face where they are not competing with the perimeter walls for room.</p>
-
-<p><strong>What I would change:</strong> relieve the corners, go to 0.05 mm steps, start the sweep around 9.90 instead of 10.00 since a 10.00 peg in a 10.00 socket was never going to work, measure everything in mm before doing any fit testing, and size the labels off the chart.</p>
-
-<p><strong>Actual time:</strong> about 40 minutes of print time, roughly 3 hours for the whole lab start to finish.</p>
+<p>The print itself took about 40 minutes, and the whole lab took about 3 hours start to finish.</p>
 
 <h2>Resources</h2>
-<p>Protolabs, <em>Design Rules for 3D Printing</em> (class handout PDF). Used for the FDM row: tolerance &plusmn;0.3% with a &plusmn;0.3 mm lower limit, connecting and moving parts clearance 0.5 mm, and engraved detail 0.6 mm wide by 2 mm high.</p>
-<p><a href="https://help.prusa3d.com/article/layers-and-perimeters_1748">Prusa Knowledge Base, Layers and perimeters</a></p>
-<p><a href="https://www.printables.com/model/31843">Tolerance gauge test, Printables #31843</a></p>
+<p>Protolabs, <em>Design Rules for 3D Printing</em> (class PDF)</p>
 
 <h2>Download</h2>
-<p>Design file: [STL or 3MF here]</p>
