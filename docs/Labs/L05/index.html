@@ -1,16 +1,180 @@
 ---
-title: "L5 – [Topic]"
+title: "L5 – Snap Fit Quick Release Buckle"
 ---
-<h1>L5 – [Topic]</h1>
+<h1>L5 – Snap Fit Quick Release Buckle</h1>
 
 <h2>Objective</h2>
-<p></p>
+<p>This week I had to design and print a snap fit assembly: two parts that hold together using elastic deformation. The flexure gets sized with the beam deflection equation, and the whole thing gets built parametrically in CAD.</p>
 
-<h2>Analyze</h2>
-<p></p>
+<h2>Design Idea</h2>
+<p>I'm making a quick release buckle, the kind with two flexing prongs that you squeeze together to let go. I picked it because I'd actually use it, and I'd rather not print stuff that ends up in a drawer. The buckle has two parts: the <strong>male part</strong> with two cantilever prongs that each end in a hook lip, and the <strong>female part</strong> (the receptacle) with a window for each lip to catch on.</p>
 
-<h2>Decide</h2>
-<p></p>
+<h2>Research: Material</h2>
+<p>I'm using Overture Matte PLA. The manufacturer's technical data sheet (TDS v5.1, July 2024) lists these values for prints in the X-Y direction:</p>
+<div class="table-wrap">
+<table>
+<tr><th>Property</th><th>Value</th></tr>
+<tr><td>Young's modulus, E (X-Y)</td><td>1879 MPa</td></tr>
+<tr><td>Tensile strength (X-Y)</td><td>20.9 MPa</td></tr>
+<tr><td>Tensile strength (Z, across layers)</td><td>10.9 MPa</td></tr>
+<tr><td>Flexural modulus (X-Y)</td><td>2671 MPa</td></tr>
+<tr><td>Elongation at break (X-Y)</td><td>29.2 %</td></tr>
+</table>
+</div>
+<p>The TDS doesn't list a yield strength, so I'm using the 20.9 MPa tensile strength as the limit. That's the conservative choice since yield can't be higher than the strength at break. I'm using the tensile modulus (1879 MPa) and not the flexural one, since the tensile test is the one that goes with the tensile strength I'm comparing against. I looked for a second independent source for matte PLA but everything I found just repeats Overture's own numbers, so this is the one source. Matte PLA is also weaker than regular PLA, so the numbers here are lower than the ones you'd see for a general PLA.</p>
+<p>The Z direction number is the one to remember. Across layers the material is about half as strong (10.9 vs 20.9 MPa). That's why the flexure has to be printed with the bending inside the layers and not across them.</p>
 
-<h2>Communicate</h2>
-<p></p>
+<h2>Modeling</h2>
+<h3>Chosen Values and Assumptions</h3>
+<div class="table-wrap">
+<table>
+<tr><th>Item</th><th>Value</th><th>Why</th></tr>
+<tr><td>Material</td><td>Overture Matte PLA, E = 1879 MPa, S = 20.9 MPa</td><td>What I'm printing with, from the TDS</td></tr>
+<tr><td>Safety factor</td><td>3.5</td><td>Given by the lab</td></tr>
+<tr><td>Allowable stress</td><td>20.9 / 3.5 = <strong>5.97 MPa</strong></td><td>Strength divided by SF</td></tr>
+<tr><td>Transverse load, P</td><td>0.5 lbf = <strong>2.224 N</strong> per prong</td><td>Light squeeze to release, inside the 0.25 to 5 lbf range</td></tr>
+<tr><td>Axial load, F</td><td>5 lbf = <strong>22.24 N</strong></td><td>Pull on the buckle, inside the 5 to 10 lbf range</td></tr>
+<tr><td>Lip height</td><td>1.0 mm</td><td>Has to be slightly smaller than the deflection</td></tr>
+<tr><td>Wall count</td><td>5 walls &times; 0.4 mm = 2.0 mm per side</td><td>Slicer setting I'll use</td></tr>
+</table>
+</div>
+<p>Assumptions: each prong gets the transverse load P at its tip on its own, and each prong carries the <em>full</em> axial load F, even though two prongs would really share it. That's the conservative way to do it. Conversion used: 1 lbf = 4.448 N, and MPa = N/mm&sup2; so I can keep everything in N and mm.</p>
+
+<h3>Choosing the Width and Base</h3>
+<p>The stress limit alone decides how short the prong can be, and the load only decides how wide it has to be (worked out on the handwritten pages below). That is what killed my first tries:</p>
+<ul>
+<li><strong>3 lbf:</strong> even a 12 &times; 8 mm section was over the allowable stress. It doesn't work at any reasonable size.</li>
+<li><strong>1 lbf:</strong> worked, but the prong had to be either 65 mm long (hollow box) or 16 mm wide (at 50 mm long).</li>
+<li><strong>0.5 lbf:</strong> gets the width down to a normal 8 to 10 mm. That's what I went with.</li>
+</ul>
+<p><strong>Width</strong> <em>b</em> is the width of one prong, measured out of the bed plane (the print height in Z since I'm printing flat). <strong>Base</strong> <em>h</em> is the thickness in the bending direction. I chose <em>b</em> = 8 mm and <em>h</em> = 4 mm, with a beam length <em>L</em> = 50.6 mm measured from the root to the tip. The 5 mm lip is included in that, so the straight part of the beam is 45.6 mm.</p>
+<p><strong>Box beam note:</strong> the lab hint says to use a box beam because infill doesn't add much support. With 5 walls at 0.4 mm on each side I get 2 mm of solid wall per side, and at h = 4 mm the two walls meet in the middle. So the section is full plastic with no hollow, and I treated it as a solid rectangle.</p>
+
+<h3>Hand Calculations</h3>
+<img src="HandWrittenWork.png" alt="Handwritten calculations: givens, FBDs, section properties, beam length, deflection, and stress checks">
+<p>Givens, FBDs of the male part (one prong) and the female part, section properties, beam length from the deflection equation, deflection check, bending stress, axial stress, combined stress, and lip shear stress.</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>Check</th><th>Result</th><th>Limit</th><th>Pass?</th></tr>
+<tr><td>Bending stress</td><td>5.21 MPa</td><td>5.97 MPa</td><td>Yes</td></tr>
+<tr><td>Axial stress</td><td>0.70 MPa</td><td>5.97 MPa</td><td>Yes</td></tr>
+<tr><td>Bending + axial</td><td>5.91 MPa (SF 3.54)</td><td>5.97 MPa (SF 3.5)</td><td>Yes</td></tr>
+<tr><td>Lip shear</td><td>0.56 MPa</td><td>2.99 MPa</td><td>Yes</td></tr>
+<tr><td>Deflection vs lip</td><td>1.16 mm</td><td>lip = 1.0 mm</td><td>Yes</td></tr>
+</table>
+</div>
+<p><strong>Iteration:</strong> the first pass used 3 lbf and it failed, so I lowered the load to 1 lbf and then to 0.5 lbf, and lowered the pull from 7 lbf to 5 lbf. Along the way I dropped the 65 mm hollow box and the 50 mm, 16 mm wide prong. I settled on an 8 mm wide prong that is 50 mm long including the lip.</p>
+
+<h2>Parametric Design</h2>
+
+<h3>Male Part: Prong Assembly</h3>
+<img src="GlobalVariablesMalePart.png" alt="SolidWorks global variables for the male part: b, h, L, Lip, beamL, hlip, gap, RootFillet">
+<p>Global variables driving the male part geometry.</p>
+
+<img src="1-TopPlaneSketch.png" alt="Sketch on the top plane showing the buckle base, both prongs with lips, and the center T-shaped prong">
+<p>Sketch on the top plane. I sketched an arbitrarily sized buckle base to grab onto and attach a band, sized to the gap plus two times the prong thickness (33 mm total). This base also anchors the prongs. I added the rough shape of the prongs with their lips and dimensioned everything parametrically using the global variables. I also added a center prong that doesn't grab onto anything but contacts the top surface of the female part. I made it T-shaped to maximize surface area and add strength in compression. Everything is fully constrained, parametrically where possible.</p>
+
+<img src="2-SketchExtrusion.png" alt="Sketch extruded to the prong width using the global variable b">
+<p>Exited the sketch, selected it in the feature tree, and extruded it to the prong width using the global variable.</p>
+
+<img src="3-RootAndInnerFillets.png" alt="1mm fillet applied to internal corners">
+<p>Added a 1 mm fillet to all internal corners, except the lip's bottom corner, since a fillet there would make it easier for the part to slide back off.</p>
+
+<img src="4-OutterLipFillet.png" alt="0.5mm fillet on the outside bottom corners of the lip">
+<p>Added a 0.5 mm fillet to the outside bottom corners of the lip. The lip is only 1 mm tall, so a 1 mm radius would cover from the outside to the inside of it. Printing a straight sharp corner isn't a good idea either, and I learned in L04 that 0.5 mm is about the minimum tolerance the printer can hold, so that set the fillet size.</p>
+
+<img src="5-OutterCornerAestheticFillets.png" alt="1.5mm radius fillets on the remaining outside corners">
+<p>Added 1.5 mm radius fillets to the remaining outside corners. These help the print quality and the look of the part, and don't touch any functional area.</p>
+
+<img src="6-MalePartFinal.png" alt="Finished male part with both prongs, lips, and the T-shaped center prong">
+<p>Finished male part.</p>
+
+<h3>Female Part: Receptacle</h3>
+<img src="GlobalVariablesFemalePart.png" alt="SolidWorks global variables for the female part: BoxWidth, BoxThickness, BoxLength, Wall, WindowOffset, WindowHeight, WindowLength, WindowRadius">
+<p>Global variables driving the female part geometry.</p>
+
+<img src="7-FemaleBoxSketch.png" alt="Rectangle sketch on the top plane sized to BoxThickness by BoxLength">
+<p>Sketch on the top plane. Sketched a rectangle and sized its length and width using the BoxThickness and BoxLength variables.</p>
+
+<img src="8-BoxExtrude.png" alt="Box extruded to BoxWidth">
+<p>Exited the sketch, selected it in the feature tree, and extruded it to the BoxWidth variable.</p>
+
+<img src="9-ShellTheBox.png" alt="Shell feature applied with the open face on the side the buckle enters">
+<p>Used the shell feature, clicking on the side where the buckle enters, with the Wall variable as the shell thickness.</p>
+
+<img src="10-LipCatchSketch.png" alt="Sketch of the catch windows: two collinear line pairs, two semicircles, and a closing line, then cut through all">
+<p>Sketch on the top face of the box. Added four horizontal lines, two coming in from each side, constrained equal length with the two bottom ones collinear and the two top ones collinear. Dimensioned one line with WindowHeight, set the spacing between the pairs with WindowLength, and set WindowOffset from the open entry side to the bottom line. Added two semicircles with centers vertically collinear with the inner points of the lines, then closed the sketch with a line collinear with the outside of the box. Exited the sketch and used extrude cut, through all, to cut the catch windows.</p>
+
+<img src="11-BuckleBaseSketch.png" alt="Strap feature sketch: 8mm by 33mm rectangle centered on horizontal and vertical center lines">
+<p>Sketch on the opposite end from where the buckle enters, for the strap feature. Added a horizontal and vertical center line, then a rectangle 8 mm by 33 mm centered on them.</p>
+
+<img src="12-BuckleBaseExtrude.png" alt="Strap feature extruded 15mm">
+<p>Extruded this sketch 15 mm.</p>
+
+<img src="13-BuckleHole.png" alt="Offset sketch on the strap face, 5mm inward, cut through all to create the strap slot">
+<p>Selected one of the wide faces created by the previous extrude and sketched on it. Selected the whole face, used offset, dimensioned it 5 mm, and reversed it so the offset goes inward. Exited the sketch and used extrude cut, through all, to create the strap slot.</p>
+
+<img src="13-FilletAllAround.png" alt="1mm fillets on all outer corners of the female part">
+<p>Added 1 mm fillets to all outer corners.</p>
+
+<h3>Design Decisions</h3>
+<ul>
+<li><strong>Clearance from L04:</strong> The 0.5 mm cavity clearance (per side) and 0.4 mm thickness clearance come directly from L04's finding that 0.5 mm is the minimum clearance needed for FDM parts to fit together reliably.</li>
+<li><strong>Parametric constraints:</strong> All major dimensions driven by global variables, so changing b, h, L, or gap automatically updates both prongs and the cavity.</li>
+<li><strong>T-shaped center prong:</strong> Adds compression strength and ensures the male part seats fully against the female part during insertion.</li>
+<li><strong>Catch window shape:</strong> Parallel lines with semicircle joins allow smooth engagement and easy manual release without sharp corners.</li>
+<li><strong>Strap slot:</strong> Offset inward by 5 mm to create a slot that can hold a webbing band or loop.</li>
+</ul>
+
+<h2>3D Printing and Test</h2>
+
+<h3>Preprocessor: Bambu Studio Settings</h3>
+<p>Both parts printed together on the Bambu Lab A1 with Overture Matte PLA, 0.4 mm nozzle, 0.2 mm layer height.</p>
+
+<img src="SlicerBuildOrientation.png" alt="Bambu Studio bed view showing both parts flat on the build plate">
+<p><strong>Build orientation:</strong> Flat on the bed. The prongs and cavity run along the Y axis, the beam length direction. Bending happens in X, in the layer plane, not across layers. This keeps the strength in the printed lines where it matters.</p>
+
+<img src="WallAndInfillSettings.png" alt="Wall and infill settings: 5 walls, 5 top/bottom layers, 20 percent infill">
+<p><strong>Walls:</strong> 5 at 0.4 mm each, 2 mm solid on the bending faces. Top and bottom: 5 layers each, 1.0 mm. Infill: 20 percent Gyroid. These match the design assumptions from the stress analysis.</p>
+
+<img src="SupportSettings.png" alt="Support settings configured in Bambu Studio">
+<p><strong>Supports:</strong> Tree supports, everywhere. The catch windows and internal cavity features needed them, which caused problems later.</p>
+
+<h3>Print Artifact</h3>
+<img src="PrintProcess1.jpeg" alt="Print in progress on the Bambu Lab A1">
+<p>Print started and running. Total time: 1 hour 11 minutes.</p>
+
+<video controls preload="metadata">
+  <source src="PrintVideo.mov" type="video/quicktime">
+</video>
+
+<img src="PrintWithSupports.jpeg" alt="Finished print still on the bed with tree supports attached">
+<p>Print finished. Both parts came out solid. The support attachment points on the cavity interior are rough and affect the dimensional accuracy inside.</p>
+
+<img src="PrintFinished.jpeg" alt="Both parts removed from bed, supports still attached">
+<p>Parts removed from the bed. Support cleanup took about 20 minutes with pliers and light sanding on the cavity top surfaces where the supports attached.</p>
+
+<img src="CleanedPrintOpen.jpeg" alt="Male and female parts separated, cleaned and ready for assembly">
+<p>After cleaning: male part with two prongs and the center contact point, female part with the hollow receptacle and catch windows.</p>
+
+<img src="CleanedPrintClosed.jpeg" alt="Both parts assembled and clicked together in the buckled position">
+<p>Assembled and buckled. The snap fit works and holds under a moderate pull. Squeezing the prongs together releases it cleanly.</p>
+
+<h3>Testing and Results</h3>
+<p><strong>Snap fit:</strong> Both prongs snap into the catch windows and hold. The male part stays inserted until squeezed.</p>
+<p><strong>Release:</strong> Squeezing the prongs together makes them flex inward by about 1.2 mm, as designed, which lifts the lips out of the catch windows. Release is smooth and repeatable.</p>
+<p><strong>Print quality:</strong> Most surfaces are clean. The support attachment marks on the inside top edges of the cavity are rough and slightly raised, which affects how smoothly the lips slide in and out.</p>
+
+<h3>Lessons Learned</h3>
+<p><strong>Lip size:</strong> The 1.0 mm lip height works but feels fragile. A 1.5 mm or 2.0 mm lip would be more robust and easier to handle.</p>
+<p><strong>Catch window size:</strong> The 2.0 mm window height is tight. A 2.5 to 3.0 mm window would leave more room for fingers to operate the release without pinching.</p>
+<p><strong>Support placement:</strong> Supports inside the cavity roughed up the catch surfaces and made them harder to clean. Printing the female part cavity-side-up (inverted) would have eliminated internal supports and improved dimensional accuracy. The tradeoff is that the buckle base mounting point would then need support on the bottom.</p>
+<p><strong>Overall assessment:</strong> The buckle works as designed and holds reliably. With a second iteration using larger lips, bigger catch windows, and an inverted build orientation to avoid internal supports, this would be a solid, practical design.</p>
+
+<h2>Resources</h2>
+<p>Overture, <em>Overture PLA Matte, Technical Data Sheet, version 5.1</em> (July 2024), as published at <a href="https://www.spoolscout.com/data-sheets/overture/pla-pla-matte">SpoolScout, Overture PLA Matte Data Sheet</a> and on the <a href="https://overture3d.com/products/overture-matte-pla">Overture Matte PLA product page</a></p>
+
+<h2>Download</h2>
+<p>Male buckle (prongs and base): <a href="MaleBuckle.SLDPRT">MaleBuckle.SLDPRT</a></p>
+<p>Female buckle (receptacle): <a href="FemaleBuckle.SLDPRT">FemaleBuckle.SLDPRT</a></p>
