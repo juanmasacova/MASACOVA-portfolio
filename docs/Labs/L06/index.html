@@ -7,12 +7,12 @@ title: "L6 – Snap Fit Speaker Case"
 <p>This week I had to parametrically design a small part that snap fits onto a feature of an artifact we measured in class. The point was to use tolerances, allowances, and the fit classes from lecture (RC, LC, LT, LN, and FN) to size the mating features, then print the part and test the fit. My artifact is a small oval speaker, and my part is a case that holds it in place with four snap fit lips.</p>
 
 <h2>Design Idea</h2>
-<p>The case is a hollowed out rectangular box. The speaker drops into the open end, and four small lips at the opening catch the speaker's front flange so it can't fall back out. I'm not using the speaker's four mounting holes, so nothing in the design touches them.</p>
+<p>The case is a hollowed out rectangular box. The speaker drops into the open end, and four small lips near the opening catch the speaker's front flange so it can't fall back out. I'm not using the speaker's four mounting holes, so nothing in the design touches them.</p>
 <ul>
 <li><strong>Internal cavity:</strong> matches the speaker's width and length, plus an allowance on each side.</li>
 <li><strong>Walls:</strong> 1.6 mm thick.</li>
-<li><strong>Lips (x4):</strong> each one protrudes 1 mm. The side the speaker enters from has a 45&deg; chamfer so the flange can push past it. The underside is flat, so once the speaker is snapped in, the flat face sits on top of the flange and holds it. The lips stay away from the electronics on the back of the speaker.</li>
-<li><strong>Cable hole:</strong> a half-round cutout at the bottom of the case, like a mouse hole, with a 5 mm radius. I cut off the JST style plug, so the wires are bare and pass through the hole easily.</li>
+<li><strong>Lips (x4):</strong> two on each long wall. Each lip is 5 mm wide, 1 mm tall, and sticks out 1 mm from the wall. The side the speaker enters from has a 45&deg; chamfer so the flange can push past it. The underside is flat, so once the speaker is snapped in, the flat face sits on top of the flange and holds it. The lips stay away from the electronics on the back of the speaker.</li>
+<li><strong>Cable hole:</strong> a half-round cutout with a 5 mm radius, cut through the back of the case at one short end, like a mouse hole. I cut off the JST style plug, so the wires are bare and pass through the hole easily.</li>
 </ul>
 
 <h2>Research: Tolerances, Allowances, and Fits</h2>
@@ -42,7 +42,7 @@ title: "L6 – Snap Fit Speaker Case"
 <div class="table-wrap">
 <table>
 <tr><th>Feature</th><th>Measurement</th></tr>
-<tr><td>Width</td><td>28.28 mm (rounded to 28.3 mm on my sketch)</td></tr>
+<tr><td>Width</td><td>28.28 mm (rounded to 28.3 mm on my sketch and in the CAD model)</td></tr>
 <tr><td>Length</td><td>39.86 mm</td></tr>
 <tr><td>Total depth</td><td>13.34 mm</td></tr>
 <tr><td>Front flange thickness</td><td>3.59 mm</td></tr>
@@ -65,9 +65,11 @@ title: "L6 – Snap Fit Speaker Case"
 <img src="MeasureDepth.jpg" alt="Digital caliper measuring the speaker total depth and reading 13.34 mm">
 <p>Total depth: 13.34 mm.</p>
 
-<p><mark>TO ADD: photo of the caliper reading the front flange thickness, 3.59 mm. The photo was pasted into the chat but not saved as a file, so it needs to be sent again.</mark></p>
+<img src="MeasureFlange.jpg" alt="Digital caliper measuring the speaker front flange thickness and reading 3.59 mm">
+<p>Front flange thickness: 3.59 mm.</p>
 
-<p><mark>TO ADD: photo of the caliper reading the magnet diameter, 27.85 mm. The photo was pasted into the chat but not saved as a file, so it needs to be sent again.</mark></p>
+<img src="MeasureMagnet.jpg" alt="Digital caliper measuring the round magnet diameter and reading 27.85 mm">
+<p>Magnet diameter: 27.85 mm.</p>
 
 <h3>Hand Sketch</h3>
 <img src="HandSketch.jpg" alt="Hand sketch of the speaker front, side, and back views with dimensions, and a sketch of the case with notes on walls, lips, and the cable cavity">
@@ -79,61 +81,113 @@ title: "L6 – Snap Fit Speaker Case"
 <div class="table-wrap">
 <table>
 <tr><th>Parameter</th><th>Value</th><th>Why</th></tr>
-<tr><td>speaker_w</td><td>28.28 mm</td><td>Measured width of the speaker</td></tr>
-<tr><td>speaker_h</td><td>39.86 mm</td><td>Measured length of the speaker</td></tr>
-<tr><td>speaker_d</td><td>13.34 mm</td><td>Measured total depth of the speaker</td></tr>
-<tr><td>clearance</td><td>0.2 mm per side</td><td>Printer allowance, chosen from Table 6 and the A1's accuracy</td></tr>
-<tr><td>wall</td><td>1.6 mm</td><td>Four perimeters of a 0.4 mm nozzle, stiff enough to hold the speaker</td></tr>
-<tr><td>lip_protrusion</td><td>1.0 mm</td><td>How far each lip reaches over the front flange</td></tr>
-<tr><td>cable_hole_radius</td><td>5 mm</td><td>Big enough for the bare wires to pass through</td></tr>
+<tr><td>Speaker width</td><td>28.3 mm</td><td>Measured width of the speaker (28.28 mm, rounded)</td></tr>
+<tr><td>Speaker length</td><td>39.86 mm</td><td>Measured length of the speaker</td></tr>
+<tr><td>Speaker depth</td><td>13.34 mm</td><td>Measured total depth of the speaker</td></tr>
+<tr><td>Clearance</td><td>0.2 mm per side</td><td>Printer allowance, chosen from Table 6 and the A1's accuracy</td></tr>
+<tr><td>Wall thickness</td><td>1.6 mm</td><td>Stiff enough to hold the speaker, thin enough to flex at the lips</td></tr>
+<tr><td>Lip width</td><td>5 mm</td><td>Small enough to stay clear of the electronics</td></tr>
+<tr><td>Lip height</td><td>1 mm</td><td>Thin catch that sits on the speaker's flange</td></tr>
+<tr><td>Lip protrusion</td><td>1 mm</td><td>How far each lip reaches over the front flange</td></tr>
+<tr><td>Lip offset</td><td>5 mm</td><td>Distance from the end of the wall to the start of each lip</td></tr>
+<tr><td>Cable hole radius</td><td>5 mm</td><td>Big enough for the bare wires to pass through</td></tr>
 </table>
 </div>
-<p>The internal cavity is the speaker size plus two times the clearance, so it comes out to 28.68 mm &times; 40.26 mm.</p>
-<p><mark>TO ADD: confirm this table matches the parameter names and values in the final CAD model, and add a screenshot of the parameters table from CAD.</mark></p>
+<p>The rest of the model follows from those. The outer size of the case is the speaker size plus 0.4 mm of clearance plus 3.2 mm of wall (two walls), which comes out to <strong>31.90 mm &times; 43.46 mm</strong>. The internal cavity is 28.7 mm &times; 40.26 mm. The case is 16.94 mm tall, which works out to the 13.34 mm speaker depth, plus 0.4 mm of clearance, plus 3.2 mm of wall.</p>
+<p><mark>TO ADD: screenshot of the SolidWorks equations or global variables list, and the variable names you used.</mark></p>
 
 <h3>Why These Parameters</h3>
-<p>The three speaker dimensions are the ones I measured, so if I swap in the other speaker or remeasure, the case follows. The clearance is a parameter on its own because it was the number I was least sure about, and I wanted to be able to change it in one place after the test print. Wall thickness and lip protrusion are kept as parameters because they control how stiff the case is and how hard the speaker is to push in.</p>
+<p>The three speaker dimensions are the ones I measured, so if I swap in the other speaker or remeasure, the case follows. The clearance is a parameter on its own because it was the number I was least sure about, and I wanted to be able to change it in one place after the test print. Wall thickness and the lip sizes are parameters because they control how stiff the case is and how hard the speaker is to push in.</p>
 
 <h3>Did the Values Change?</h3>
 <ul>
 <li><strong>Clearance:</strong> I started with 0.2 mm per side, briefly looked at 0.4 mm per side to be safe with the printer, then went back to 0.2 mm. At 0.4 mm the allowance is well past what the handbook table expects for a locational fit, and it would have been harder to justify. 0.2 mm keeps the design closer to the table and it matches grade 12 for the printer.</li>
-<li><strong>Lip relief cuts:</strong> I first planned cuts above and below each lip so the wall could flex more easily. I left them out of the final model. <mark>TO ADD: why you decided they weren't needed.</mark></li>
+<li><strong>Lip relief cuts:</strong> I first planned cuts above and below each lip so the wall could flex more easily. I left them out of the final model, because the walls are thin enough that they already give me the flex I need.</li>
 </ul>
 
 <h3>Lip Design</h3>
-<p>The lip is 1 mm tall in every case. The entry side is a 45&deg; chamfer so the speaker's flange can ride up and over it, and the other side is flat so the lip can't slide off once it's on top of the flange. I didn't do any beam calculations for this assignment. The lip's job is only to hold a light speaker in place.</p>
+<p>Each lip is 5 mm wide, 1 mm tall, and sticks out 1 mm from the wall. The entry side has a chamfer of 1 mm at 45&deg;, which is the full protrusion of the lip, so the entry face is a smooth ramp for the flange to ride up. The other side is flat, so the lip can't slide off once it's on top of the flange. I didn't do any beam calculations for this assignment. The lip's job is only to hold a light speaker in place.</p>
 
 <h3>CAD Process</h3>
-<p></p>
+<p>I modeled the case in SolidWorks. The dimensions with a red sigma symbol in the screenshots are driven by equations, so they follow the parameters above. The green symbols in the sketches are constraints.</p>
+
+<img src="1-sketchingthebox.png" alt="SolidWorks sketch of a centered rectangle dimensioned 31.90 by 43.46 mm with diagonal construction lines through the origin">
+<p><strong>Step 1, sketch the box:</strong> I sketched a rectangle centered on the origin, using diagonal construction lines through the corners to center it. It is constrained horizontal and vertical, and the width (31.90 mm) and length (43.46 mm) come from the equations for speaker size, clearance, and wall.</p>
+
+<img src="2-extrudebox.png" alt="Boss-Extrude feature panel with a blind extrusion of 16.94 mm">
+<p><strong>Step 2, extrude the box:</strong> Boss-Extrude, blind, 16.94 mm, which is the height of the case.</p>
+
+<img src="3-shellbox.png" alt="Shell feature panel with a 1.60 mm wall thickness and the top face selected to be removed">
+<p><strong>Step 3, shell the box:</strong> Shell with a 1.60 mm thickness, removing the top face to make the open end the speaker goes into.</p>
+
+<img src="4-sketchlip.png" alt="Sketch of two rectangles on the inside wall, each 5 mm wide and 1 mm tall, positioned 5 mm from the wall ends and 13.74 mm from the reference edge">
+<p><strong>Step 4, sketch the lips:</strong> On the inside face of a long wall I sketched two rectangles, each 5.00 mm wide and 1.00 mm tall, 5.00 mm from each end of the wall. Their position is 13.74 mm, which is the speaker depth plus 0.4 mm. The two lips are constrained equal to each other so they always match. <mark>TO ADD: confirm where the 13.74 mm is measured from (the inside floor or the open edge).</mark></p>
+
+<img src="5-extrudelip.png" alt="Boss-Extrude feature panel extruding the lip sketch 1.00 mm with merge result checked">
+<p><strong>Step 5, extrude the lips:</strong> Boss-Extrude, blind, 1.00 mm, with Merge result checked so the lips become part of the case.</p>
+
+<img src="6-chamferlip.png" alt="Chamfer feature on the lips with a distance of 1 mm and an angle of 45 degrees">
+<p><strong>Step 6, chamfer the lips:</strong> Chamfer with a distance of 1 mm and an angle of 45&deg; on the entry edge of each lip, so the flange can slide over it easily.</p>
+
+<img src="7-sketchcablehole.png" alt="Sketch of a half circle with a 5 mm radius against the inside face of the left short wall, centered on the centerline">
+<p><strong>Step 7, sketch the cable hole:</strong> On the floor of the case I sketched a half circle with a 5.00 mm radius. Its flat side lies on the inside face of the short wall, and it is centered on the centerline of the box. The four lips can be seen along the long walls.</p>
+
+<img src="8-extrudecablehole.png" alt="Cut-Extrude feature panel set to Through All with the half circle sketch selected">
+<p><strong>Step 8, cut the cable hole:</strong> Cut-Extrude, Through All, which cuts the half circle through the back of the case.</p>
 
 <h2>3D Printing</h2>
 
 <h3>Printer and Layout</h3>
-<p>I printed on a <strong>Bambu Lab A1</strong> with a 0.4 mm nozzle. I printed two cases at once, side by side on the plate, one for each of the two speakers. Each case is about 32 mm &times; 43.5 mm in footprint, so the pair takes up a small part of the A1's 256 mm build plate. <mark>TO ADD: your reasons for the layout (why side by side, why centered).</mark></p>
-<p>The print took <strong>28 minutes</strong> and used <strong>13 g</strong> of filament for both cases, according to the printer's completion screen. <mark>TO ADD: filament type.</mark></p>
+<p>I printed on a <strong>Bambu Lab A1</strong> with a 0.4 mm nozzle and a 256 mm build volume, in <strong>Overture Matte PLA (green)</strong>. I printed two cases at once, side by side, one for each of the two speakers. I left them in the layout Bambu Studio recommended.</p>
+<p>Each case is 31.90 mm &times; 43.46 mm &times; 16.94 mm, which is a bounding box of about 23.5 cm&sup3;.</p>
+<img src="slicerpartposition.png" alt="Bambu Studio view of the two cases side by side on the build plate with the openings facing up">
+<p>The two cases on the plate in Bambu Studio.</p>
 
 <h3>Build Orientation and Supports</h3>
-<p>The back of the case sits flat on the plate and the cavity faces up. That is the easiest way to print it, it keeps the walls strong since the layers stack up along the length of the wall, and it needs <strong>no supports</strong>. The lips are only 1 mm overhangs, and the 45&deg; chamfer on the entry side keeps them printable without support. Because there are no supports, there was nothing to size, and nothing to remove afterward.</p>
+<p>The back of the case sits flat on the plate and the hollow part faces up. I chose that orientation because it needs the least amount of support and it prints faster. The only overhangs are the lips, and each one is a 1 mm ledge that is 5 mm wide, so it is small. The chamfer is on the top of the lip, which means it doesn't create an overhang.</p>
+<p>In the slicer I turned on tree supports (auto) with a 30&deg; threshold and small overhangs removed. <mark>TO ADD: whether any supports actually printed, why the support size ended up as it did, and what you used to remove them.</mark></p>
 
 <h3>Layers and Walls</h3>
 <ul>
-<li><strong>Wall thickness:</strong> 1.6 mm.</li>
-<li><strong>Number of layers:</strong> 85.</li>
-<li><strong>Layer thickness:</strong> 0.2 mm, which makes each case about 17 mm tall. <mark>TO ADD: confirm layer height and the build volume of the print from the slicer.</mark></li>
+<li><strong>Wall thickness:</strong> 1.6 mm in the design. The slicer prints 2 wall loops.</li>
+<li><strong>Number of layers:</strong> 85 (from the printer's screen).</li>
+<li><strong>Layer thickness:</strong> 0.2 mm, so 85 layers is 17 mm, which lines up with the 16.94 mm height of the case.</li>
+<li><strong>Build volume of the print:</strong> 31.90 mm &times; 43.46 mm &times; 16.94 mm per case, with two cases on the plate.</li>
 </ul>
 
 <h3>Slicer Settings</h3>
-<p></p>
+<p>I sliced in Bambu Studio with the 0.20mm Standard @BBL A1 process.</p>
+
+<img src="slicerqualitysettings.png" alt="Bambu Studio quality settings showing the Bambu Lab A1, 0.4 mm nozzle, Overture Matte PLA, 0.2 mm layer height, and line widths">
+<p><strong>Printer, filament, and quality:</strong> Bambu Lab A1, 0.4 mm nozzle, Overture Matte PLA, process 0.20mm Standard @BBL A1. Layer height and initial layer height are both 0.2 mm. Line widths are 0.42 mm for the default, outer wall, top surface, and internal solid infill, 0.45 mm for the inner wall and sparse infill, and 0.5 mm for the initial layer.</p>
+
+<img src="slicerwallsettings.png" alt="Bambu Studio wall settings with 2 wall loops, 5 top shell layers, and 3 bottom shell layers">
+<p><strong>Walls and shells:</strong> 2 wall loops, 5 top shell layers (1 mm), and 3 bottom shell layers (0.6 mm). The bottom and top shells add up to 1.6 mm, which is the thickness of the back of the case, so the back plate prints solid.</p>
+
+<img src="slicerinfillsettings.png" alt="Bambu Studio sparse infill settings with 15 percent density and a grid pattern">
+<p><strong>Infill:</strong> 15 percent, grid pattern. The case is mostly thin wall, so the infill barely shows up.</p>
+
+<img src="slicerspeedsettings.png" alt="Bambu Studio speed settings for the initial layer and other layers">
+<p><strong>Speed:</strong> initial layer 50 mm/s and initial layer infill 105 mm/s. Outer wall 200 mm/s, inner wall 300 mm/s, sparse infill 270 mm/s, internal solid infill 250 mm/s, and top surface 200 mm/s. A slow first layer helps the case stick to the plate.</p>
+
+<img src="slicersupportsettings.png" alt="Bambu Studio support settings with tree(auto) enabled, a 30 degree threshold, and remove small overhangs checked">
+<p><strong>Supports:</strong> enabled, tree (auto), threshold angle 30&deg;, remove small overhangs on, 0 raft layers.</p>
+<p><mark>TO ADD: your reasons for the slicer settings, if they differ from the descriptions above.</mark></p>
+
+<img src="slicerprintdata.png" alt="Bambu Studio slicing result showing 4.62 m and 13.55 g of filament and a total time of 28 minutes 52 seconds">
+<p><strong>Slicing result:</strong> 4.62 m of filament, 13.55 g for both cases. Model printing time is 20 minutes 20 seconds, and the total time with preparation is 28 minutes 52 seconds.</p>
 
 <h3>Print Artifact</h3>
-<p><mark>TO ADD: photo of the print in progress. The photo was pasted into the chat but not saved as a file, so it needs to be sent again.</mark></p>
+<img src="PrintInProgress.jpg" alt="Bambu Lab A1 printing the two cases, with the screen showing 26 percent and 21 minutes remaining">
+<p>The print at 26 percent, with 21 minutes left. The nozzle is at 220&deg;C and the bed is at 65&deg;C.</p>
 
 <video controls preload="metadata">
   <source src="PrintVideo.mp4" type="video/mp4">
 </video>
 <p>Video of the two cases printing on the A1.</p>
 
-<p><mark>TO ADD: photo of the finished print on the plate (printer screen showing Printing Completed, 28 min, 13 g). The photo was pasted into the chat but not saved as a file, so it needs to be sent again.</mark></p>
+<img src="PrintCompleted.jpg" alt="Two finished green cases on the build plate with the printer screen showing Printing Completed, 28 minutes, 13 grams">
+<p>The finished print on the plate. The screen shows Printing Completed, 28 minutes and 13 g.</p>
 
 <h3>Fit Test</h3>
 <p>I printed the case and tested it with the speaker before class. The speaker fit on the first print, so I didn't need to modify the design after printing. The only changes I made were the ones I made before printing, when I settled on 0.2 mm of clearance.</p>
@@ -145,13 +199,14 @@ title: "L6 – Snap Fit Speaker Case"
 <h2>Lessons Learned</h2>
 <p><strong>Handbook tolerances are for machining:</strong> The tables in Machinery's Handbook assume machining, and the tolerances for an LC fit are far tighter than what an FDM printer can hold. I used the table as the design intent and picked the actual allowance from the printer's real accuracy.</p>
 <p><strong>Keep the allowance adjustable:</strong> Making the clearance a parameter meant I could change it in one place. I went from 0.2 mm to 0.4 mm and back to 0.2 mm without rebuilding anything.</p>
+<p><strong>Thin walls flex on their own:</strong> I planned relief cuts around the lips, but 1.6 mm walls already flex enough for the speaker to snap in, so I skipped them and the design stayed simpler.</p>
 <p><mark>TO ADD: mistakes you made along the way and how you fixed them.</mark></p>
 <p><mark>TO ADD: actual time it took from start to finish.</mark></p>
 
 <h2>Resources</h2>
 <p><em>Machinery's Handbook</em>, 31st Ed., p. 640 (tolerance and allowance definitions) and p. 650 (Table 6, Standard Tolerances, and Table 7, Relation of Machining Processes to Tolerance Grades, ANSI/ASME B4.1-1967 (R2020))</p>
-<p>Bambu Lab A1 3D printer and digital caliper (0.01 mm resolution)</p>
-<p><mark>TO ADD: CAD program and slicer software names and versions.</mark></p>
+<p>Bambu Lab A1 3D printer, Bambu Studio slicer, SolidWorks, Overture Matte PLA, and a digital caliper (0.01 mm resolution)</p>
 
 <h2>Download</h2>
-<p></p>
+<p>Speaker case (SolidWorks part): <a href="L06-SpeakerBox.SLDPRT">L06-SpeakerBox.SLDPRT</a></p>
+<p><mark>TO ADD: STL file of the case, if you want it included.</mark></p>

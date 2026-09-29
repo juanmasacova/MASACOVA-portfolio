@@ -33,6 +33,9 @@ const html = `<!DOCTYPE html>
   .fig.portrait img { max-height: 290px; }
   .fig.landscape img { max-height: 400px; }
   .fig.big img { max-height: 560px; }
+  .fig.shot { display: flex; gap: 14px; align-items: flex-start; }
+  .fig.shot img { flex: 0 0 auto; max-width: 380px; max-height: 700px; }
+  .fig.shot p { flex: 1; margin-top: 0; }
   .content h2, .content h3 { break-after: avoid; }
   .content tr, .content li { break-inside: avoid; }
   .content .table-wrap { break-inside: avoid; }
@@ -52,6 +55,7 @@ fs.writeFileSync(tmp, html);
       const img = fig.querySelector('img');
       const file = img.getAttribute('src');
       if (/HandSketch|VideoFrame/.test(file)) fig.classList.add('big');
+      else if (/^slicer(quality|wall|infill|speed|support|printdata)/.test(file)) fig.classList.add('shot');
       else if (/^(SpeakersOverview|SpeakerBack|Measure)/.test(file)) fig.classList.add('portrait');
       else fig.classList.add(img.naturalHeight > img.naturalWidth ? 'portrait' : 'landscape');
     });
