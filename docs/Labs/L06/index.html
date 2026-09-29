@@ -77,27 +77,25 @@ title: "L6 – Snap Fit Speaker Case"
 
 <h2>Parametric Design</h2>
 <h3>Parameters Used</h3>
-<p>I built the case around a small set of parameters so that changing the speaker size or the clearance updates the whole model.</p>
+<p>I built the case around seven global variables in SolidWorks, so that changing one number updates every sketch and feature that reads from it.</p>
+<img src="globalvariables.png" alt="SolidWorks Equations, Global Variables, and Dimensions window listing BoxW, BoxH, BoxD, Wall, Lip, CableHole, and LipHeight with their equations and values">
+<p>The global variables and the equations that link them to the sketches and features.</p>
 <div class="table-wrap">
 <table>
-<tr><th>Parameter</th><th>Value</th><th>Why</th></tr>
-<tr><td>Speaker width</td><td>28.3 mm</td><td>Measured width of the speaker (28.28 mm, rounded)</td></tr>
-<tr><td>Speaker length</td><td>39.86 mm</td><td>Measured length of the speaker</td></tr>
-<tr><td>Speaker depth</td><td>13.34 mm</td><td>Measured total depth of the speaker</td></tr>
-<tr><td>Clearance</td><td>0.2 mm per side</td><td>Printer allowance, chosen from Table 6 and the A1's accuracy</td></tr>
-<tr><td>Wall thickness</td><td>1.6 mm</td><td>Stiff enough to hold the speaker, thin enough to flex at the lips</td></tr>
-<tr><td>Lip width</td><td>5 mm</td><td>Small enough to stay clear of the electronics</td></tr>
-<tr><td>Lip height</td><td>1 mm</td><td>Thin catch that sits on the speaker's flange</td></tr>
-<tr><td>Lip protrusion</td><td>1 mm</td><td>How far each lip reaches over the front flange</td></tr>
-<tr><td>Lip offset</td><td>5 mm</td><td>Distance from the end of the wall to the start of each lip</td></tr>
-<tr><td>Cable hole radius</td><td>5 mm</td><td>Big enough for the bare wires to pass through</td></tr>
+<tr><th>Global variable</th><th>Equation</th><th>Value</th><th>What it does</th></tr>
+<tr><td>BoxW</td><td>28.3 + 2 &times; 0.2 + 2 &times; 1.6</td><td>31.90 mm</td><td>Outer width: speaker width, 0.2 mm of clearance on each side, and two walls</td></tr>
+<tr><td>BoxH</td><td>39.86 + 2 &times; 0.2 + 2 &times; 1.6</td><td>43.46 mm</td><td>Outer length: speaker length, 0.2 mm of clearance on each side, and two walls</td></tr>
+<tr><td>BoxD</td><td>13.34 + 2 &times; 0.2 + 2 &times; 1.6</td><td>16.94 mm</td><td>Case height: speaker depth, 0.2 mm of clearance on each end, and two wall thicknesses</td></tr>
+<tr><td>Wall</td><td>1.6</td><td>1.60 mm</td><td>Shell thickness</td></tr>
+<tr><td>Lip</td><td>1</td><td>1.00 mm</td><td>Lip height and how far the lip sticks out</td></tr>
+<tr><td>CableHole</td><td>5</td><td>5.00 mm</td><td>Radius of the half-round cable hole</td></tr>
+<tr><td>LipHeight</td><td>13.34 + 2 &times; 0.2</td><td>13.74 mm</td><td>How far the lips sit above the inside floor: speaker depth plus 0.2 mm on each end</td></tr>
 </table>
 </div>
-<p>The rest of the model follows from those. The outer size of the case is the speaker size plus 0.4 mm of clearance plus 3.2 mm of wall (two walls), which comes out to <strong>31.90 mm &times; 43.46 mm</strong>. The internal cavity is 28.7 mm &times; 40.26 mm. The case is 16.94 mm tall, which works out to the 13.34 mm speaker depth, plus 0.4 mm of clearance, plus 3.2 mm of wall.</p>
-<p><mark>TO ADD: screenshot of the SolidWorks equations or global variables list, and the variable names you used.</mark></p>
+<p>The internal cavity that results is 28.7 mm &times; 40.26 mm. Two of the lip dimensions, the 5 mm width and the 5 mm distance from the end of the wall, are constrained values in the sketch and not global variables.</p>
 
 <h3>Why These Parameters</h3>
-<p>The three speaker dimensions are the ones I measured, so if I swap in the other speaker or remeasure, the case follows. The clearance is a parameter on its own because it was the number I was least sure about, and I wanted to be able to change it in one place after the test print. Wall thickness and the lip sizes are parameters because they control how stiff the case is and how hard the speaker is to push in.</p>
+<p>BoxW, BoxH, and BoxD are the outer size of the case, so the base sketch, the extrude, and the shell all read from them. Wall, Lip, and CableHole are the features I expected to tweak after printing, and LipHeight places the lips at the right depth for the speaker. The speaker measurements and the 0.2 mm clearance are typed straight into the equations, which means changing the clearance is a one line edit in each equation.</p>
 
 <h3>Did the Values Change?</h3>
 <ul>
@@ -112,25 +110,25 @@ title: "L6 – Snap Fit Speaker Case"
 <p>I modeled the case in SolidWorks. The dimensions with a red sigma symbol in the screenshots are driven by equations, so they follow the parameters above. The green symbols in the sketches are constraints.</p>
 
 <img src="1-sketchingthebox.png" alt="SolidWorks sketch of a centered rectangle dimensioned 31.90 by 43.46 mm with diagonal construction lines through the origin">
-<p><strong>Step 1, sketch the box:</strong> I sketched a rectangle centered on the origin, using diagonal construction lines through the corners to center it. It is constrained horizontal and vertical, and the width (31.90 mm) and length (43.46 mm) come from the equations for speaker size, clearance, and wall.</p>
+<p><strong>Step 1, sketch the box:</strong> I sketched a rectangle centered on the origin, using diagonal construction lines through the corners to center it. It is constrained horizontal and vertical, and the width (31.90 mm) and length (43.46 mm) come from the BoxW and BoxH variables.</p>
 
 <img src="2-extrudebox.png" alt="Boss-Extrude feature panel with a blind extrusion of 16.94 mm">
-<p><strong>Step 2, extrude the box:</strong> Boss-Extrude, blind, 16.94 mm, which is the height of the case.</p>
+<p><strong>Step 2, extrude the box:</strong> Boss-Extrude, blind, 16.94 mm, which is the height of the case and comes from the BoxD variable.</p>
 
 <img src="3-shellbox.png" alt="Shell feature panel with a 1.60 mm wall thickness and the top face selected to be removed">
-<p><strong>Step 3, shell the box:</strong> Shell with a 1.60 mm thickness, removing the top face to make the open end the speaker goes into.</p>
+<p><strong>Step 3, shell the box:</strong> Shell with a 1.60 mm thickness from the Wall variable, removing the top face to make the open end the speaker goes into.</p>
 
-<img src="4-sketchlip.png" alt="Sketch of two rectangles on the inside wall, each 5 mm wide and 1 mm tall, positioned 5 mm from the wall ends and 13.74 mm from the reference edge">
-<p><strong>Step 4, sketch the lips:</strong> On the inside face of a long wall I sketched two rectangles, each 5.00 mm wide and 1.00 mm tall, 5.00 mm from each end of the wall. Their position is 13.74 mm, which is the speaker depth plus 0.4 mm. The two lips are constrained equal to each other so they always match. <mark>TO ADD: confirm where the 13.74 mm is measured from (the inside floor or the open edge).</mark></p>
+<img src="4-sketchlip.png" alt="Sketch of two rectangles on the inside wall, each 5 mm wide and 1 mm tall, positioned 5 mm from the wall ends and 13.74 mm above the inside floor">
+<p><strong>Step 4, sketch the lips:</strong> On the inside face of a long wall I sketched two rectangles, each 5.00 mm wide and 1.00 mm tall, 5.00 mm from each end of the wall. Their position is 13.74 mm, measured from the bottom of the hollowed out area (the inside floor), and it is driven by the LipHeight variable. The lip height is driven by the Lip variable, and the two lips are constrained equal to each other so they always match.</p>
 
 <img src="5-extrudelip.png" alt="Boss-Extrude feature panel extruding the lip sketch 1.00 mm with merge result checked">
-<p><strong>Step 5, extrude the lips:</strong> Boss-Extrude, blind, 1.00 mm, with Merge result checked so the lips become part of the case.</p>
+<p><strong>Step 5, extrude the lips:</strong> Boss-Extrude, blind, 1.00 mm from the Lip variable, with Merge result checked so the lips become part of the case.</p>
 
 <img src="6-chamferlip.png" alt="Chamfer feature on the lips with a distance of 1 mm and an angle of 45 degrees">
 <p><strong>Step 6, chamfer the lips:</strong> Chamfer with a distance of 1 mm and an angle of 45&deg; on the entry edge of each lip, so the flange can slide over it easily.</p>
 
 <img src="7-sketchcablehole.png" alt="Sketch of a half circle with a 5 mm radius against the inside face of the left short wall, centered on the centerline">
-<p><strong>Step 7, sketch the cable hole:</strong> On the floor of the case I sketched a half circle with a 5.00 mm radius. Its flat side lies on the inside face of the short wall, and it is centered on the centerline of the box. The four lips can be seen along the long walls.</p>
+<p><strong>Step 7, sketch the cable hole:</strong> On the floor of the case I sketched a half circle with a 5.00 mm radius, driven by the CableHole variable. Its flat side lies on the inside face of the short wall, and it is centered on the centerline of the box. The four lips can be seen along the long walls.</p>
 
 <img src="8-extrudecablehole.png" alt="Cut-Extrude feature panel set to Through All with the half circle sketch selected">
 <p><strong>Step 8, cut the cable hole:</strong> Cut-Extrude, Through All, which cuts the half circle through the back of the case.</p>
@@ -145,7 +143,7 @@ title: "L6 – Snap Fit Speaker Case"
 
 <h3>Build Orientation and Supports</h3>
 <p>The back of the case sits flat on the plate and the hollow part faces up. I chose that orientation because it needs the least amount of support and it prints faster. The only overhangs are the lips, and each one is a 1 mm ledge that is 5 mm wide, so it is small. The chamfer is on the top of the lip, which means it doesn't create an overhang.</p>
-<p>In the slicer I turned on tree supports (auto) with a 30&deg; threshold and small overhangs removed. <mark>TO ADD: whether any supports actually printed, why the support size ended up as it did, and what you used to remove them.</mark></p>
+<p>I enabled tree supports (auto) in the slicer as a precaution, but the overhang is so small that they weren't needed. No supports printed, so there were no supports to size and nothing to remove.</p>
 
 <h3>Layers and Walls</h3>
 <ul>
@@ -172,7 +170,7 @@ title: "L6 – Snap Fit Speaker Case"
 
 <img src="slicersupportsettings.png" alt="Bambu Studio support settings with tree(auto) enabled, a 30 degree threshold, and remove small overhangs checked">
 <p><strong>Supports:</strong> enabled, tree (auto), threshold angle 30&deg;, remove small overhangs on, 0 raft layers.</p>
-<p><mark>TO ADD: your reasons for the slicer settings, if they differ from the descriptions above.</mark></p>
+<p><strong>Why these settings:</strong> they are the standard Bambu Studio settings for Overture Matte PLA on the A1, so I kept them and only enabled supports.</p>
 
 <img src="slicerprintdata.png" alt="Bambu Studio slicing result showing 4.62 m and 13.55 g of filament and a total time of 28 minutes 52 seconds">
 <p><strong>Slicing result:</strong> 4.62 m of filament, 13.55 g for both cases. Model printing time is 20 minutes 20 seconds, and the total time with preparation is 28 minutes 52 seconds.</p>
@@ -191,17 +189,24 @@ title: "L6 – Snap Fit Speaker Case"
 
 <h3>Fit Test</h3>
 <p>I printed the case and tested it with the speaker before class. The speaker fit on the first print, so I didn't need to modify the design after printing. The only changes I made were the ones I made before printing, when I settled on 0.2 mm of clearance.</p>
-<p><mark>TO ADD: photos of the speaker snapped into the printed case.</mark></p>
+<img src="SpeakerInCase.jpg" alt="The speaker snapped into the green printed case, seen from the front, with two lips visible along the right wall holding the front flange">
+<p>The speaker snapped into the printed case. Two of the lips are visible along the right wall, holding the front flange in place. The wires come out through the half-round hole in the back.</p>
+
+<h3>Extra: Grille Cover</h3>
+<img src="GrilleCover.jpg" alt="Green case with a slotted grille cover over the front of the speaker">
+<p>Not part of the assignment, but I also made a slotted grille cover for the front of the case because I thought it would look good.</p>
 
 <h2>Show and Tell</h2>
-<p>The speaker snaps into the case and stays in place. The in-class test on the artifact is still to come. <mark>TO ADD: result of the in-class snap fit test.</mark></p>
+<p>The speaker snaps into the case and stays in place. The snap fit gets tested in class.</p>
 
 <h2>Lessons Learned</h2>
 <p><strong>Handbook tolerances are for machining:</strong> The tables in Machinery's Handbook assume machining, and the tolerances for an LC fit are far tighter than what an FDM printer can hold. I used the table as the design intent and picked the actual allowance from the printer's real accuracy.</p>
-<p><strong>Keep the allowance adjustable:</strong> Making the clearance a parameter meant I could change it in one place. I went from 0.2 mm to 0.4 mm and back to 0.2 mm without rebuilding anything.</p>
+<p><strong>Mistake, being too cautious with the clearance:</strong> I first went up to 0.4 mm per side to be safe, which is well past what the handbook expects and hard to justify. I went back to 0.2 mm, which is what the printer can actually hold, and the speaker fit on the first print.</p>
+<p><strong>Mistake, typing the clearance into the equations:</strong> When I set up the global variables I typed the speaker sizes and the 0.2 mm clearance directly into the BoxW, BoxH, BoxD, and LipHeight equations. That works, but changing the clearance means editing four equations. Next time I would make the speaker sizes and the clearance their own variables so each number only lives in one place.</p>
 <p><strong>Thin walls flex on their own:</strong> I planned relief cuts around the lips, but 1.6 mm walls already flex enough for the speaker to snap in, so I skipped them and the design stayed simpler.</p>
-<p><mark>TO ADD: mistakes you made along the way and how you fixed them.</mark></p>
-<p><mark>TO ADD: actual time it took from start to finish.</mark></p>
+<p><strong>Small overhangs don't need supports:</strong> I turned supports on in the slicer as a precaution, but the 1 mm lip overhang was small enough that none were needed. Printing with the open side up is what made that possible.</p>
+<p><strong>Rounding:</strong> The caliper read 28.28 mm for the width and I used 28.3 mm in the model. The 0.02 mm difference is far below the printer's accuracy, so it didn't matter, but I noted it so the numbers in the model and the measurements can be traced.</p>
+<p><strong>Time and resources:</strong> The whole project took about 4 hours from start to finish. That includes measuring, sketching, modeling in SolidWorks, slicing, and testing the fit, and the print itself took 28 minutes 52 seconds. The resources I used are listed below.</p>
 
 <h2>Resources</h2>
 <p><em>Machinery's Handbook</em>, 31st Ed., p. 640 (tolerance and allowance definitions) and p. 650 (Table 6, Standard Tolerances, and Table 7, Relation of Machining Processes to Tolerance Grades, ANSI/ASME B4.1-1967 (R2020))</p>
@@ -209,4 +214,3 @@ title: "L6 – Snap Fit Speaker Case"
 
 <h2>Download</h2>
 <p>Speaker case (SolidWorks part): <a href="L06-SpeakerBox.SLDPRT">L06-SpeakerBox.SLDPRT</a></p>
-<p><mark>TO ADD: STL file of the case, if you want it included.</mark></p>
