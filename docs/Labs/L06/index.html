@@ -1,16 +1,157 @@
 ---
-title: "L6 – [Topic]"
+title: "L6 – Snap Fit Speaker Case"
 ---
-<h1>L6 – [Topic]</h1>
+<h1>L6 – Snap Fit Speaker Case</h1>
 
 <h2>Objective</h2>
+<p>This week I had to parametrically design a small part that snap fits onto a feature of an artifact we measured in class. The point was to use tolerances, allowances, and the fit classes from lecture (RC, LC, LT, LN, and FN) to size the mating features, then print the part and test the fit. My artifact is a small oval speaker, and my part is a case that holds it in place with four snap fit lips.</p>
+
+<h2>Design Idea</h2>
+<p>The case is a hollowed out rectangular box. The speaker drops into the open end, and four small lips at the opening catch the speaker's front flange so it can't fall back out. I'm not using the speaker's four mounting holes, so nothing in the design touches them.</p>
+<ul>
+<li><strong>Internal cavity:</strong> matches the speaker's width and length, plus an allowance on each side.</li>
+<li><strong>Walls:</strong> 1.6 mm thick.</li>
+<li><strong>Lips (x4):</strong> each one protrudes 1 mm. The side the speaker enters from has a 45&deg; chamfer so the flange can push past it. The underside is flat, so once the speaker is snapped in, the flat face sits on top of the flange and holds it. The lips stay away from the electronics on the back of the speaker.</li>
+<li><strong>Cable hole:</strong> a half-round cutout at the bottom of the case, like a mouse hole, with a 5 mm radius. I cut off the JST style plug, so the wires are bare and pass through the hole easily.</li>
+</ul>
+
+<h2>Research: Tolerances, Allowances, and Fits</h2>
+<h3>Definitions</h3>
+<p>Machinery's Handbook (31st Ed., p. 640) defines <strong>tolerance</strong> as the amount of variation permitted on the dimensions or surfaces of machine parts. It defines <strong>allowance</strong> as a prescribed difference in dimensions used to get different classes of fits between parts. So tolerance is how much a single dimension is allowed to wander, and allowance is the gap (or overlap) I choose on purpose between two mating parts.</p>
+
+<h3>Which Fit Class Is This?</h3>
+<p>The speaker sits in the case like a <strong>locational clearance fit (LC)</strong>. The parts have to go together freely by hand, but they should still locate each other without a lot of play. The lips are a different story. During insertion the flange has to push past a 1 mm lip, which is a temporary interference, and after that the lip springs back and holds the speaker. So the overall behavior is LC for the pocket, with the snap fit lips supplying the retention. It is not an LN or FN fit, because nothing is pressed together permanently.</p>
+
+<h3>What the Handbook Says About My Sizes</h3>
+<p>Table 6 (ANSI/ASME B4.1-1967 (R2020), Machinery's Handbook 31st Ed., p. 650) gives standard tolerances in thousandths of an inch, by nominal size range and tolerance grade. I converted my measurements to inches (1 in = 25.4 mm) and pulled the row for each one.</p>
+<div class="table-wrap">
+<table>
+<tr><th>Feature</th><th>Size</th><th>Table 6 row (in)</th><th>Grade 7</th><th>Grade 12</th><th>Grade 13</th></tr>
+<tr><td>Width</td><td>28.28 mm = 1.113 in</td><td>0.71 to 1.19</td><td>0.0008 in = 0.020 mm</td><td>0.008 in = <strong>0.20 mm</strong></td><td>0.012 in = 0.30 mm</td></tr>
+<tr><td>Length</td><td>39.86 mm = 1.569 in</td><td>1.19 to 1.97</td><td>0.0010 in = 0.025 mm</td><td>0.010 in = <strong>0.25 mm</strong></td><td>0.016 in = 0.41 mm</td></tr>
+<tr><td>Depth</td><td>13.34 mm = 0.525 in</td><td>0.40 to 0.71</td><td>0.0007 in = 0.018 mm</td><td>0.007 in = 0.18 mm</td><td>0.010 in = 0.25 mm</td></tr>
+</table>
+</div>
+<p>The precise grades a locational fit is built on are down around 0.02 to 0.06 mm for these sizes. My printer can't hold anything close to that. Table 7 in the handbook relates machining processes to tolerance grades, and 3D printing isn't on it. The closest processes it lists are milling and drilling, which run roughly from grade 10 to 13. The Bambu Lab A1 holds about 0.2 mm on small features (my working assumption, which the test print ended up confirming), and that lines up with grade 12 in the table: 0.20 mm on the width and 0.25 mm on the length.</p>
+
+<h3>Allowance Decision</h3>
+<p>I set the clearance to <strong>0.2 mm per side</strong>. That puts the internal cavity at the speaker size plus 0.4 mm in each direction, so the speaker slides in by hand, and it stays inside the grade 12 tolerance band I expect from the printer. It is still a lot bigger than what the handbook expects for an LC fit, but the handbook numbers assume machining, so I used them as the design intent and used the printer's real accuracy to pick the actual number.</p>
+
+<h2>Measuring the Artifact</h2>
+<p>I measured the speaker with a digital caliper that reads to 0.01 mm. The step depths in the side profile don't matter for this design, since the case is sized to the speaker's overall envelope. The magnet is centered on the rectangle.</p>
+<div class="table-wrap">
+<table>
+<tr><th>Feature</th><th>Measurement</th></tr>
+<tr><td>Width</td><td>28.28 mm (rounded to 28.3 mm on my sketch)</td></tr>
+<tr><td>Length</td><td>39.86 mm</td></tr>
+<tr><td>Total depth</td><td>13.34 mm</td></tr>
+<tr><td>Front flange thickness</td><td>3.59 mm</td></tr>
+<tr><td>Magnet diameter</td><td>27.85 mm</td></tr>
+</table>
+</div>
+
+<img src="SpeakersOverview.jpg" alt="Two small oval speakers with red, black, and blue wires on a notebook, with the digital caliper in its case behind them">
+<p>The two speakers, with the digital caliper in the background.</p>
+
+<img src="SpeakerBack.jpg" alt="Back of a speaker showing the round magnet and the wire terminals next to the other speaker">
+<p>The back of the speaker. The round magnet sits in the center, and the wire terminals are soldered to the back of the frame.</p>
+
+<img src="MeasureWidth.jpg" alt="Digital caliper measuring the speaker width and reading 28.28 mm">
+<p>Width: 28.28 mm.</p>
+
+<img src="MeasureLength.jpg" alt="Digital caliper measuring the speaker length and reading 39.86 mm">
+<p>Length: 39.86 mm.</p>
+
+<img src="MeasureDepth.jpg" alt="Digital caliper measuring the speaker total depth and reading 13.34 mm">
+<p>Total depth: 13.34 mm.</p>
+
+<p><mark>TO ADD: photo of the caliper reading the front flange thickness, 3.59 mm. The photo was pasted into the chat but not saved as a file, so it needs to be sent again.</mark></p>
+
+<p><mark>TO ADD: photo of the caliper reading the magnet diameter, 27.85 mm. The photo was pasted into the chat but not saved as a file, so it needs to be sent again.</mark></p>
+
+<h3>Hand Sketch</h3>
+<img src="HandSketch.jpg" alt="Hand sketch of the speaker front, side, and back views with dimensions, and a sketch of the case with notes on walls, lips, and the cable cavity">
+<p>The top row is the speaker's front, side, and back views with the measurements written on. The bottom sketch is the case concept: internal dimensions that match the speaker plus tolerances, 1.6 mm walls, four lips that protrude 1 mm and stay away from the electronics, and a cavity to route the cable.</p>
+
+<h2>Parametric Design</h2>
+<h3>Parameters Used</h3>
+<p>I built the case around a small set of parameters so that changing the speaker size or the clearance updates the whole model.</p>
+<div class="table-wrap">
+<table>
+<tr><th>Parameter</th><th>Value</th><th>Why</th></tr>
+<tr><td>speaker_w</td><td>28.28 mm</td><td>Measured width of the speaker</td></tr>
+<tr><td>speaker_h</td><td>39.86 mm</td><td>Measured length of the speaker</td></tr>
+<tr><td>speaker_d</td><td>13.34 mm</td><td>Measured total depth of the speaker</td></tr>
+<tr><td>clearance</td><td>0.2 mm per side</td><td>Printer allowance, chosen from Table 6 and the A1's accuracy</td></tr>
+<tr><td>wall</td><td>1.6 mm</td><td>Four perimeters of a 0.4 mm nozzle, stiff enough to hold the speaker</td></tr>
+<tr><td>lip_protrusion</td><td>1.0 mm</td><td>How far each lip reaches over the front flange</td></tr>
+<tr><td>cable_hole_radius</td><td>5 mm</td><td>Big enough for the bare wires to pass through</td></tr>
+</table>
+</div>
+<p>The internal cavity is the speaker size plus two times the clearance, so it comes out to 28.68 mm &times; 40.26 mm.</p>
+<p><mark>TO ADD: confirm this table matches the parameter names and values in the final CAD model, and add a screenshot of the parameters table from CAD.</mark></p>
+
+<h3>Why These Parameters</h3>
+<p>The three speaker dimensions are the ones I measured, so if I swap in the other speaker or remeasure, the case follows. The clearance is a parameter on its own because it was the number I was least sure about, and I wanted to be able to change it in one place after the test print. Wall thickness and lip protrusion are kept as parameters because they control how stiff the case is and how hard the speaker is to push in.</p>
+
+<h3>Did the Values Change?</h3>
+<ul>
+<li><strong>Clearance:</strong> I started with 0.2 mm per side, briefly looked at 0.4 mm per side to be safe with the printer, then went back to 0.2 mm. At 0.4 mm the allowance is well past what the handbook table expects for a locational fit, and it would have been harder to justify. 0.2 mm keeps the design closer to the table and it matches grade 12 for the printer.</li>
+<li><strong>Lip relief cuts:</strong> I first planned cuts above and below each lip so the wall could flex more easily. I left them out of the final model. <mark>TO ADD: why you decided they weren't needed.</mark></li>
+</ul>
+
+<h3>Lip Design</h3>
+<p>The lip is 1 mm tall in every case. The entry side is a 45&deg; chamfer so the speaker's flange can ride up and over it, and the other side is flat so the lip can't slide off once it's on top of the flange. I didn't do any beam calculations for this assignment. The lip's job is only to hold a light speaker in place.</p>
+
+<h3>CAD Process</h3>
 <p></p>
 
-<h2>Analyze</h2>
+<h2>3D Printing</h2>
+
+<h3>Printer and Layout</h3>
+<p>I printed on a <strong>Bambu Lab A1</strong> with a 0.4 mm nozzle. I printed two cases at once, side by side on the plate, one for each of the two speakers. Each case is about 32 mm &times; 43.5 mm in footprint, so the pair takes up a small part of the A1's 256 mm build plate. <mark>TO ADD: your reasons for the layout (why side by side, why centered).</mark></p>
+<p>The print took <strong>28 minutes</strong> and used <strong>13 g</strong> of filament for both cases, according to the printer's completion screen. <mark>TO ADD: filament type.</mark></p>
+
+<h3>Build Orientation and Supports</h3>
+<p>The back of the case sits flat on the plate and the cavity faces up. That is the easiest way to print it, it keeps the walls strong since the layers stack up along the length of the wall, and it needs <strong>no supports</strong>. The lips are only 1 mm overhangs, and the 45&deg; chamfer on the entry side keeps them printable without support. Because there are no supports, there was nothing to size, and nothing to remove afterward.</p>
+
+<h3>Layers and Walls</h3>
+<ul>
+<li><strong>Wall thickness:</strong> 1.6 mm.</li>
+<li><strong>Number of layers:</strong> 85.</li>
+<li><strong>Layer thickness:</strong> 0.2 mm, which makes each case about 17 mm tall. <mark>TO ADD: confirm layer height and the build volume of the print from the slicer.</mark></li>
+</ul>
+
+<h3>Slicer Settings</h3>
 <p></p>
 
-<h2>Decide</h2>
-<p></p>
+<h3>Print Artifact</h3>
+<p><mark>TO ADD: photo of the print in progress. The photo was pasted into the chat but not saved as a file, so it needs to be sent again.</mark></p>
 
-<h2>Communicate</h2>
+<video controls preload="metadata">
+  <source src="PrintVideo.mp4" type="video/mp4">
+</video>
+<p>Video of the two cases printing on the A1.</p>
+
+<p><mark>TO ADD: photo of the finished print on the plate (printer screen showing Printing Completed, 28 min, 13 g). The photo was pasted into the chat but not saved as a file, so it needs to be sent again.</mark></p>
+
+<h3>Fit Test</h3>
+<p>I printed the case and tested it with the speaker before class. The speaker fit on the first print, so I didn't need to modify the design after printing. The only changes I made were the ones I made before printing, when I settled on 0.2 mm of clearance.</p>
+<p><mark>TO ADD: photos of the speaker snapped into the printed case.</mark></p>
+
+<h2>Show and Tell</h2>
+<p>The speaker snaps into the case and stays in place. The in-class test on the artifact is still to come. <mark>TO ADD: result of the in-class snap fit test.</mark></p>
+
+<h2>Lessons Learned</h2>
+<p><strong>Handbook tolerances are for machining:</strong> The tables in Machinery's Handbook assume machining, and the tolerances for an LC fit are far tighter than what an FDM printer can hold. I used the table as the design intent and picked the actual allowance from the printer's real accuracy.</p>
+<p><strong>Keep the allowance adjustable:</strong> Making the clearance a parameter meant I could change it in one place. I went from 0.2 mm to 0.4 mm and back to 0.2 mm without rebuilding anything.</p>
+<p><mark>TO ADD: mistakes you made along the way and how you fixed them.</mark></p>
+<p><mark>TO ADD: actual time it took from start to finish.</mark></p>
+
+<h2>Resources</h2>
+<p><em>Machinery's Handbook</em>, 31st Ed., p. 640 (tolerance and allowance definitions) and p. 650 (Table 6, Standard Tolerances, and Table 7, Relation of Machining Processes to Tolerance Grades, ANSI/ASME B4.1-1967 (R2020))</p>
+<p>Bambu Lab A1 3D printer and digital caliper (0.01 mm resolution)</p>
+<p><mark>TO ADD: CAD program and slicer software names and versions.</mark></p>
+
+<h2>Download</h2>
 <p></p>
