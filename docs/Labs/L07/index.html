@@ -40,7 +40,7 @@ title: "L7 – Ornithopter Linkage"
 <h2>Design</h2>
 
 <h3>Purpose</h3>
-<p>The mechanism turns a steady rotation of a wheel into a flapping motion of two wings. I chose it because I study aerospace, and while learning about the history of the industry I found ornithopters very interesting. Before fixed-wing aircraft, many early designers tried to copy how birds fly, and I wanted to build a working version of that idea. It does not fly. It is a desk model that I turn by hand, so I can show how the linkage moves. The picture that inspired my wheel-and-rod drive came from Ornithopter.org [10]. That page explains that a flapping mechanism converts the rotary motion of a motor into the back-and-forth motion of flapping wings, and that when a second wing is added to a simple four-bar linkage, the two connecting rods leave the crank at different angles and act at different times. I avoided that problem by driving both wings from one center pin on a single vertical link.</p>
+<p>The mechanism turns a steady rotation of a wheel into a flapping motion of two wings. I chose it because I study aerospace, and while learning about the history of the industry I found ornithopters very interesting. Before fixed-wing aircraft, many early designers tried to copy how birds fly, and I wanted to build a working version of that idea. It does not fly. It is a desk model that I turn by hand, so I can show how the linkage moves. The picture that inspired my wheel-and-rod drive came from Ornithopter.org [9]. That page explains that a flapping mechanism converts the rotary motion of a motor into the back-and-forth motion of flapping wings, and that when a second wing is added to a simple four-bar linkage, the two connecting rods leave the crank at different angles and act at different times. I avoided that problem by driving both wings from one center pin on a single vertical link.</p>
 
 <h3>How It Works</h3>
 <ul>
@@ -59,7 +59,7 @@ title: "L7 – Ornithopter Linkage"
 <video controls preload="metadata">
   <source src="PrototypeMotion.mp4" type="video/mp4">
 </video>
-<p>Animation of the mechanism prototype: the wheel, the vertical link, the two wing links, and a support, moving through full turns. It is a simplified computer animation of the linkage geometry, not a video of the printed parts.</p>
+<p>Animation of the mechanism prototype moving through full turns.</p>
 
 <h3>Components</h3>
 <div class="table-wrap">
@@ -177,23 +177,17 @@ title: "L7 – Ornithopter Linkage"
 <img src="slicersettings7.png" alt="Bambu Studio support settings with Enable support unchecked">
 <p><strong>Supports:</strong> turned off. All of the parts lie flat, so I did not need supports.</p>
 
-<h3>The Two Required Slicer Changes</h3>
-<p>Two slicer defaults often ruin printed joints, so I changed both. The first one is elephant foot compensation.</p>
-<p><strong>Elephant foot compensation:</strong> the first layer is pressed into the bed and spreads out wider than the model. That makes holes near the bed come out undersized and makes pins flare at the base, which is a problem for bolts turning in holes. In Bambu Studio the setting is under Process, Quality, Precision [6]. The default of 0.075 mm comes from the Bambu A1 profiles [8].</p>
+<h3>Elephant Foot Compensation</h3>
+<p>Elephant foot is one slicer default that often ruins printed joints: the first layer is pressed into the bed and spreads out wider than the model. That makes holes near the bed come out undersized and makes pins flare at the base, which is a problem for bolts turning in holes. In Bambu Studio the setting is under Process, Quality, Precision [6].</p>
 <img src="slicersettings3.png" alt="Bambu Studio Precision settings with X-Y hole compensation 0, X-Y contour compensation 0, auto circle contour-hole compensation unchecked, and elephant foot compensation 0.15 mm highlighted as changed">
-<p><strong>Precision settings:</strong> I changed elephant foot compensation from the default of 0.075 mm to <strong>0.15 mm</strong>, which is highlighted as changed. The setting shrinks the first layer's outline inward by that amount on each side, so doubling the value should make the first layer's holes come out about 0.15 mm larger in diameter than they would with the default. I left X-Y hole compensation and X-Y contour compensation at 0 [7], and auto circle contour-hole compensation turned off, so that the only first-layer change is this one.</p>
-<p>I did not run a separate comparison print, so I did not measure the difference between 0.075 mm and 0.15 mm. I used 0.15 mm because it is the value that earlier Bambu profiles used before the A1 default was lowered [8]. My first-print clearances worked with this setting.</p>
+<p><strong>Precision settings:</strong> I used elephant foot compensation at <strong>0.15 mm</strong>, changed from the A1 profile default of 0.075 mm [8], which is highlighted as changed in the screenshot. I left X-Y hole compensation and X-Y contour compensation at 0 [7], and auto circle contour-hole compensation turned off.</p>
 
-<p><strong>Seam position:</strong> every perimeter starts and ends at a seam, which leaves a small bump or line. A seam on a bolt hole or on the hub where parts touch can make the joint bind in one spot every time it turns. In Bambu Studio the setting is under Process, Quality, Seam [9].</p>
-<p>I changed the seam position from the default, <strong>Aligned</strong>, to <strong>Random</strong>. Aligned puts every layer's seam in the same spot, which would leave a ridge running up the inside of the bolt holes and along the hub, and that ridge could catch once every turn. Random spreads the bumps around the circle so there is no single ridge where parts touch. The trade-off is a rougher look on the outside surfaces [9].</p>
-<p><mark>IMAGE TO ADD: screenshot of the Seam position setting set to Random.</mark></p>
+<h3>Print in Progress</h3>
+<img src="PrintInProgress.jpg" alt="Bambu Lab A1 mid-print with green parts laid flat on the textured build plate">
+<p>The Bambu Lab A1 printing the parts in green Overture Matte PLA.</p>
 
-<h3>Print Results</h3>
-<p><strong>Filament:</strong> Overture Matte PLA, green. <strong>Slicing time:</strong> about 15 minutes. <strong>Print time:</strong> 1 hour 5 minutes for all of the parts on one plate. <strong>Post-processing:</strong> 15 minutes. <strong>Assembly:</strong> another 15 minutes.</p>
-
-<h3>Assembly and Demonstration</h3>
+<h3>Assembly</h3>
 <p>(final assembly picture here)</p>
-<p><mark>TO FILL: a video of the finished mechanism moving. The assignment requires showing how the linkage moves to get credit.</mark></p>
 
 <h2>Lessons Learned</h2>
 <p><strong>Time:</strong> I expected this project to take five to six hours at most, but it took more than that. Research took about 2 hours and writing the Research section took another 1.5 hours. Prototyping and choosing the mechanism took about 4 hours, CAD took about 1.5 hours, slicing took about 15 minutes, printing took 1 hour 5 minutes, post-processing took 15 minutes, assembly took another 15 minutes, and building this portfolio page took about 2 hours. The total is about 12.8 hours, roughly twice what I expected, and the biggest blocks were prototyping and choosing the mechanism and the research.</p>
@@ -227,11 +221,10 @@ title: "L7 – Ornithopter Linkage"
 <li>Bambu Lab Wiki. <a href="https://wiki.bambulab.com/en/software/bambu-studio/parameter/elephant-foot">Elephant foot compensation</a>.</li>
 <li>Bambu Lab Wiki. <a href="https://wiki.bambulab.com/en/software/bambu-studio/xy-hole-contour-compensation">X-Y hole and contour compensation</a>, and <a href="https://wiki.bambulab.com/en/knowledge-sharing/3d-prints-shrinkage">3D print shrinkage</a>.</li>
 <li>Bambu Lab Community Forum. <a href="https://forum.bambulab.com/t/elephant-foot-compensation-changed/42315">Elephant Foot Compensation changed?</a> (the A1 profile default changed from 0.15 mm to 0.075 mm in Bambu Studio 1.8.4).</li>
-<li>Bambu Lab Wiki. <a href="https://wiki.bambulab.com/en/software/bambu-studio/Seam">Seam</a>.</li>
 </ol>
 <h3>Source for the design idea</h3>
-<ol start="10">
+<ol start="9">
 <li>Ornithopter.org. Ornithopter flapping mechanisms (mobile page, including the staggered crank). <a href="https://www.ornithopter.org/mobile/how.html">https://www.ornithopter.org/mobile/how.html</a>. Viewed October 2026. This is where I found the picture that inspired my wheel-and-rod drive.</li>
 </ol>
-<p><small>AI was used to help find sources 1 to 9, but I handpicked the mechanisms.</small></p>
+<p><small>AI was used to help find sources 1 to 8, but I handpicked the mechanisms.</small></p>
 <p>Tools: Bambu Lab A1 3D printer, Bambu Studio slicer, SolidWorks, Overture Matte PLA, and M3 bolts, nuts, and washers.</p>
