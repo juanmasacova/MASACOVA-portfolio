@@ -1,16 +1,188 @@
 ---
-title: "L7 – [Topic]"
+title: "L7 – Ornithopter Linkage"
 ---
-<h1>L7 – [Topic]</h1>
+<h1>L7 – Ornithopter Linkage</h1>
 
 <h2>Objective</h2>
-<p></p>
+<p>This week's goal was to design, 3D print, and document a working linkage or mechanism that performs a defined motion. I could use purchased hardware such as screws, bolts, and pins, but every other functional part had to be my own design and 3D printed. I designed a hand-cranked ornithopter: turning a wheel makes two wing arms rise and fall together, like a bird's wings flapping.</p>
 
-<h2>Analyze</h2>
-<p></p>
+<h2>Research</h2>
+<p><mark>TO FILL: Research section. The assignment asks for at least two linkages or mechanisms developed, patented, or published from 2021 to the present. For each one: how it works, an image or sketch, how it could be used in at least two different industries, and at least three credible sources cited in total.</mark></p>
 
-<h2>Decide</h2>
-<p></p>
+<h2>Design</h2>
 
-<h2>Communicate</h2>
-<p></p>
+<h3>Purpose</h3>
+<p>The mechanism turns a steady rotation of a wheel into a flapping motion of two wings. I chose it because I study aerospace, and while learning about the history of the industry I found ornithopters very interesting. Before fixed-wing aircraft, many early designers tried to copy how birds fly, and I wanted to build a working version of that idea. It does not fly. It is a desk model that I turn by hand, so I can show how the linkage moves.</p>
+
+<h3>How It Works</h3>
+<ul>
+<li><strong>Wheel (crank):</strong> a hole in the wheel, off its center, carries a bolt. As the wheel turns, that bolt travels in a circle.</li>
+<li><strong>Vertical link (connecting rod):</strong> connects the offset bolt on the wheel to the center pin, so the center pin moves up and down as the wheel turns.</li>
+<li><strong>Wing links (levers):</strong> each wing link pivots on a fixed bolt in the base, about one quarter of the way along its length. The inner end has a short slot where the center pin sits. When the center pin moves up and down a small amount, the long outer end of each wing link swings through a much larger arc. The long outboard side is about three times the length of the short inboard side, so the wingtip moves about three times as far as the pin.</li>
+<li><strong>Why a slot:</strong> the inner ends of the two wing links meet at the center pin, but each one swings on its own arc around its own pivot. If both were simply pinned together at the center, the mechanism would lock. The slot lets the center pin slide a few millimeters along each wing link as it swings.</li>
+</ul>
+<p>The wheel is the only input. Turning it once makes the wings flap down and back up once.</p>
+
+<img src="final%20assembly.png" alt="SolidWorks assembly of the ornithopter: a vertical base with two legs, a small wheel, a vertical link, and two wing links forming a long horizontal bar across the top">
+<p><strong>Final assembly (SolidWorks):</strong> the base stands on two legs. The wheel is at the lower center, the vertical link runs up from the wheel to the center of the wing links, and the two wing links form the long horizontal bar across the top.</p>
+
+<h3>Components</h3>
+<div class="table-wrap">
+<table>
+<tr><th>Component</th><th>Qty</th><th>Function</th><th>Printed or purchased</th></tr>
+<tr><td>Base</td><td>1</td><td>Holds the wheel's hub and the two wing pivot bolts (5 mm thick)</td><td>Printed</td></tr>
+<tr><td>Base leg</td><td>2</td><td>Keeps the base standing upright</td><td>Printed</td></tr>
+<tr><td>Wheel</td><td>1</td><td>The hand-turned crank, 38 mm in diameter, with a 6 mm hub through the base (5 mm thick)</td><td>Printed</td></tr>
+<tr><td>Vertical link</td><td>1</td><td>Connects the wheel to the center pin (5 mm thick)</td><td>Printed</td></tr>
+<tr><td>Wing link</td><td>2</td><td>Lever that flaps each wing, with a slot for the center pin (5 mm thick)</td><td>Printed</td></tr>
+<tr><td>5 mm spacer</td><td>2</td><td>Lifts the second wing link and the vertical link up to their layers</td><td>Printed</td></tr>
+<tr><td>M3 bolt, 20 mm long</td><td>5</td><td>Axle, crank pin, center pin, and the two wing pivots</td><td>Purchased</td></tr>
+<tr><td>M3 nut</td><td>5</td><td>Holds each bolt</td><td>Purchased</td></tr>
+<tr><td>M3 washer</td><td>5</td><td>One at each joint</td><td>Purchased</td></tr>
+</table>
+</div>
+
+<h3>Layers</h3>
+<p>The parts are stacked in four layers, each 5 mm thick, so the whole assembly is 20 mm thick (the legs are not counted). From back to front:</p>
+<ol>
+<li><strong>Layer 1:</strong> the base plate.</li>
+<li><strong>Layer 2:</strong> the wheel, the first wing link, and one 5 mm spacer (which lifts the second wing link's pivot).</li>
+<li><strong>Layer 3:</strong> the second wing link, and the other 5 mm spacer (between the wheel and the vertical link).</li>
+<li><strong>Layer 4:</strong> the vertical link.</li>
+</ol>
+<p>Splitting the wing links across two layers lets their inner ends cross at the center without hitting each other.</p>
+
+<h3>Joints</h3>
+<div class="table-wrap">
+<table>
+<tr><th>Joint</th><th>What it connects</th><th>Hardware</th></tr>
+<tr><td>Axle</td><td>Wheel hub turning in the base</td><td>M3 bolt through the hub</td></tr>
+<tr><td>Crank pin</td><td>Wheel to vertical link, through a 5 mm spacer</td><td>M3 bolt</td></tr>
+<tr><td>Center pin</td><td>Vertical link and the slots of both wing links</td><td>M3 bolt</td></tr>
+<tr><td>Wing pivot 1</td><td>Base to the first wing link</td><td>M3 bolt</td></tr>
+<tr><td>Wing pivot 2</td><td>Base to the second wing link, through a 5 mm spacer</td><td>M3 bolt</td></tr>
+</table>
+</div>
+
+<h3>Tolerances</h3>
+<p>The course notes give starting clearances of about 0.2 to 0.3 mm per side for a moving pin in a hole, and they say to confirm them with test prints.</p>
+<div class="table-wrap">
+<table>
+<tr><th>Moving interface</th><th>Designed clearance</th><th>How I arrived at it</th></tr>
+<tr><td>Wheel hub in base hole</td><td>6.0 mm hub in a 6.2 mm hole, so 0.1 mm per side</td><td>The hub is 6.0 mm, and I made the hole 6.2 mm to give it decent clearance. <mark>TO FILL: result of the first print, and whether it needed to change.</mark></td></tr>
+<tr><td>M3 bolt in the wing pivot holes</td><td><mark>TO FILL: hole diameter from the CAD model</mark></td><td><mark>TO FILL</mark></td></tr>
+<tr><td>M3 bolt in the vertical link holes</td><td><mark>TO FILL: hole diameter from the CAD model</mark></td><td><mark>TO FILL</mark></td></tr>
+<tr><td>M3 bolt in the wing link slots</td><td><mark>TO FILL: slot width from the CAD model</mark></td><td><mark>TO FILL</mark></td></tr>
+</table>
+</div>
+
+<h3>Design Decisions</h3>
+<p><strong>1. How the two wing links meet at the center.</strong></p>
+<ul>
+<li><em>Alternative A:</em> pin both wing links directly together at the center. I ruled this out because the inner ends travel on two different arcs, so the mechanism would lock.</li>
+<li><em>Alternative B:</em> add a short extra link between the vertical link and each wing link. This works, but it adds parts and joints.</li>
+<li><em>Chosen:</em> a slot in each wing link. It needs no extra parts, and the pin only has to slide a few millimeters along the slot.</li>
+</ul>
+<p><strong>2. Where the wing pivot is.</strong></p>
+<ul>
+<li><em>Alternative:</em> put the pivot near the middle of each wing link, so the inboard and outboard sides are about equal. The wing would need a much bigger up-and-down push from the wheel to flap the same amount.</li>
+<li><em>Chosen:</em> a pivot about one quarter of the way along the wing link. The long outboard side is about three times the inboard side, so a small up-and-down motion of the center pin gives a large flap at the tip and the wheel only has to move the pin a short distance.</li>
+</ul>
+<p><strong>3. Stacking the parts in layers with spacers.</strong></p>
+<ul>
+<li><em>Alternative A:</em> put every part in one plane. The two wing links would have to cross at the center, and they would collide.</li>
+<li><em>Alternative B:</em> use longer spacers or add more layers. That makes the mechanism thicker and needs more bolt length.</li>
+<li><em>Chosen:</em> four 5 mm layers, with two printed 5 mm spacers on the crank pin and on one wing pivot. The total thickness is 20 mm, and every joint can use the same M3 bolt, 20 mm long.</li>
+</ul>
+
+<h3>CAD Images</h3>
+<p>I modeled each part in SolidWorks and then assembled them. The wing links and the vertical link are flat bars with rounded ends.</p>
+
+<img src="wheel.png" alt="SolidWorks model of the wheel, a flat disc with a hub sticking out of one side, a center hole, and a second hole off center">
+<p><strong>Wheel:</strong> a flat disc with a hub that passes through the base. The center hole holds the axle bolt. The off-center hole holds the crank pin bolt.</p>
+
+<img src="verticallink.png" alt="SolidWorks model of the vertical link, a flat bar with rounded ends and a hole in each end">
+<p><strong>Vertical link:</strong> a flat bar with a hole at each end. One end sits on the crank pin and the other on the center pin.</p>
+
+<img src="winglink.png" alt="SolidWorks model of a wing link, a long flat bar with a round hole near one end and a short slot at the other end">
+<p><strong>Wing link:</strong> a long flat bar. The round hole is the pivot bolt hole, and the short slot at the inner end holds the center pin. I printed two of these.</p>
+
+<img src="5mmspacer.png" alt="SolidWorks model of a 5 mm spacer, a short hollow cylinder">
+<p><strong>5 mm spacer:</strong> a short hollow cylinder, so the M3 bolt passes through it. I printed two.</p>
+
+<img src="base.png" alt="SolidWorks model of the base plate, a tall flat plate with a U-shaped notch at the top, two small holes at the tops of the two prongs, and a larger hole near the middle">
+<p><strong>Base:</strong> a tall flat plate. The two prongs at the top carry the wing pivot bolts. The larger hole lower down is for the wheel's hub.</p>
+
+<img src="baseleg.png" alt="SolidWorks model of a base leg, a long block with sloped ends and a notch cut in the middle">
+<p><strong>Base leg:</strong> a long block with a notch in the middle. I printed two so the ornithopter stands on its own. They are not dimensioned, because they are only there for stability.</p>
+
+<h2>3D Print</h2>
+
+<h3>Printer and Material</h3>
+<p>I printed on a <strong>Bambu Lab A1</strong> with a 0.4 mm nozzle and a textured build plate, in <strong>Overture Matte PLA</strong>, using the 0.20mm Standard @BBL A1 process in Bambu Studio.</p>
+<img src="slicersettings1.png" alt="Bambu Studio printer and filament panel showing Bambu Lab A1, 0.4 mm nozzle, Overture Matte PLA, and the 0.20mm Standard @BBL A1 process">
+<p>Printer, nozzle, filament, and process, with the Advanced settings toggle switched on.</p>
+
+<h3>Parts on the Plate</h3>
+<p>I printed all of the parts on one plate: the base, two legs, the wheel, the vertical link, two wing links, and two spacers. The slicer arranged them automatically, and I left that layout.</p>
+<img src="Printplate.png" alt="Bambu Studio build plate with all of the green parts laid flat: the wheel with its hub pointing up, two slotted wing links, the vertical link, two spacers, the base plate, and two base legs">
+<p>Every part lies flat on the plate, so the bolt holes point straight up and print as round as possible.</p>
+
+<h3>Slicer Settings</h3>
+<img src="slicersettings2.png" alt="Bambu Studio layer height and line width settings">
+<p><strong>Layer height and line width:</strong> layer height and initial layer height are both 0.2 mm. Line widths are 0.42 mm for the default, outer wall, top surface, internal solid infill, and support, 0.45 mm for the inner wall and sparse infill, and 0.5 mm for the initial layer.</p>
+
+<img src="slicersettings4.png" alt="Bambu Studio wall and shell settings with 2 wall loops, 5 top shell layers, and 3 bottom shell layers">
+<p><strong>Walls and shells:</strong> 2 wall loops, 5 top shell layers (1 mm), and 3 bottom shell layers.</p>
+
+<img src="slicersettings5.png" alt="Bambu Studio sparse infill settings with 15 percent density and grid pattern">
+<p><strong>Infill:</strong> 15 percent, grid pattern.</p>
+
+<img src="slicersettings6.png" alt="Bambu Studio speed settings for the initial layer and other layers">
+<p><strong>Speed:</strong> initial layer 50 mm/s and initial layer infill 105 mm/s. Outer wall 200 mm/s, inner wall 300 mm/s, sparse infill 270 mm/s, internal solid infill 250 mm/s, and top surface 200 mm/s.</p>
+
+<img src="slicersettings7.png" alt="Bambu Studio support settings with Enable support unchecked">
+<p><strong>Supports:</strong> turned off. All of the parts lie flat, so I did not need supports.</p>
+
+<h3>The Two Required Slicer Changes</h3>
+<p>Two slicer defaults often ruin printed joints, so I changed both. The first one is elephant foot compensation.</p>
+<p><strong>Elephant foot compensation:</strong> the first layer is pressed into the bed and spreads out wider than the model. That makes holes near the bed come out undersized and makes pins flare at the base, which is a problem for bolts turning in holes. In Bambu Studio the setting is under Process, Quality, Precision.</p>
+<img src="slicersettings3.png" alt="Bambu Studio Precision settings with X-Y hole compensation 0, X-Y contour compensation 0, auto circle contour-hole compensation unchecked, and elephant foot compensation 0.15 mm highlighted as changed">
+<p><strong>Precision settings:</strong> I changed elephant foot compensation from the default of 0.075 mm to <strong>0.15 mm</strong>, which is highlighted as changed. The setting shrinks the first layer's outline inward by that amount on each side, so doubling the value should make the first layer's holes come out about 0.15 mm larger in diameter than they would with the default. I left X-Y hole compensation and X-Y contour compensation at 0, and auto circle contour-hole compensation turned off, so that the only first-layer change is this one.</p>
+<p><mark>TO FILL: the difference I saw. Compare a hole printed at 0.075 mm against one printed at 0.15 mm, for example by measuring the bed-side and top-side diameters of the same hole with calipers.</mark></p>
+
+<p><strong>Seam position:</strong> every perimeter starts and ends at a seam, which leaves a small bump or line. A seam on a bolt hole or on the hub where parts touch can make the joint bind in one spot every time it turns. In Bambu Studio the setting is under Process, Quality, Seam.</p>
+<p><mark>TO FILL: seam position changed from the default (Aligned) to ___, and why I chose it. Add a screenshot of the Seam setting.</mark></p>
+
+<h3>Print Artifact</h3>
+<p><mark>TO FILL: print time and filament from the slicer, a photo of the printer mid-print, and a photo of the finished parts on the plate.</mark></p>
+<!-- Uncomment once PrintVideo.mp4 is added to this folder:
+<video controls preload="metadata">
+  <source src="PrintVideo.mp4" type="video/mp4">
+</video>
+<p>Video of the parts printing on the A1.</p>
+-->
+
+<h3>Assembly and Demonstration</h3>
+<p><mark>TO FILL: photos of the assembled ornithopter, and a video of the mechanism moving. The assignment requires showing how the linkage moves to get credit.</mark></p>
+
+<h2>Lessons Learned</h2>
+<p><strong>Time:</strong> <mark>TO FILL: total hours broken down into research, CAD, slicing, printing, post-processing, and assembly, and how the total compared with what I expected.</mark> So far, designing the parts and assembling them in SolidWorks took about 1.5 hours.</p>
+<p><strong>Biggest mistake:</strong> <mark>TO FILL: the most significant mistake or failure, its root cause, how I found it, and how I fixed it.</mark></p>
+<p><strong>Tolerances:</strong> <mark>TO FILL: whether the first-print clearances worked, what I would change, and by how much.</mark></p>
+
+<h2>Resources</h2>
+<p>Bambu Lab A1 3D printer, Bambu Studio slicer, SolidWorks, Overture Matte PLA, and M3 bolts, nuts, and washers.</p>
+<p><mark>TO FILL: sources cited in the Research section.</mark></p>
+
+<h2>Download</h2>
+<p>SolidWorks files for every part and the full assembly. If you open the assembly, put all of the files in the same folder first, so SolidWorks can find the parts.</p>
+<ul>
+<li>Full assembly: <a href="assembly.SLDASM" download>assembly.SLDASM</a></li>
+<li>Base: <a href="base.SLDPRT" download>base.SLDPRT</a></li>
+<li>Base leg: <a href="baseleg.SLDPRT" download>baseleg.SLDPRT</a></li>
+<li>Wheel: <a href="wheel.SLDPRT" download>wheel.SLDPRT</a></li>
+<li>Vertical link: <a href="VertLink.SLDPRT" download>VertLink.SLDPRT</a></li>
+<li>Wing link: <a href="winglink.SLDPRT" download>winglink.SLDPRT</a></li>
+<li>5 mm spacer: <a href="5mmspacer.SLDPRT" download>5mmspacer.SLDPRT</a></li>
+</ul>
