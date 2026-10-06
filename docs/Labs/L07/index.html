@@ -7,7 +7,35 @@ title: "L7 – Ornithopter Linkage"
 <p>This week's goal was to design, 3D print, and document a working linkage or mechanism that performs a defined motion. I could use purchased hardware such as screws, bolts, and pins, but every other functional part had to be my own design and 3D printed. I designed a hand-cranked ornithopter: turning a wheel makes two wing arms rise and fall together, like a bird's wings flapping.</p>
 
 <h2>Research</h2>
-<p><mark>TO FILL: Research section. The assignment asks for at least two linkages or mechanisms developed, patented, or published from 2021 to the present. For each one: how it works, an image or sketch, how it could be used in at least two different industries, and at least three credible sources cited in total.</mark></p>
+<p>I looked for linkages and mechanisms that were patented or published in 2021 or later. I picked two that turn a rotation into a useful motion and that connect to my ornithopter. One flaps a wing the way mine does, and the other is a spatial linkage that shows how much a linkage can do with only four links. All of the sources are listed in the Sources section at the end, and the numbers in brackets point to them.</p>
+
+<h3>Mechanism 1: A Flap, Fold, and Twist Wing Platform (Brown University, patent issued 2025)</h3>
+<p>This is US Patent 12,441,468, "Bio-inspired flapping wing/fin robotic platform," by Xiaozhou Fan and Kenneth Breuer of Brown University. It was filed on November 20, 2023, with a provisional filing in November 2022, and issued on October 14, 2025 [1].</p>
+<p><strong>How it works:</strong> the robot has a fuselage that holds the motors and drive trains, plus a left and a right wing. Each wing makes three motions: flapping, twisting, and folding [1]. As I read the patent summary, each motion has its own mechanism:</p>
+<ul>
+<li><strong>Flap:</strong> a four-bar linkage with a fixed amplitude, driven by a crank that turns continuously.</li>
+<li><strong>Fold:</strong> a timing belt and a spool, driven back and forth.</li>
+<li><strong>Twist:</strong> a Bowden cable (a cable sliding inside a sheath) that pulls on the wingtip, also driven back and forth.</li>
+</ul>
+<p>The patent says that folding and twisting work together to reduce negative lift late in the upstroke and to make more thrust over the whole cycle [1]. This matters because a 2022 review of flapping-wing robots points out that birds, bats, and insects maneuver by actively folding or deforming their wings, while traditional flapping-wing robots only get lift and thrust from passive wing deformation [3].</p>
+<p><strong>Connection to my project:</strong> the flap stage is the closest to what I built. A crank that turns continuously drives a linkage that makes the wing swing, just like my wheel drives the wing links.</p>
+<p><mark>IMAGE TO ADD: screenshot of the wing mechanism drawing from the patent [1], and the figure's source link in the caption.</mark></p>
+<p><strong>How it could be used in different industries:</strong></p>
+<ul>
+<li><strong>Aerospace and drones:</strong> the patent relates to flapping-wing aerial vehicles. A flapping, folding wing could make small drones that maneuver in tight spaces and carry payloads.</li>
+<li><strong>Underwater and marine robotics:</strong> the patent title says "wing/fin," which suggests the same three motions could drive a fin for a swimming robot used for ocean inspection and research.</li>
+</ul>
+
+<h3>Mechanism 2: A Bennett-Linkage Robotic Leg (published 2022)</h3>
+<p>This is a paper by Yuping Gu, Shihao Feng, Yuqin Guo, Fang Wan, Jian S. Dai, Jia Pan, and Chaoyang Song, "Overconstrained coaxial design of robotic legs with omni-directional locomotion," published in <em>Mechanism and Machine Theory</em>, volume 176, article 105018, in 2022 [2].</p>
+<p><strong>How it works:</strong> a Bennett linkage is a spatial four-bar linkage with four revolute joints. Its link lengths and twist angles follow a special relationship, so it moves with one degree of freedom even though the usual mobility count says four spatial links should not move at all. That is what "overconstrained" means. The authors start from the simplest overconstrained linkage, the Bennett linkage, and propose an alternative form with coaxial actuation, meaning the actuators share one axis. They use it as a robotic leg for omni-directional ground locomotion [2]. The paper also gives a parametric design of the links and joints that can be 3D printed and attached to servo actuators as a reconfigurable leg module [2].</p>
+<p><strong>Connection to my project:</strong> my ornithopter is a flat (planar) linkage. This one shows what changes when the linkage is spatial. It is also made from 3D printed links and standard actuators, like my project.</p>
+<p><mark>IMAGE TO ADD: screenshot of the Bennett linkage leg figure from the paper [2], and the figure's source link in the caption.</mark></p>
+<p><strong>How it could be used in different industries:</strong></p>
+<ul>
+<li><strong>Search and rescue and field robotics:</strong> a leg that can move in any direction on the ground would help a robot work in rubble or uneven terrain.</li>
+<li><strong>Education and research robotics:</strong> because the leg is a printable, reconfigurable module driven by servos, labs and classrooms can build and change legged robots cheaply.</li>
+</ul>
 
 <h2>Design</h2>
 
@@ -25,6 +53,12 @@ title: "L7 – Ornithopter Linkage"
 
 <img src="final%20assembly.png" alt="SolidWorks assembly of the ornithopter: a vertical base with two legs, a small wheel, a vertical link, and two wing links forming a long horizontal bar across the top">
 <p><strong>Final assembly (SolidWorks):</strong> the base stands on two legs. The wheel is at the lower center, the vertical link runs up from the wheel to the center of the wing links, and the two wing links form the long horizontal bar across the top.</p>
+
+<h3>Prototype Motion</h3>
+<video controls preload="metadata">
+  <source src="PrototypeMotion.mp4" type="video/mp4">
+</video>
+<p>Animation of the mechanism prototype: the wheel, the vertical link, the two wing links, and a support, moving through full turns. It is a simplified computer animation of the linkage geometry, not a video of the printed parts.</p>
 
 <h3>Components</h3>
 <div class="table-wrap">
@@ -65,12 +99,12 @@ title: "L7 – Ornithopter Linkage"
 </div>
 
 <h3>Tolerances</h3>
-<p>The course notes give starting clearances of about 0.2 to 0.3 mm per side for a moving pin in a hole, and they say to confirm them with test prints.</p>
+<p>The course notes give starting clearances of about 0.2 to 0.3 mm per side for a moving pin in a hole, and they say to confirm them with test prints [5]. Every hole for a screw is 3.4 mm, and I made the wheel hub hole 0.2 mm larger than the hub.</p>
 <div class="table-wrap">
 <table>
-<tr><th>Moving interface</th><th>Designed clearance</th><th>How I arrived at it</th></tr>
-<tr><td>Wheel hub in base hole</td><td>6.0 mm hub in a 6.2 mm hole, so 0.1 mm per side</td><td>The hub is 6.0 mm, and I made the hole 6.2 mm to give it decent clearance. <mark>TO FILL: result of the first print, and whether it needed to change.</mark></td></tr>
-<tr><td>M3 bolt (3.0 mm) in every bolt hole and slot</td><td>3.4 mm holes, so 0.2 mm per side</td><td>0.2 mm per side is the low end of the 0.2 to 0.3 mm per side starting range in the course notes for a moving pin in a hole. Holes near the bed print smaller, so I expect the first layer to be tight. <mark>TO FILL: result of the first print, and whether it needed to change.</mark></td></tr>
+<tr><th>Moving interface</th><th>Designed clearance</th><th>How I arrived at it</th><th>Result</th></tr>
+<tr><td>M3 bolt (3.0 mm) in every bolt hole and slot</td><td>3.4 mm holes, so 0.2 mm per side</td><td>3.4 mm is the "medium" clearance hole for an M3 bolt in ISO 273, between the close size (3.2 mm) and the coarse size (3.6 mm) [4]. It is also the low end of the 0.2 to 0.3 mm per side range in the course notes [5]. Holes print smaller than designed, and elephant foot makes the holes near the bed smaller still, so I did not want to start with less clearance than this [6][7].</td><td>Worked on the first print.</td></tr>
+<tr><td>Wheel hub in base hole</td><td>6.0 mm hub in a 6.2 mm hole, so 0.1 mm per side</td><td>I made the hole 0.2 mm larger than the hub to give it decent clearance. This is the tightest joint, and it is below the 0.2 to 0.3 mm per side range in the course notes [5].</td><td>Worked on the first print, but I would open it up (see Lessons Learned).</td></tr>
 </table>
 </div>
 
@@ -144,16 +178,16 @@ title: "L7 – Ornithopter Linkage"
 
 <h3>The Two Required Slicer Changes</h3>
 <p>Two slicer defaults often ruin printed joints, so I changed both. The first one is elephant foot compensation.</p>
-<p><strong>Elephant foot compensation:</strong> the first layer is pressed into the bed and spreads out wider than the model. That makes holes near the bed come out undersized and makes pins flare at the base, which is a problem for bolts turning in holes. In Bambu Studio the setting is under Process, Quality, Precision.</p>
+<p><strong>Elephant foot compensation:</strong> the first layer is pressed into the bed and spreads out wider than the model. That makes holes near the bed come out undersized and makes pins flare at the base, which is a problem for bolts turning in holes. In Bambu Studio the setting is under Process, Quality, Precision [6]. The default of 0.075 mm comes from the Bambu A1 profiles [8].</p>
 <img src="slicersettings3.png" alt="Bambu Studio Precision settings with X-Y hole compensation 0, X-Y contour compensation 0, auto circle contour-hole compensation unchecked, and elephant foot compensation 0.15 mm highlighted as changed">
-<p><strong>Precision settings:</strong> I changed elephant foot compensation from the default of 0.075 mm to <strong>0.15 mm</strong>, which is highlighted as changed. The setting shrinks the first layer's outline inward by that amount on each side, so doubling the value should make the first layer's holes come out about 0.15 mm larger in diameter than they would with the default. I left X-Y hole compensation and X-Y contour compensation at 0, and auto circle contour-hole compensation turned off, so that the only first-layer change is this one.</p>
-<p><mark>TO FILL: the difference I saw. Compare a hole printed at 0.075 mm against one printed at 0.15 mm, for example by measuring the bed-side and top-side diameters of the same hole with calipers.</mark></p>
+<p><strong>Precision settings:</strong> I changed elephant foot compensation from the default of 0.075 mm to <strong>0.15 mm</strong>, which is highlighted as changed. The setting shrinks the first layer's outline inward by that amount on each side, so doubling the value should make the first layer's holes come out about 0.15 mm larger in diameter than they would with the default. I left X-Y hole compensation and X-Y contour compensation at 0 [7], and auto circle contour-hole compensation turned off, so that the only first-layer change is this one.</p>
+<p><mark>TO FILL: the difference I saw between the default (0.075 mm) and my value (0.15 mm), for example the bed-side and top-side diameters of the same hole measured with calipers.</mark></p>
 
-<p><strong>Seam position:</strong> every perimeter starts and ends at a seam, which leaves a small bump or line. A seam on a bolt hole or on the hub where parts touch can make the joint bind in one spot every time it turns. In Bambu Studio the setting is under Process, Quality, Seam.</p>
+<p><strong>Seam position:</strong> every perimeter starts and ends at a seam, which leaves a small bump or line. A seam on a bolt hole or on the hub where parts touch can make the joint bind in one spot every time it turns. In Bambu Studio the setting is under Process, Quality, Seam [9].</p>
 <p><mark>TO FILL: seam position changed from the default (Aligned) to ___, and why I chose it. Add a screenshot of the Seam setting.</mark></p>
 
 <h3>Print Artifact</h3>
-<p><strong>Print time:</strong> 1 hour 5 minutes for all of the parts on one plate.</p>
+<p><strong>Slicing time:</strong> about 15 minutes. <strong>Print time:</strong> 1 hour 5 minutes for all of the parts on one plate.</p>
 <p><mark>TO FILL: filament used from the slicer, a photo of the printer mid-print, and a photo of the finished parts on the plate.</mark></p>
 <!-- Uncomment once PrintVideo.mp4 is added to this folder:
 <video controls preload="metadata">
@@ -163,16 +197,13 @@ title: "L7 – Ornithopter Linkage"
 -->
 
 <h3>Assembly and Demonstration</h3>
-<p><mark>TO FILL: photos of the assembled ornithopter, and a video of the mechanism moving. The assignment requires showing how the linkage moves to get credit.</mark></p>
+<p>(final assembly picture here)</p>
+<p><mark>TO FILL: a video of the finished mechanism moving. The assignment requires showing how the linkage moves to get credit.</mark></p>
 
 <h2>Lessons Learned</h2>
-<p><strong>Time:</strong> Research took about 2 hours, and writing the Research section took another 1.5 hours. Prototyping and choosing the mechanism took about 4 hours, and designing the parts and assembly in SolidWorks took about 1.5 hours. Slicing took about 15 minutes, printing took 1 hour 5 minutes, and building this portfolio page took about 2 hours. <mark>TO FILL: post-processing time and assembly time.</mark> Without those two, the total is about 12.3 hours, and <mark>TO FILL: how that compared with what I expected.</mark></p>
-<p><strong>Biggest mistake:</strong> <mark>TO FILL: the most significant mistake or failure, its root cause, how I found it, and how I fixed it.</mark></p>
-<p><strong>Tolerances:</strong> <mark>TO FILL: whether the first-print clearances worked, what I would change, and by how much.</mark></p>
-
-<h2>Resources</h2>
-<p>Bambu Lab A1 3D printer, Bambu Studio slicer, SolidWorks, Overture Matte PLA, and M3 bolts, nuts, and washers.</p>
-<p><mark>TO FILL: sources cited in the Research section.</mark></p>
+<p><strong>Time:</strong> I expected this project to take five to six hours at most, but it took more than that. Research took about 2 hours and writing the Research section took another 1.5 hours. Prototyping and choosing the mechanism took about 4 hours, CAD took about 1.5 hours, slicing took about 15 minutes, printing took 1 hour 5 minutes, and building this portfolio page took about 2 hours. <mark>TO FILL: post-processing time and assembly time.</mark> Without those two, the total is about 12.3 hours, roughly twice what I expected, and the biggest blocks were prototyping and choosing the mechanism and the research.</p>
+<p><strong>Biggest mistake:</strong> my biggest mistake was not understanding the scope of my initial idea. I wanted to build a mechatronic sculpture of a bird with motors moving the mechanism, and about two hours in I realized that was too big for the time I had and for what the assignment asked. The root cause was that I started designing the finished sculpture before checking it against the assignment and the time available. I fixed it by cutting the project down to a hand-cranked linkage and putting my effort into getting the linkage mechanism right, with the rest left for any extra time.</p>
+<p><strong>Tolerances:</strong> my first-print clearances worked. The screw holes are 3.4 mm for M3 bolts, which is 0.2 mm per side, and the hub is 6.0 mm in a 6.2 mm hole, which is 0.1 mm per side. The hub is the joint where friction affects performance the most, so I would make its clearance bigger. <mark>CONFIRM: I would open the hub hole from 6.2 mm to 6.4 mm, which is 0.2 mm per side.</mark></p>
 
 <h2>Download</h2>
 <p>SolidWorks files for every part and the full assembly. If you open the assembly, put all of the files in the same folder first, so SolidWorks can find the parts.</p>
@@ -185,3 +216,23 @@ title: "L7 – Ornithopter Linkage"
 <li>Wing link: <a href="winglink.SLDPRT" download>winglink.SLDPRT</a></li>
 <li>5 mm spacer: <a href="5mmspacer.SLDPRT" download>5mmspacer.SLDPRT</a></li>
 </ul>
+
+<h2>Sources</h2>
+<h3>Sources for the two mechanisms</h3>
+<ol>
+<li>Fan, X. and Breuer, K. (Brown University). <em>Bio-inspired flapping wing/fin robotic platform</em>. US Patent 12,441,468, issued October 14, 2025. <a href="https://patents.justia.com/patent/12441468">Patent text (Justia)</a> | <a href="https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/12441468">Patent PDF with drawings (USPTO)</a></li>
+<li>Gu, Y., Feng, S., Guo, Y., Wan, F., Dai, J. S., Pan, J., and Song, C. (2022). Overconstrained coaxial design of robotic legs with omni-directional locomotion. <em>Mechanism and Machine Theory</em>, 176, 105018. <a href="https://www.sciencedirect.com/science/article/abs/pii/S0094114X2200266X">Article page (ScienceDirect)</a> | <a href="https://bionicdl.ancorasir.com/wp-content/uploads/2023/11/2022-J-MMT-BennettRoboticLeg.pdf">PDF hosted by the authors' lab</a></li>
+<li>Zhang, J., Zhao, N., and Qu, F. (2022). Bio-inspired flapping wing robots with foldable or deformable wings: a review. <em>Bioinspiration &amp; Biomimetics</em>, 18(1). <a href="https://iopscience.iop.org/article/10.1088/1748-3190/ac9ef5">Article page (IOPscience)</a> | <a href="https://pubmed.ncbi.nlm.nih.gov/36317380/">PubMed</a></li>
+</ol>
+
+<h3>Sources for my clearance and slicer choices</h3>
+<ol start="4">
+<li>ISO 273 metric clearance hole sizes (M3: close 3.2 mm, medium 3.4 mm, coarse 3.6 mm). <a href="https://engineeringhardware.com/fastener/clearance-hole-sizes/">Engineering Hardware table</a> | <a href="https://mechcodex.com/reference/metric-clearance-hole-sizes">MechCodex table</a></li>
+<li>MEGR 2156 course notes, section 2.3 Clearances and Tolerances (starting clearances of 0.2 to 0.3 mm per side for a moving pin in a hole, and to verify them with a test coupon), and the running and sliding fits (RC classes) in <em>Machinery's Handbook</em>.</li>
+<li>Bambu Lab Wiki. <a href="https://wiki.bambulab.com/en/software/bambu-studio/parameter/elephant-foot">Elephant foot compensation</a>.</li>
+<li>Bambu Lab Wiki. <a href="https://wiki.bambulab.com/en/software/bambu-studio/xy-hole-contour-compensation">X-Y hole and contour compensation</a>, and <a href="https://wiki.bambulab.com/en/knowledge-sharing/3d-prints-shrinkage">3D print shrinkage</a>.</li>
+<li>Bambu Lab Community Forum. <a href="https://forum.bambulab.com/t/elephant-foot-compensation-changed/42315">Elephant Foot Compensation changed?</a> (the A1 profile default changed from 0.15 mm to 0.075 mm in Bambu Studio 1.8.4).</li>
+<li>Bambu Lab Wiki. <a href="https://wiki.bambulab.com/en/software/bambu-studio/Seam">Seam</a>.</li>
+</ol>
+<p><small>AI was used to help find these sources, but I handpicked the mechanisms.</small></p>
+<p>Tools: Bambu Lab A1 3D printer, Bambu Studio slicer, SolidWorks, Overture Matte PLA, and M3 bolts, nuts, and washers.</p>
