@@ -9,44 +9,50 @@ title: "L7 – Ornithopter Linkage"
 <h2>Research</h2>
 <p>I looked for linkages and mechanisms that were patented or published in 2021 or later. I picked two that turn a rotation into a useful motion and that connect to my ornithopter. One flaps a wing the way mine does, and the other is a spatial linkage that shows how much a linkage can do with only four links. All of the sources are listed in the Sources section at the end, and the numbers in brackets point to them.</p>
 
-<h3>Mechanism 1: A Flap, Fold, and Twist Wing Platform (Brown University, patent issued 2025)</h3>
-<p>This is US Patent 12,441,468, "Bio-inspired flapping wing/fin robotic platform," by Xiaozhou Fan and Kenneth Breuer of Brown University. It was filed on November 20, 2023, with a provisional filing in November 2022, and issued on October 14, 2025 [1].</p>
-<p><strong>How it works:</strong> the robot has a fuselage that holds the motors and drive trains, plus a left and a right wing. Each wing makes three motions: flapping, twisting, and folding [1]. As I read the patent summary, each motion has its own mechanism:</p>
+<h3>Mechanism 1: A Flap, Fold, and Twist Bat-Inspired Wing (Brown University patent, 2025)</h3>
+<p>This is US Patent 12,441,468 B2, "Bio-inspired flapping wing/fin robotic platform," by Xiaozhou Fan and Kenneth Breuer of Brown University. It was filed on November 20, 2023, claims a provisional filing from November 18, 2022, and issued on October 14, 2025 [1]. The wing is modeled on a bat, the lesser short-nosed fruit bat [1].</p>
+<p><strong>How it works:</strong> the patent describes a robotic flapper with three degrees of freedom. The fuselage holds the motors and drive trains. Each wing has an armwing (the part nearest the body) and a handwing (the outer part), and each wing makes three motions [1]:</p>
 <ul>
-<li><strong>Flap:</strong> a four-bar linkage with a fixed amplitude, driven by a crank that turns continuously.</li>
-<li><strong>Fold:</strong> a timing belt and a spool, driven back and forth.</li>
-<li><strong>Twist:</strong> a Bowden cable (a cable sliding inside a sheath) that pulls on the wingtip, also driven back and forth.</li>
+<li><strong>Flap:</strong> a motor spins a crank continuously. The crank pushes and pulls a coupler (a ball link), which swings the armwing up and down like a rocker. This is a crank-rocker four-bar linkage, so the flapping amplitude is the same on every cycle [1].</li>
+<li><strong>Fold:</strong> the handwing rotates relative to the armwing. In one version, a motor drives a spool back and forth, and a timing belt turns a second spool at the wing's mid-joint, which rotates the outer part of the wing. Another version uses a crank and planetary gears to amplify the fold angle [1].</li>
+<li><strong>Twist:</strong> a third motor rotates back and forth and pulls strings from the wingtip (a Bowden-cable arrangement). The last wing section pitches, and flexible rods make the earlier sections follow at smaller angles. The difference between the sections is the twist [1].</li>
 </ul>
-<p>The patent says that folding and twisting work together to reduce negative lift late in the upstroke and to make more thrust over the whole cycle [1]. This matters because a 2022 review of flapping-wing robots points out that birds, bats, and insects maneuver by actively folding or deforming their wings, while traditional flapping-wing robots only get lift and thrust from passive wing deformation [3].</p>
+<p>In the test described in the patent, the wing flaps at 3 Hz with a 100 mm armwing, folds up to about 75 degrees, and twists about 90 degrees. The whole wing assembly weighs 10 g [1]. The patent says folding and twisting work together to reduce negative lift late in the upstroke and to make more thrust over the whole cycle [1]. This matters because a 2022 review of flapping-wing robots points out that birds, bats, and insects maneuver by actively folding or deforming their wings, while traditional flapping-wing robots get lift and thrust from passive wing deformation [3].</p>
 <p><strong>Connection to my project:</strong> the flap stage is the closest to what I built. A crank that turns continuously drives a linkage that makes the wing swing, just like my wheel drives the wing links.</p>
-<p><mark>IMAGE TO ADD: screenshot of the wing mechanism drawing from the patent [1], and the figure's source link in the caption.</mark></p>
+<img src="ResearchPatent.png" alt="Patent drawing of the robotic flapper seen from above and in front, with the fuselage in the center and a wing extending to each side">
+<p><strong>Patent drawing of the robotic flapper:</strong> the fuselage (205) is in the center, with a wing (210 and 215) extending to each side. Source: US Patent 12,441,468 B2, X. Fan and K. Breuer, Brown University, issued October 14, 2025 [1].</p>
 <p><strong>How it could be used in different industries:</strong></p>
 <ul>
-<li><strong>Aerospace and drones:</strong> the patent relates to flapping-wing aerial vehicles. A flapping, folding wing could make small drones that maneuver in tight spaces and carry payloads.</li>
-<li><strong>Underwater and marine robotics:</strong> the patent title says "wing/fin," which suggests the same three motions could drive a fin for a swimming robot used for ocean inspection and research.</li>
+<li><strong>Aerospace and drones:</strong> the patent's background lists drones for surveillance, delivery, real estate, personnel transport, and entertainment. Folding wings give extra lift or payload and allow separate takeoff, cruise, and landing modes [1].</li>
+<li><strong>Scientific research equipment:</strong> the patent describes the flapper as a test rig for measuring forces and power directly while a wing flaps, folds, and twists [1].</li>
+<li><strong>Inspection and monitoring in cluttered spaces:</strong> the 2022 review says foldable and deformable wings could help robots maneuver safely in obstacle-dense environments [3], which is useful for inspecting or searching tight spaces.</li>
 </ul>
 
-<h3>Mechanism 2: A Bennett-Linkage Robotic Leg (published 2022)</h3>
-<p>This is a paper by Yuping Gu, Shihao Feng, Yuqin Guo, Fang Wan, Jian S. Dai, Jia Pan, and Chaoyang Song, "Overconstrained coaxial design of robotic legs with omni-directional locomotion," published in <em>Mechanism and Machine Theory</em>, volume 176, article 105018, in 2022 [2].</p>
-<p><strong>How it works:</strong> a Bennett linkage is a spatial four-bar linkage with four revolute joints. Its link lengths and twist angles follow a special relationship, so it moves with one degree of freedom even though the usual mobility count says four spatial links should not move at all. That is what "overconstrained" means. The authors start from the simplest overconstrained linkage, the Bennett linkage, and propose an alternative form with coaxial actuation, meaning the actuators share one axis. They use it as a robotic leg for omni-directional ground locomotion [2]. The paper also gives a parametric design of the links and joints that can be 3D printed and attached to servo actuators as a reconfigurable leg module [2].</p>
-<p><strong>Connection to my project:</strong> my ornithopter is a flat (planar) linkage. This one shows what changes when the linkage is spatial. It is also made from 3D printed links and standard actuators, like my project.</p>
-<p><mark>IMAGE TO ADD: screenshot of the Bennett linkage leg figure from the paper [2], and the figure's source link in the caption.</mark></p>
+<h3>Mechanism 2: A Bennett-Linkage Robotic Leg With Coaxial Actuation (2022)</h3>
+<p>This is a paper by Yuping Gu, Shihao Feng, Yuqin Guo, Fang Wan, Jian S. Dai, Jia Pan, and Chaoyang Song, "Overconstrained coaxial design of robotic legs with omni-directional locomotion," published in <em>Mechanism and Machine Theory</em>, volume 176, article 105018. It was available online on July 18, 2022 [2].</p>
+<p><strong>How it works:</strong> a Bennett linkage is a single-loop spatial linkage with four links and only revolute joints. The usual mobility count (the Kutzbach-Grubler criterion) says it should not be able to move, but a special relationship between its link lengths and twist angles lets it move with one degree of freedom. That is what "overconstrained" means [2]. In the leg, two servos sit on a common axis, which is the "coaxial" part. One servo drives one link directly through an inner shaft. The other servo drives a second link through a 1:1 timing belt to a hollow shaft around the inner shaft. The paper treats the leg as a four-bar linkage on a rotating base [2].</p>
+<p>A leg has two driven inputs, and its foot, a silicone-covered stub on one link, moves over a two-dimensional surface in space shaped like half of a torus. A four-legged robot therefore has 8 driven degrees of freedom [2]. The links are 120 mm long, with twist angles of 135 and 45 degrees. The links are 3D printed in nylon (PA-12), and the maximum leg length is 0.24 m. A finite element check at 20 N gave a peak stress of 4.45 MPa, well below the 48 MPa yield strength [2]. The 1.6 kg prototype walks at about 0.1 m/s and pivot-steers at 30 degrees per second [2].</p>
+<p><strong>Connection to my project:</strong> my ornithopter is a flat (planar) linkage, and this one shows what changes when the linkage is spatial. It also uses 3D printed links and standard servos, like my project, and the paper lists bird-wing mechanisms among the possible uses of overconstrained linkages [2].</p>
+<img src="ResearchBennettLeg.png" alt="Left: cutaway of the coaxial dual-output design with Servo I and Servo II on a shared axis driving two links through an inner shaft and an outer shaft. Right: the prototype leg with its design parameters, a and b equal to 120 mm, alpha 135 degrees, beta 45 degrees, and sigma minus 145 degrees">
+<p><strong>The coaxial Bennett leg:</strong> on the left, Servo I and Servo II share one axis and drive two links through an inner shaft and an outer shaft. On the right, the prototype leg with its design parameters: link lengths a = b = 120 mm, twist angles &alpha; = 135&deg; and &beta; = 45&deg;, and hip angle &sigma; = &minus;145&deg;. Source: Y. Gu et al., <em>Mechanism and Machine Theory</em>, vol. 176, article 105018 (2022), &copy; 2022 Elsevier Ltd. [2].</p>
 <p><strong>How it could be used in different industries:</strong></p>
 <ul>
-<li><strong>Search and rescue and field robotics:</strong> a leg that can move in any direction on the ground would help a robot work in rubble or uneven terrain.</li>
-<li><strong>Education and research robotics:</strong> because the leg is a printable, reconfigurable module driven by servos, labs and classrooms can build and change legged robots cheaply.</li>
+<li><strong>Mobile and legged robotics:</strong> the paper presents the leg for omni-directional walking with fewer actuators, and it mentions reconfigurable mobile robots and a backpackable multi-terrain robot as other uses [2].</li>
+<li><strong>Industrial robotics:</strong> the paper says overconstrained linkages could be used to build novel manipulators [2].</li>
+<li><strong>Biomimetic and aerospace robotics:</strong> the paper lists bird-wing mechanisms among the possible uses of overconstrained linkages [2].</li>
 </ul>
 
 <h2>Design</h2>
 
 <h3>Purpose</h3>
-<p>The mechanism turns a steady rotation of a wheel into a flapping motion of two wings. I chose it because I study aerospace, and while learning about the history of the industry I found ornithopters very interesting. Before fixed-wing aircraft, many early designers tried to copy how birds fly, and I wanted to build a working version of that idea. It does not fly. It is a desk model that I turn by hand, so I can show how the linkage moves.</p>
+<p>The mechanism turns a steady rotation of a wheel into a flapping motion of two wings. I chose it because I study aerospace, and while learning about the history of the industry I found ornithopters very interesting. Before fixed-wing aircraft, many early designers tried to copy how birds fly, and I wanted to build a working version of that idea. It does not fly. It is a desk model that I turn by hand, so I can show how the linkage moves. The picture that inspired my wheel-and-rod drive came from Ornithopter.org [10]. That page explains that a flapping mechanism converts the rotary motion of a motor into the back-and-forth motion of flapping wings, and that when a second wing is added to a simple four-bar linkage, the two connecting rods leave the crank at different angles and act at different times. I avoided that problem by driving both wings from one center pin on a single vertical link.</p>
 
 <h3>How It Works</h3>
 <ul>
 <li><strong>Wheel (crank):</strong> a hole in the wheel, off its center, carries a bolt. As the wheel turns, that bolt travels in a circle.</li>
 <li><strong>Vertical link (connecting rod):</strong> connects the offset bolt on the wheel to the center pin, so the center pin moves up and down as the wheel turns.</li>
 <li><strong>Wing links (levers):</strong> each wing link pivots on a fixed bolt in the base, about one quarter of the way along its length. The inner end has a short slot where the center pin sits. When the center pin moves up and down a small amount, the long outer end of each wing link swings through a much larger arc. The long outboard side is about three times the length of the short inboard side, so the wingtip moves about three times as far as the pin.</li>
+<li><strong>Center pin guide:</strong> the center pin is guided by a hole in the middle. The two wing links are only connected to each other through that pin, so the wings might not flap perfectly evenly.</li>
 <li><strong>Why a slot:</strong> the inner ends of the two wing links meet at the center pin, but each one swings on its own arc around its own pivot. If both were simply pinned together at the center, the mechanism would lock. The slot lets the center pin slide a few millimeters along each wing link as it swings.</li>
 </ul>
 <p>The wheel is the only input. Turning it once makes the wings flap down and back up once.</p>
@@ -58,7 +64,7 @@ title: "L7 – Ornithopter Linkage"
 <video controls preload="metadata">
   <source src="PrototypeMotion.mp4" type="video/mp4">
 </video>
-<p>Animation of the mechanism prototype: the wheel, the vertical link, the two wing links, and a support, moving through full turns. It is a simplified computer animation of the linkage geometry, not a video of the printed parts.</p>
+<p>Animation of the mechanism prototype moving through full turns.</p>
 
 <h3>Components</h3>
 <div class="table-wrap">
@@ -104,7 +110,7 @@ title: "L7 – Ornithopter Linkage"
 <table>
 <tr><th>Moving interface</th><th>Designed clearance</th><th>How I arrived at it</th><th>Result</th></tr>
 <tr><td>M3 bolt (3.0 mm) in every bolt hole and slot</td><td>3.4 mm holes, so 0.2 mm per side</td><td>3.4 mm is the "medium" clearance hole for an M3 bolt in ISO 273, between the close size (3.2 mm) and the coarse size (3.6 mm) [4]. It is also the low end of the 0.2 to 0.3 mm per side range in the course notes [5]. Holes print smaller than designed, and elephant foot makes the holes near the bed smaller still, so I did not want to start with less clearance than this [6][7].</td><td>Worked on the first print.</td></tr>
-<tr><td>Wheel hub in base hole</td><td>6.0 mm hub in a 6.2 mm hole, so 0.1 mm per side</td><td>I made the hole 0.2 mm larger than the hub to give it decent clearance. This is the tightest joint, and it is below the 0.2 to 0.3 mm per side range in the course notes [5].</td><td>Worked on the first print, but I would open it up (see Lessons Learned).</td></tr>
+<tr><td>Wheel hub in base hole</td><td>6.0 mm hub in a 6.2 mm hole, so 0.1 mm per side</td><td>I made the hole 0.2 mm larger than the hub to give it decent clearance. This is the tightest joint, and it is below the 0.2 to 0.3 mm per side range in the course notes [5], so I tested it.</td><td>Worked on the first print. I tested it, and the hub turns freely.</td></tr>
 </table>
 </div>
 
@@ -151,7 +157,7 @@ title: "L7 – Ornithopter Linkage"
 <h2>3D Print</h2>
 
 <h3>Printer and Material</h3>
-<p>I printed on a <strong>Bambu Lab A1</strong> with a 0.4 mm nozzle and a textured build plate, in <strong>Overture Matte PLA</strong>, using the 0.20mm Standard @BBL A1 process in Bambu Studio.</p>
+<p>I printed on a <strong>Bambu Lab A1</strong> with a 0.4 mm nozzle and a textured build plate, in <strong>Overture Matte PLA (green)</strong>, using the 0.20mm Standard @BBL A1 process in Bambu Studio.</p>
 <img src="slicersettings1.png" alt="Bambu Studio printer and filament panel showing Bambu Lab A1, 0.4 mm nozzle, Overture Matte PLA, and the 0.20mm Standard @BBL A1 process">
 <p>Printer, nozzle, filament, and process, with the Advanced settings toggle switched on.</p>
 
@@ -176,34 +182,26 @@ title: "L7 – Ornithopter Linkage"
 <img src="slicersettings7.png" alt="Bambu Studio support settings with Enable support unchecked">
 <p><strong>Supports:</strong> turned off. All of the parts lie flat, so I did not need supports.</p>
 
-<h3>The Two Required Slicer Changes</h3>
-<p>Two slicer defaults often ruin printed joints, so I changed both. The first one is elephant foot compensation.</p>
-<p><strong>Elephant foot compensation:</strong> the first layer is pressed into the bed and spreads out wider than the model. That makes holes near the bed come out undersized and makes pins flare at the base, which is a problem for bolts turning in holes. In Bambu Studio the setting is under Process, Quality, Precision [6]. The default of 0.075 mm comes from the Bambu A1 profiles [8].</p>
+<h3>Elephant Foot Compensation</h3>
+<p>Elephant foot is one slicer default that often ruins printed joints: the first layer is pressed into the bed and spreads out wider than the model. That makes holes near the bed come out undersized and makes pins flare at the base, which is a problem for bolts turning in holes. In Bambu Studio the setting is under Process, Quality, Precision [6].</p>
 <img src="slicersettings3.png" alt="Bambu Studio Precision settings with X-Y hole compensation 0, X-Y contour compensation 0, auto circle contour-hole compensation unchecked, and elephant foot compensation 0.15 mm highlighted as changed">
-<p><strong>Precision settings:</strong> I changed elephant foot compensation from the default of 0.075 mm to <strong>0.15 mm</strong>, which is highlighted as changed. The setting shrinks the first layer's outline inward by that amount on each side, so doubling the value should make the first layer's holes come out about 0.15 mm larger in diameter than they would with the default. I left X-Y hole compensation and X-Y contour compensation at 0 [7], and auto circle contour-hole compensation turned off, so that the only first-layer change is this one.</p>
-<p><mark>TO FILL: the difference I saw between the default (0.075 mm) and my value (0.15 mm), for example the bed-side and top-side diameters of the same hole measured with calipers.</mark></p>
+<p><strong>Precision settings:</strong> I used elephant foot compensation at <strong>0.15 mm</strong>, changed from the A1 profile default of 0.075 mm [8], which is highlighted as changed in the screenshot. I left X-Y hole compensation and X-Y contour compensation at 0 [7], and auto circle contour-hole compensation turned off.</p>
 
-<p><strong>Seam position:</strong> every perimeter starts and ends at a seam, which leaves a small bump or line. A seam on a bolt hole or on the hub where parts touch can make the joint bind in one spot every time it turns. In Bambu Studio the setting is under Process, Quality, Seam [9].</p>
-<p><mark>TO FILL: seam position changed from the default (Aligned) to ___, and why I chose it. Add a screenshot of the Seam setting.</mark></p>
+<h3>Seam Position</h3>
+<p>Every perimeter starts and ends at a seam, which leaves a small bump or line. A seam on a bolt hole or on the hub where parts touch can make the joint bind in one spot every time it turns. In Bambu Studio the setting is under Process, Quality, Seam [9]. I changed the seam position from the default, <strong>Aligned</strong>, to <strong>Random</strong>. Aligned puts every layer's seam in the same spot, which would leave a ridge running up the inside of the bolt holes and along the hub, and that ridge could catch once every turn. Random spreads the bumps around the circle, so there is no single ridge where parts touch. The trade-off is a rougher look on the outside surfaces.</p>
 
-<h3>Print Artifact</h3>
-<p><strong>Slicing time:</strong> about 15 minutes. <strong>Print time:</strong> 1 hour 5 minutes for all of the parts on one plate.</p>
-<p><mark>TO FILL: filament used from the slicer, a photo of the printer mid-print, and a photo of the finished parts on the plate.</mark></p>
-<!-- Uncomment once PrintVideo.mp4 is added to this folder:
-<video controls preload="metadata">
-  <source src="PrintVideo.mp4" type="video/mp4">
-</video>
-<p>Video of the parts printing on the A1.</p>
--->
+<h3>Print in Progress</h3>
+<img src="PrintInProgress.jpg" alt="Bambu Lab A1 mid-print with green parts laid flat on the textured build plate">
+<p>The Bambu Lab A1 printing the parts in green Overture Matte PLA.</p>
 
-<h3>Assembly and Demonstration</h3>
-<p>(final assembly picture here)</p>
-<p><mark>TO FILL: a video of the finished mechanism moving. The assignment requires showing how the linkage moves to get credit.</mark></p>
+<h3>Assembly</h3>
+<img class="img-portrait" src="FinalAssembly.jpg" alt="The finished ornithopter standing on a desk: a tall green base on a leg, a small wheel, a vertical link, and two wing links spread in a V, held together with M3 bolts">
+<p>The finished ornithopter, assembled with M3 bolts, nuts, and washers. The wing links are shown spread in a V.</p>
 
 <h2>Lessons Learned</h2>
-<p><strong>Time:</strong> I expected this project to take five to six hours at most, but it took more than that. Research took about 2 hours and writing the Research section took another 1.5 hours. Prototyping and choosing the mechanism took about 4 hours, CAD took about 1.5 hours, slicing took about 15 minutes, printing took 1 hour 5 minutes, and building this portfolio page took about 2 hours. <mark>TO FILL: post-processing time and assembly time.</mark> Without those two, the total is about 12.3 hours, roughly twice what I expected, and the biggest blocks were prototyping and choosing the mechanism and the research.</p>
+<p><strong>Time:</strong> I expected this project to take five to six hours at most, but it took more than that. Research took about 2 hours and writing the Research section took another 1.5 hours. Prototyping and choosing the mechanism took about 4 hours, CAD took about 1.5 hours, slicing took about 15 minutes, printing took 1 hour 5 minutes, post-processing took 15 minutes, assembly took another 15 minutes, and building this portfolio page took about 2 hours. The total is about 12.8 hours, roughly twice what I expected, and the biggest blocks were prototyping and choosing the mechanism and the research.</p>
 <p><strong>Biggest mistake:</strong> my biggest mistake was not understanding the scope of my initial idea. I wanted to build a mechatronic sculpture of a bird with motors moving the mechanism, and about two hours in I realized that was too big for the time I had and for what the assignment asked. The root cause was that I started designing the finished sculpture before checking it against the assignment and the time available. I fixed it by cutting the project down to a hand-cranked linkage and putting my effort into getting the linkage mechanism right, with the rest left for any extra time.</p>
-<p><strong>Tolerances:</strong> my first-print clearances worked. The screw holes are 3.4 mm for M3 bolts, which is 0.2 mm per side, and the hub is 6.0 mm in a 6.2 mm hole, which is 0.1 mm per side. The hub is the joint where friction affects performance the most, so I would make its clearance bigger. <mark>CONFIRM: I would open the hub hole from 6.2 mm to 6.4 mm, which is 0.2 mm per side.</mark></p>
+<p><strong>Tolerances:</strong> my first-print clearances worked. The screw holes are 3.4 mm for M3 bolts, which is 0.2 mm per side, and the hub is 6.0 mm in a 6.2 mm hole, which is 0.1 mm per side. The hub is the joint where friction affects performance the most, so I tested it, and it turns freely. I would not change any of the clearances, so the change is 0 mm.</p>
 
 <h2>Download</h2>
 <p>SolidWorks files for every part and the full assembly. If you open the assembly, put all of the files in the same folder first, so SolidWorks can find the parts.</p>
@@ -220,9 +218,9 @@ title: "L7 – Ornithopter Linkage"
 <h2>Sources</h2>
 <h3>Sources for the two mechanisms</h3>
 <ol>
-<li>Fan, X. and Breuer, K. (Brown University). <em>Bio-inspired flapping wing/fin robotic platform</em>. US Patent 12,441,468, issued October 14, 2025. <a href="https://patents.justia.com/patent/12441468">Patent text (Justia)</a> | <a href="https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/12441468">Patent PDF with drawings (USPTO)</a></li>
-<li>Gu, Y., Feng, S., Guo, Y., Wan, F., Dai, J. S., Pan, J., and Song, C. (2022). Overconstrained coaxial design of robotic legs with omni-directional locomotion. <em>Mechanism and Machine Theory</em>, 176, 105018. <a href="https://www.sciencedirect.com/science/article/abs/pii/S0094114X2200266X">Article page (ScienceDirect)</a> | <a href="https://bionicdl.ancorasir.com/wp-content/uploads/2023/11/2022-J-MMT-BennettRoboticLeg.pdf">PDF hosted by the authors' lab</a></li>
-<li>Zhang, J., Zhao, N., and Qu, F. (2022). Bio-inspired flapping wing robots with foldable or deformable wings: a review. <em>Bioinspiration &amp; Biomimetics</em>, 18(1). <a href="https://iopscience.iop.org/article/10.1088/1748-3190/ac9ef5">Article page (IOPscience)</a> | <a href="https://pubmed.ncbi.nlm.nih.gov/36317380/">PubMed</a></li>
+<li>Fan, X. and Breuer, K. (Brown University). <em>Bio-inspired flapping wing/fin robotic platform</em>. US Patent 12,441,468 B2, application 18/514,625 filed November 20, 2023, issued October 14, 2025 (published as US 2024/0166347 A1). <a href="https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/12441468">Patent PDF with drawings (USPTO)</a> | <a href="https://patents.justia.com/patent/12441468">Patent text (Justia)</a></li>
+<li>Gu, Y., Feng, S., Guo, Y., Wan, F., Dai, J. S., Pan, J., and Song, C. (2022). Overconstrained coaxial design of robotic legs with omni-directional locomotion. <em>Mechanism and Machine Theory</em>, 176, 105018. <a href="https://doi.org/10.1016/j.mechmachtheory.2022.105018">DOI</a> | <a href="https://www.sciencedirect.com/science/article/abs/pii/S0094114X2200266X">Article page (ScienceDirect)</a> | <a href="https://bionicdl.ancorasir.com/wp-content/uploads/2023/11/2022-J-MMT-BennettRoboticLeg.pdf">PDF hosted by the authors' lab</a></li>
+<li>Zhang, J., Zhao, N., and Qu, F. (2022). Bio-inspired flapping wing robots with foldable or deformable wings: a review. <em>Bioinspiration &amp; Biomimetics</em>, 18(1), 011002. <a href="https://doi.org/10.1088/1748-3190/ac9ef5">DOI</a> | <a href="https://iopscience.iop.org/article/10.1088/1748-3190/ac9ef5">Article page (IOPscience)</a> | <a href="https://pubmed.ncbi.nlm.nih.gov/36317380/">PubMed</a></li>
 </ol>
 
 <h3>Sources for my clearance and slicer choices</h3>
@@ -234,5 +232,9 @@ title: "L7 – Ornithopter Linkage"
 <li>Bambu Lab Community Forum. <a href="https://forum.bambulab.com/t/elephant-foot-compensation-changed/42315">Elephant Foot Compensation changed?</a> (the A1 profile default changed from 0.15 mm to 0.075 mm in Bambu Studio 1.8.4).</li>
 <li>Bambu Lab Wiki. <a href="https://wiki.bambulab.com/en/software/bambu-studio/Seam">Seam</a>.</li>
 </ol>
-<p><small>AI was used to help find these sources, but I handpicked the mechanisms.</small></p>
+<h3>Source for the design idea</h3>
+<ol start="10">
+<li>Ornithopter.org. Ornithopter flapping mechanisms (mobile page, including the staggered crank). <a href="https://www.ornithopter.org/mobile/how.html">https://www.ornithopter.org/mobile/how.html</a>. Viewed October 2026. This is where I found the picture that inspired my wheel-and-rod drive.</li>
+</ol>
+<p><small>AI was used to help find sources 1 to 9, but I handpicked the mechanisms.</small></p>
 <p>Tools: Bambu Lab A1 3D printer, Bambu Studio slicer, SolidWorks, Overture Matte PLA, and M3 bolts, nuts, and washers.</p>
