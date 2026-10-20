@@ -1,16 +1,306 @@
 ---
-title: "L8 – Gears"
+title: "L8 – Useful Print: Almond Dispenser"
 ---
-<h1>L8 – Gears</h1>
+<h1>L8 – Useful Print: Almond Dispenser</h1>
 
 <h2>Objective</h2>
-<p></p>
+<p>This week's goal was to find a real problem, then design and 3D print something useful or functional to solve it. No artwork. I designed a touch-free almond dispenser that screws onto the almond jar I already own in place of its lid. I press a paddle, which acts as the lever, to open a spring-loaded gate at the bottom of the funnel, and the spring closes the gate when I let go. Legs raise the dispenser so I can put a plate or a hand under the outlet.</p>
 
-<h2>Analyze</h2>
-<p></p>
+<h2>Reading and Writing</h2>
+<p><em>Reading: <a href="https://www.toptal.com/designers/product-design/design-thinking-great-questions">Great Questions Lead to Great Design: A Guide to the Design-thinking Process</a> [1].</em></p>
+<p>Asking smart questions matters because a design can only be as good as the problem it is aimed at, and the first answer to "what is wrong?" is usually a symptom. The article argues that good questions uncover the real problem before anyone starts drawing solutions, and it names the 5 Whys as a way to keep digging until a root cause shows up [1]. I used that on this project. My first answer was "my roommates take my almonds," but asking why that bothered me led to the real problem: a hand reaching into the jar touches every almond near it, and I cannot know if that hand was clean. That pointed me to a very different design than a lock or a smaller jar, because the goal became that each person only touches the almonds they will eat. The article also says that framing questions well, such as asking what other options were considered, builds understanding and avoids defending the first idea [1]. I used that when I weighed alternatives for the funnel, the gate, and the legs.</p>
 
-<h2>Decide</h2>
-<p></p>
+<h2>Problem Statement</h2>
 
-<h2>Communicate</h2>
-<p></p>
+<h3>1. Purpose of the design and research</h3>
+<p><strong>Purpose:</strong> I eat almonds as a snack while I study, and my roommates started doing the same from my jar. I do not mind sharing, but the only way to get almonds out is to put a hand in the jar, and I have no way to know if that hand is clean. The dispenser removes that contact: the jar stays closed, and a person only touches the almonds they take.</p>
+<p><strong>Research I did:</strong></p>
+<ul>
+<li><strong>Shared food and hand contact.</strong> A health-service notice on food sharing recommends hand hygiene and avoiding picking from communal dishes such as chips, platters, or lolly jars, and it recommends individually packaged food instead [4]. A jar that everyone reaches into is the kind of communal dish it describes.</li>
+<li><strong>Almond size.</strong> I used the USDA's 2025 California Almond Objective Measurement Report to size the outlet. The state average almond is 23.40 mm long, 13.16 mm wide, and 9.75 mm thick, and the largest variety in the report, Independence, averages 25.13 by 14.29 by 9.93 mm [2]. I designed for the largest variety so the dispenser works for any almond.</li>
+<li><strong>Why hoppers jam.</strong> Bulk solids can lock into a self-supporting arch above the outlet, and flow stops even though material is still in the hopper. The causes listed are a cohesive material, walls that are not steep enough, and an outlet that is too small [3]. This is why I shaped the funnel to guide the almonds toward the outlet.</li>
+<li><strong>The jar.</strong> I measured the jar neck with calipers. The neck is 85.57 mm across without the thread and 88.55 mm across with it. The thread has a pitch of 5.44 mm, a ridge width of 3.00 mm, a single start, and runs about 365 degrees around the neck. The existing lid is 92 mm in outside diameter. I first made the connector 92 mm to match it, and later increased it to 95 mm with a 3 mm wall (see Design Decisions).</li>
+</ul>
+
+<h3>Jar Measurements</h3>
+<p>I measured the jar neck and the lid with digital calipers. These numbers set the size of the connector and its thread.</p>
+<div class="table-wrap">
+<table>
+<tr><th>Measurement</th><th>Value</th></tr>
+<tr><td>Neck diameter without the thread</td><td>85.57 mm</td></tr>
+<tr><td>Neck diameter with the thread</td><td>88.55 mm</td></tr>
+<tr><td>Thread depth (calculated: (88.55 &minus; 85.57) / 2)</td><td>1.49 mm</td></tr>
+<tr><td>Thread pitch</td><td>5.44 mm</td></tr>
+<tr><td>Thread ridge width</td><td>3.00 mm</td></tr>
+<tr><td>Thread start and length</td><td>Single start, about 365 degrees around the neck</td></tr>
+<tr><td>Lid depth</td><td>13.50 mm, measured with the depth rod of the calipers inside the lid</td></tr>
+</table>
+</div>
+
+<img class="img-portrait" src="jarneckdiameter.jpg" alt="Digital calipers across the jar neck above the thread, reading 85.57 mm, with the jar of almonds below">
+<p><strong>Neck diameter without the thread:</strong> 85.57 mm.</p>
+
+<img class="img-portrait" src="jarneckthreaddiameter.jpg" alt="Digital calipers across the threaded jar neck, reading 88.55 mm, with the jar of almonds below">
+<p><strong>Neck diameter with the thread:</strong> 88.55 mm.</p>
+
+<img class="img-portrait" src="threadpitch.jpg" alt="Digital calipers measuring the distance between two turns of the thread on the jar neck, reading 5.44 mm">
+<p><strong>Thread pitch:</strong> 5.44 mm.</p>
+
+<img class="img-portrait" src="threadwidth.jpg" alt="Digital calipers measuring the width of one thread ridge on the jar neck, reading 3.00 mm">
+<p><strong>Thread ridge width:</strong> 3.00 mm.</p>
+
+<img class="img-portrait" src="lidmeasurement.jpg" alt="The depth rod of a digital caliper inside the black jar lid, reading 13.50 mm">
+<p><strong>Lid depth:</strong> 13.50 mm, measured with the depth rod of the calipers.</p>
+
+<h3>Similar Mechanisms</h3>
+<p>I looked for existing dispensers that use a lever and a spring-loaded door, since that is the part of my design I most needed to get right. All of them are gravity-fed bins or tabletop dispensers.</p>
+<div class="table-wrap">
+<table>
+<tr><th>Mechanism</th><th>How the door and spring work</th></tr>
+<tr><td>US 6,241,123, bulk food bin (Elmore, 2001) [5]</td><td>An external handle rotates a door open. Springs hooked inside the front piece return the handle, and an adjustable stopper limits how far the door opens.</td></tr>
+<tr><td>US 5,730,333, retail bulk dispenser (Baluk et al., 1998) [6]</td><td>A sliding gate plate with a forward handle. A spring returns the gate to closed, a stop screw limits its travel, and rubber bumpers soften the return.</td></tr>
+<tr><td>US 4,770,125, animal food dispenser (Gold et al., 1988) [7]</td><td>A lever turns a metering pocket over a chute. A clock spring on the lever's axle returns it, and it has to be strong enough to lift the lever back against the weight of the food.</td></tr>
+<tr><td>US 10,219,635, tabletop nut dispenser (Eso, 2019) [8]</td><td>A lever arm raises a housing, which opens a hinged back door. Nuts fall down a chute, and a spring returns the arm.</td></tr>
+</table>
+</div>
+<p>Mine follows the same basic architecture: a lever, a door, a spring that closes it, and gravity. None of these attach to a jar the user already owns, and none is designed to be 3D printed, which is where my design is different.</p>
+
+<h3>2. How I noticed the problem</h3>
+<p>I snack on almonds at my desk when I study. Over time my roommates started eating them too, and I noticed they had to reach into the container to get them. I do not mind sharing, but I realized that I had no way to know if their hands were clean, and that every almond they touched and put back was an almond I might eat later. The almonds were not the problem. The open jar was.</p>
+
+<h3>3. Who the product is for</h3>
+<p><strong>Ideal user:</strong> a person who keeps a shared snack in a jar in a common space, such as roommates, a study group, or an office desk, and wants everyone to be able to help themselves without touching what stays in the jar. For this project that is me and my roommates. The user has one free hand, so the lever has to work with one hand and without looking.</p>
+
+<h3>4. My approach</h3>
+<p>I split the design into three main parts so I could design and print them separately:</p>
+<ul>
+<li><strong>Funnel and gate box (the base):</strong> a threaded connector that screws onto the jar in place of the lid, a funnel shaped inside and outside so the almonds do not get stuck, and a box at the bottom that holds the gate and the paddle.</li>
+<li><strong>Paddle and gate mechanism:</strong> pressing the paddle (the lever) opens the gate at the outlet, and a spring closes the gate when the paddle is released.</li>
+<li><strong>Legs:</strong> a front leg and a back leg that raise the dispenser so there is room for a plate or a hand under the outlet.</li>
+</ul>
+<p>The design is mostly 3D printed. The purchased hardware is a spring, thread inserts, and M3 screws.</p>
+
+<h2>Design</h2>
+
+<h3>Sketch</h3>
+<p>I worked out the gate geometry by hand on notebook paper before modeling it: a sketch of the gate and its pivot, and the trigonometry for how far it travels. The page is here as a PDF: <a href="GateSketch.pdf">Hand sketch and calculation of the gate geometry (PDF)</a>. I did the rest of the design directly in SolidWorks. [VERIFY: add any other sketches you made.]</p>
+
+<h3>Components</h3>
+<div class="table-wrap">
+<table>
+<tr><th>Component</th><th>Qty</th><th>Function</th><th>Printed or purchased</th></tr>
+<tr><td>Base (funnel and gate box)</td><td>1</td><td>Screws onto the jar, funnels the almonds to the outlet, and holds the gate and the paddle</td><td>Printed, translucent PETG</td></tr>
+<tr><td>Gate</td><td>1</td><td>Blocks the outlet and swings open to let almonds out</td><td>Printed, matte PLA</td></tr>
+<tr><td>Paddle</td><td>1</td><td>The lever the user presses to open the gate</td><td>Printed, matte PLA</td></tr>
+<tr><td>Front leg</td><td>1</td><td>Raises the front of the dispenser</td><td>Printed, matte PLA</td></tr>
+<tr><td>Back leg</td><td>1</td><td>Raises the back of the dispenser</td><td>Printed, matte PLA</td></tr>
+<tr><td>Spring</td><td>1 [VERIFY]</td><td>Closes the gate when the paddle is released</td><td>Purchased, 10 mm long, extension spring</td></tr>
+<tr><td>Thread inserts</td><td>4 [VERIFY]</td><td>Give the printed holes a metal thread for the screws</td><td>Purchased, M3</td></tr>
+<tr><td>M3 screws</td><td>About 8 in total [VERIFY]</td><td>Pivots for the paddle and gate (20 mm and 14 mm) and leg attachment into the thread inserts (7 mm) [VERIFY]</td><td>Purchased, in three lengths: 20 mm, 14 mm, and 7 mm</td></tr>
+</table>
+</div>
+
+<img class="img-portrait" src="hardware.jpg" alt="A desk with an M3 and M4 screw assortment kit, a second box of black fasteners, and on a notebook page a small spring with hooked ends and about ten brass knurled thread inserts">
+<p><strong>Purchased hardware:</strong> M3 screws from an assortment kit, brass thread inserts, and the spring. [VERIFY: the kit in the photo lists M3 screws in 10 mm, 14 mm, and 20 mm, but the components table says 7 mm.]</p>
+
+<h3>How It Works</h3>
+<ul>
+<li><strong>Connector:</strong> the base has a threaded connector, 95 mm in outside diameter with a 3 mm wall, that screws onto the jar's neck in place of the original 92 mm lid. The jar is turned upside down so the almonds fall into the funnel.</li>
+<li><strong>Funnel:</strong> the funnel changes from the round connector to a rectangular box at the bottom, and it is shaped inside and outside so almonds slide toward the outlet.</li>
+<li><strong>Paddle and gate:</strong> the paddle and the gate are connected, so pressing the paddle (the lever) turns the gate about its pivot. The short end of the gate moves up into the funnel and the long end moves down, which opens the outlet and lets almonds fall out. The extension spring pulls the gate back to closed when the paddle is released. [VERIFY: how the paddle connects to the gate and where the spring attaches.]</li>
+<li><strong>Legs:</strong> the front and back legs attach to the base and hold the outlet above the table, leaving room for a plate or a hand.</li>
+</ul>
+
+<h3>CAD Images</h3>
+<p>I modeled each part in SolidWorks and then assembled them. The base is the most complex part, so I show it step by step. Each picture adds one feature to the previous one. The other parts were simple enough that I show only the final model.</p>
+
+<h4>Base: step by step</h4>
+
+<img src="basecadstep1shelledrectangularprism.png" alt="SolidWorks model of a thin-walled rectangular box open at the top">
+<p><strong>Step 1, shelled rectangular prism:</strong> I started with a rectangular box and shelled it, so it is hollow with thin walls. This becomes the gate box at the bottom of the funnel.</p>
+
+<img src="addedleverspringhole.png" alt="SolidWorks model of the box with a notch cut in the lower edge, a small hole, and a larger hole on the side">
+<p><strong>Step 2, added the paddle and spring holes:</strong> I cut a notch into the lower edge and added the holes that the paddle and the spring attach to.</p>
+
+<img src="addedleverandpaddleholesaddedpaddlecurveandcutbottom.png" alt="SolidWorks model of the angled box with extra holes on the sides and a curved surface inside">
+<p><strong>Step 3, added the paddle and gate holes, the gate curve, and cut the bottom:</strong> I added the pivot holes for the paddle and the gate, a curved surface inside for the gate to sweep against, and cut the bottom to open the outlet.</p>
+
+<img src="addedfunnelbase.png" alt="SolidWorks model of the box with a wide round connector on top, made of a large disc and a slightly narrower ring below it">
+<p><strong>Step 4, added the funnel base:</strong> I added the round connector on top of the box. At this stage its outside diameter was 92 mm, the same as the original lid. I increased it to 95 mm later (see Design Decisions).</p>
+
+<img src="cutthroughfunnelbase.png" alt="Top view of the round connector with a rectangular opening cut through the floor into the box below">
+<p><strong>Step 5, cut through the funnel base:</strong> I cut an opening through the floor of the connector so the almonds can fall into the box.</p>
+
+<img src="shapedinsideandoutsideoffunnelsoalmondsdontgetstuck.png" alt="SolidWorks model with a curved funnel surface blending the round connector into the rectangular box, shown inside and outside">
+<p><strong>Step 6, shaped the inside and outside of the funnel so almonds do not get stuck:</strong> I blended the round connector into the rectangular box with curved surfaces, so there are no flat ledges for almonds to sit on.</p>
+
+<img src="addedthreads.png" alt="SolidWorks model with the threads added inside the round connector, with the helix and thread sketch visible near the top">
+<p><strong>Step 7, added the threads:</strong> I added the internal thread in the connector so that it screws onto the jar neck. It uses the jar's 5.44 mm pitch and a single start, with 0.2 mm of clearance.</p>
+
+<img src="addedlegholes.png" alt="SolidWorks model of the base with extra holes added on the front and side faces for attaching the legs">
+<p><strong>Step 8, added the leg holes:</strong> I added the holes where the front and back legs attach.</p>
+
+<h4>Paddle, gate, and legs</h4>
+<img src="levercadbase.png" alt="SolidWorks model of the first version of the paddle, a flat arm with a rectangular pad at one end and two holes at the other end">
+<p><strong>Paddle, first version:</strong> a flat arm with a rectangular pad that I press, and a rounded end with holes for the pivot.</p>
+
+<img src="levercadmadeitlookbetterandincreasedsurfaceareaoflever.png" alt="SolidWorks model of the final paddle with a wider pad that has grooves across it">
+<p><strong>Paddle, final version:</strong> I made the paddle look better and increased the surface area of the pad, so it is easier to press with a finger. The grooves help the finger stay on the pad.</p>
+
+<img src="paddlecad.png" alt="SolidWorks model of the gate, a flat wedge-shaped plate with a round pivot hole on its side">
+<p><strong>Gate:</strong> a flat, wedge-shaped plate with a pivot hole. It blocks the outlet when closed and swings open when the paddle is pressed.</p>
+
+<img src="frontlegscad.png" alt="SolidWorks model of the front leg, a long angled bar with two flat tabs and holes at the top">
+<p><strong>Front leg:</strong> a long bar with a mounting tab and holes at the top for attaching to the base.</p>
+
+<img src="backlegcad.png" alt="SolidWorks model of the back leg, a long angled bar with a flat crosspiece and two holes at the top">
+<p><strong>Back leg:</strong> a long bar with a flat crosspiece at the top, with a hole at each end for attaching to the base.</p>
+
+<h3>Design Decisions</h3>
+<p><strong>1. How the dispenser connects to the jar.</strong></p>
+<ul>
+<li><em>Alternative A:</em> a friction-fit or snap-on collar. Simpler to print, but it can pop off when the jar is heavy and full.</li>
+<li><em>Alternative B:</em> a strap or bracket around the jar. It needs extra parts.</li>
+<li><em>Chosen:</em> an internal thread that matches the jar neck, in place of the lid. The jar already has threads, and a screw-on connection holds the full weight of the jar. I first made the outside diameter 92 mm to match the existing lid. That left a wall of only about 1.5 mm behind the thread root, which is thin for a part that carries the weight of a full jar, so I increased it to 95 mm with a 3 mm wall.</li>
+</ul>
+<p><strong>2. How to stop the almonds from jamming.</strong></p>
+<ul>
+<li><em>Alternative:</em> a de-bridging baffle inside the hopper to break arches. This was in my original plan, but I did not add it to the final design.</li>
+<li><em>Chosen:</em> shaping the funnel, inside and outside, so it blends from the round connector into the rectangular box with no flat ledges. This keeps the design simple, with no extra part to print and fit inside the funnel.</li>
+</ul>
+<p><strong>3. How the outlet opens and closes.</strong></p>
+<ul>
+<li><em>Alternative A:</em> a gate that the user pushes by hand with no spring. A forgotten gate stays open.</li>
+<li><em>Chosen:</em> a paddle that works as a lever to open the gate, with a spring return, so the outlet always closes when the paddle is released. Existing gravity dispensers use the same lever-and-spring approach [5][6][7][8].</li>
+</ul>
+<p><strong>4. The paddle pad.</strong> I redesigned the paddle with a wider, grooved pad so it is easier to press with one finger.</p>
+<p><strong>5. Legs.</strong> I used a front leg and a back leg to raise the dispenser, so a plate or a hand fits under the outlet. The front leg is about 62 mm long and the back leg about 72 mm long. [VERIFY: confirm the leg lengths and why they differ.]</p>
+
+<h3>Sizing the Gate Travel</h3>
+<p>The funnel and gate box have to leave enough room for the gate to swing open. I worked out the room needed with basic trigonometry, by treating the gate as a straight bar that turns about its pivot. The gate is 70 mm long and the pivot sits one third of the way along it, 23.33 mm from the short end, which leaves 46.67 mm (two thirds) on the long side. I wanted it to be able to rotate 70 degrees. I put the pivot one third of the way along for two reasons. A short side means the short end travels less inside the funnel, which makes it easier to route the almonds to the exit. It also means the paddle needs less motion to turn the gate, so I can move the gate faster.</p>
+<img src="gatetrigonometry.jpg" alt="Handwritten notebook calculations: a bar split into 46.67 and 23.3 segments about a pivot, a 70 degree angle, 23.3 times sin 70 equals 21.926 mm, 180 minus 70 minus 90 equals 20 degrees, and 46.67 times cos 20 equals 43.85 mm">
+<p><strong>Calculation by hand:</strong> two right triangles, one for each side of the pivot.</p>
+<div class="table-wrap">
+<table>
+<tr><th>Side of the pivot</th><th>Arm length</th><th>Calculation</th><th>Vertical reach</th></tr>
+<tr><td>Short side</td><td>23.33 mm</td><td>23.33 &times; sin(70&deg;)</td><td>21.93 mm</td></tr>
+<tr><td>Long side</td><td>46.67 mm</td><td>46.67 &times; cos(20&deg;), where 20&deg; = 180&deg; &minus; 70&deg; &minus; 90&deg;</td><td>43.85 mm</td></tr>
+</table>
+</div>
+<p>When the gate has turned 70 degrees, the short end moves up into the funnel by about 21.9 mm, and the long end moves down by about 43.9 mm. The funnel and gate box need at least that much room on each side so the gate does not hit a wall. I used loose dimensions in the gate box, so it has extra room beyond these numbers.</p>
+
+<h3>Engineered Allowances for the Interactive Parts</h3>
+<p>The course notes give starting clearances of about 0.2 to 0.3 mm per side for a moving pin in a hole, and they say to confirm them with test prints [9]. The thread has to fit a jar I could not change, so I measured the jar neck and designed the connector around it.</p>
+<p>The dimensions of the other interfaces are deliberately loose. The only thing the dispenser has to do is keep almonds from getting through where they should not, and almonds are large. Their thickness is about 9.6 to 9.9 mm on average for the varieties in the USDA report [2]. Any gap in the design only has to be smaller than that, so the pivots and the gate can have generous clearance.</p>
+<div class="table-wrap">
+<table>
+<tr><th>Interface</th><th>Jar measurement or designed value</th><th>How I arrived at it</th><th>Result</th></tr>
+<tr><td>Connector thread on the jar thread</td><td>Jar neck 85.57 mm without the thread and 88.55 mm with it. Pitch 5.44 mm, ridge width 3.00 mm, single start, about 365 degrees. Clearance: 0.2 mm.</td><td>I measured the jar with calipers and modeled the internal thread to match, with 0.2 mm of clearance, the low end of the range in the course notes [9].</td><td>The connector screws onto the jar neck. [VERIFY]</td></tr>
+<tr><td>Paddle and gate pivots on their screws</td><td>0.2 mm</td><td>The low end of the 0.2 to 0.3 mm per side range in the course notes [9]. A gap this small is far too small for an almond to pass through.</td><td>The paddle and gate move freely. [VERIFY]</td></tr>
+<tr><td>Outlet opening vs. almond size</td><td>The gate is 38 mm wide, much wider than the largest almond width. [VERIFY: outlet opening size]</td><td>Larger than the biggest almond, 25.13 by 14.29 by 9.93 mm for the Independence variety [2].</td><td>Almonds pass through the outlet without jamming. [VERIFY]</td></tr>
+</table>
+</div>
+
+<h2>3D Print</h2>
+
+<h3>Video of the Print</h3>
+<video controls preload="metadata" style="max-width: 360px; margin: 1rem auto;">
+  <source src="PrintProcess.mp4" type="video/mp4">
+</video>
+<p>The Bambu Lab A1 printing the base in translucent PETG. The round connector sits on the build plate, and tree supports grow up inside it.</p>
+
+<h3>Print Summary</h3>
+<p>I printed the base in translucent PETG and the other parts in Overture Matte PLA, all on my own Bambu Lab A1 with a 0.4 mm nozzle and a textured PEI plate. I sliced in Bambu Studio, with the 0.20mm Standard @BBL A1 process.</p>
+<img src="basesettings1.png" alt="Bambu Studio panel showing PETG Translucent as the filament and the 0.20mm Standard @BBL A1 process, with layer height 0.2 mm and line widths">
+<p>Base print: filament and process, with layer height and line width.</p>
+<img src="subpartssettings1.png" alt="Bambu Studio panel showing Overture Matte PLA as the filament and the 0.20mm Standard @BBL A1 process, with layer height 0.2 mm and line widths">
+<p>Other parts: filament and process. The other settings panels for these parts match the base print.</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>#</th><th>Question</th><th>Answer</th></tr>
+<tr><td>1</td><td>What number machine did you use?</td><td>I used my own printer, a Bambu Lab A1, so there is no lab machine number.</td></tr>
+<tr><td>2</td><td>Did you use a raft? If so, what were the settings?</td><td>No raft. The base printed directly on the textured PEI plate.</td></tr>
+<tr><td>3</td><td>What was the wall thickness?</td><td>2 wall loops: 0.42 mm for the outer wall and 0.45 mm for the inner wall, so about 0.87 mm of printed wall. Top shell 5 layers (1 mm) and bottom shell 3 layers. In SolidWorks the connector wall is 3 mm thick, so the rest of that wall is filled by the 15 percent infill.</td></tr>
+<tr><td>4</td><td>What infill did you use and why?</td><td>15 percent, grid pattern. This is the A1 profile default. The walls carry most of the load in a thin-walled part, so more infill would add print time without much extra strength.</td></tr>
+<tr><td>6</td><td>What did you use to remove the supports?</td><td>I pulled the supports off by hand and cleaned up the surfaces with a hobby knife. [VERIFY: the tools you used.]</td></tr>
+<tr><td>7</td><td>How many layers are used in the print?</td><td>About 499 layers: the base is 99.78 mm tall and the layer height is 0.2 mm.</td></tr>
+<tr><td>8</td><td>What is the layer thickness?</td><td>0.2 mm, with an initial layer of 0.2 mm.</td></tr>
+<tr><td>9</td><td>What is the build volume of your print?</td><td>About 95 by 95 by 100 mm for the base. From its STL file, the base measures 95.00 by 94.84 by 99.78 mm, and the round connector, 95 mm across, is the widest part.</td></tr>
+</table>
+</div>
+
+<h3>5. Supports</h3>
+<p>I used supports on the base. I turned them on, because the A1 profile has them off by default. I used <strong>tree (auto)</strong> supports with a <strong>30 degree</strong> threshold angle, so any surface that overhangs more than that gets support. I left "on build plate only" unchecked, so supports can also grow from the part itself, and I turned on "remove small overhangs." The supports sit 0.3 mm below the part they hold up (top Z distance), 0.2 mm above the bed or part under them (bottom Z distance), and 0.5 mm away from the sides of the part. Two interface layers with 0.5 mm line spacing form a denser skin under the part. That gives a smoother surface and makes the supports easier to remove. The base pattern spacing is 2.5 mm. The supports use 3.95 m of filament (11.88 g) on top of 19.13 m (57.51 g) for the model itself. I needed them because the base prints with the round connector on the plate, so the funnel, the gate box, and the underside of the internal thread overhang. The video shows the tree supports growing up inside the round connector.</p>
+<img src="basesettings5.png" alt="Bambu Studio support settings with support enabled, type tree (auto), threshold angle 30 degrees">
+<img src="basesettings6.png" alt="Bambu Studio advanced support settings with top Z distance 0.3 mm, bottom Z distance 0.2 mm, support/object xy distance 0.5 mm, and 2 top interface layers">
+
+<h3>10. Surface Finish of the Supports</h3>
+<p>Where the tree supports touched the part, the surface is rougher and more matte than the surfaces printed against the plate or the walls, with small marks where the supports made contact. The two interface layers help the supports come off more cleanly. Inside the round connector, the supports leave the underside of the thread ridges rougher, which I cleaned up so the thread turns smoothly on the jar. [VERIFY: describe what the surfaces actually look and feel like.]</p>
+
+<h3>11. Reasons for the Layout</h3>
+<p>I printed the base on its own plate, in translucent PETG, because it is the largest part and the one that needs supports. The paddle, gate, and legs went on a separate plate in matte PLA, laid out flat with space between them. [VERIFY: confirm how the parts were arranged on the plates.]</p>
+
+<h3>12. Reasons for the Build Orientation</h3>
+<p>I printed the base with the round connector on the build plate and the gate box above it, as the video shows. That puts the large, flat ring of the connector on the plate, so the first layer has a lot of contact and the connector, which has to be round to fit the jar thread, prints with circular layers. The funnel and gate box overhang from there, which is why the base needs supports. The paddle, gate, and legs are simple parts, so I printed them lying flat. [VERIFY]</p>
+
+<h3>13. Slicer Settings and Reasons</h3>
+<p>The settings were the same for the base and the other parts, apart from the filament.</p>
+<img src="basesettings2.png" alt="Bambu Studio wall and shell settings with 2 wall loops, 5 top shell layers, and 3 bottom shell layers">
+<p><strong>Walls and shells:</strong> 2 wall loops, 5 top shell layers (1 mm), and 3 bottom shell layers.</p>
+<img src="basesettings3.png" alt="Bambu Studio sparse infill settings with 15 percent density and grid pattern">
+<p><strong>Infill:</strong> 15 percent, grid pattern.</p>
+<img src="basesettings4.png" alt="Bambu Studio speed settings for the initial layer and other layers">
+<p><strong>Speed:</strong> initial layer 50 mm/s and initial layer infill 105 mm/s. Outer wall 200 mm/s, inner wall 300 mm/s, small perimeters 50 percent, sparse infill 270 mm/s, internal solid infill 250 mm/s, vertical shell speed 80 percent, and top surface 200 mm/s. "Slow down for overhangs" is on.</p>
+<p><strong>Layer height and line width:</strong> layer height and initial layer height are both 0.2 mm. Line widths are 0.42 mm for the default, outer wall, top surface, internal solid infill, and support, 0.45 mm for the inner wall and sparse infill, and 0.5 mm for the initial layer.</p>
+<p><strong>Supports:</strong> turned on, tree (auto), as described in section 5.</p>
+<p>I changed only the support settings from the A1 profile defaults, which the screenshots highlight in orange. I turned supports on and chose tree supports, because they use less filament than normal supports and are easier to remove from a part with many overhangs. The 30 degree threshold means surfaces steeper than that get support. The top Z distance (0.3 mm) and the support/object XY distance (0.5 mm) leave a small gap between the supports and the part, so the supports break away without damaging it, and the two interface layers give the supported surfaces a smoother finish. [VERIFY: confirm which settings you changed and why.]</p>
+
+<h3>14. Slice Information</h3>
+<p>I sliced in Bambu Studio because I print on a Bambu Lab A1. The slicing result for the base is below.</p>
+<img src="Baseinslicer.png" alt="Bambu Studio slicing result for the base showing the model on a textured PEI plate, 19.13 m and 57.51 g of filament for the model, 3.95 m and 11.88 g for supports, 23.08 m and 69.39 g in total, and an estimated print time of 4 hours 11 minutes">
+<div class="table-wrap">
+<table>
+<tr><th>Item</th><th>Model</th><th>Support</th><th>Total</th></tr>
+<tr><td>Filament length</td><td>19.13 m</td><td>3.95 m</td><td>23.08 m</td></tr>
+<tr><td>Filament weight</td><td>57.51 g</td><td>11.88 g</td><td>69.39 g</td></tr>
+</table>
+</div>
+<p>Model printing time was 3 hours 51 minutes, and the total time was 4 hours 11 minutes, which includes 6 minutes 24 seconds of preparation and a 14 minute timelapse allowance.</p>
+
+<h2>Lessons Learned</h2>
+<p><strong>Time:</strong> the assignment took about 13 hours from start to finish. About 2 hours went to brainstorming, about 3.5 hours to CAD, about 4 hours to research, and about 2.5 hours to other work such as slicing and formatting this portfolio page. The remaining hour went to print setup, post-processing, and assembly. [VERIFY: the parts above add up to 12 hours.] The base print itself took about 4 hours 11 minutes by the slicer's estimate.</p>
+<p><strong>Resources:</strong> Bambu Lab A1 3D printer, Bambu Studio, SolidWorks, translucent PETG, Overture Matte PLA, a spring, thread inserts, and M3 screws. For research I used the USDA almond report, patents for similar dispensers, and the Toptal article.</p>
+<p><strong>Changes to the plan:</strong> I redesigned the paddle with a wider, grooved pad after the first version, and I shaped the funnel so there are no flat ledges for the almonds to catch on.</p>
+<p><strong>Mistakes:</strong></p>
+<ul>
+<li><strong>Connector wall too thin.</strong> I first made the connector 92 mm in outside diameter to match the original lid, without checking how much wall would be left once the thread was cut. The thread root left only about 1.5 mm of wall, which is thin for a part that carries a full jar. The root cause was copying the lid's diameter before checking the wall. I fixed it by increasing the outside diameter to 95 mm with a 3 mm wall.</li>
+<li><strong>Swapped part names.</strong> I named some CAD screenshots and files before the parts had settled names, so the paddle (the lever I press) and the gate (the door) ended up swapped between file names and captions. I corrected the captions on this page. Next time I will name each part when I create it.</li>
+</ul>
+<p>[VERIFY: add any other mistakes, such as reprints or supports that were hard to remove.]</p>
+<p><strong>What I would change:</strong> I would print a short thread test coupon before the full base, so I could check the thread clearance before spending about 4 hours on the print. I would also add an adjustable stop to limit how far the gate opens, like the patents I found [5][6], so the amount of almonds per press could be tuned.</p>
+
+<h2>Download</h2>
+<p>SolidWorks files for each part. Put all of the files in the same folder before opening them.</p>
+<ul>
+<li>Base (funnel and gate box): <a href="gatebox.SLDPRT" download>gatebox.SLDPRT</a></li>
+<li>Gate: <a href="gate.SLDPRT" download>gate.SLDPRT</a></li>
+<li>Paddle: <a href="paddle.SLDPRT" download>paddle.SLDPRT</a></li>
+<li>Front leg: <a href="FrontLeg.SLDPRT" download>FrontLeg.SLDPRT</a></li>
+<li>Back leg: <a href="backleg.SLDPRT" download>backleg.SLDPRT</a></li>
+</ul>
+
+<h2>Sources</h2>
+<ol>
+<li>Toptal. <em>Great Questions Lead to Great Design: A Guide to the Design-thinking Process</em>. <a href="https://www.toptal.com/designers/product-design/design-thinking-great-questions">https://www.toptal.com/designers/product-design/design-thinking-great-questions</a></li>
+<li>USDA National Agricultural Statistics Service, California Field Office. <em>2025 California Almond Objective Measurement Report</em> (released July 10, 2025), Table 2. <a href="https://www.nass.usda.gov/Statistics_by_State/California/Publications/Specialty_and_Other_Releases/Almond/Objective-Measurement/202507almondOM.pdf">Report (PDF)</a></li>
+<li>Powder Process. <em>Arching and Bridging</em>. <a href="https://powderprocess.net/Powder_Flow/Arching_Bridging.html">https://powderprocess.net/Powder_Flow/Arching_Bridging.html</a></li>
+<li>Monash Health. <em>Sharing food is a transmission risk for infectious diseases</em> (September 12, 2022). <a href="https://coronavirus.monashhealth.org/latest-news/2022/09/12/sharing-food-is-a-transmission-risk-for-infectious-diseases/">https://coronavirus.monashhealth.org/latest-news/2022/09/12/sharing-food-is-a-transmission-risk-for-infectious-diseases/</a></li>
+<li>Elmore, J. N. <em>Bulk food dispensing apparatus</em>. US Patent 6,241,123 B1, granted June 5, 2001. <a href="https://patents.google.com/patent/US6241123">Google Patents</a></li>
+<li>Baluk, R., Chu, F., Murray, J., and Mullinix, G. <em>Retail bulk product dispenser</em>. US Patent 5,730,333, granted March 24, 1998. <a href="https://patents.google.com/patent/US5730333">Google Patents</a></li>
+<li>Gold, A., Magdars, J. T., and Siegal, B. L. <em>Spring-biased dispenser mechanism for manually operated animal food dispensing machine</em>. US Patent 4,770,125, granted September 13, 1988. <a href="https://patents.google.com/patent/US4770125">Google Patents</a></li>
+<li>Eso, S. C., Jr. <em>Nut dispenser device</em>. US Patent 10,219,635, granted March 5, 2019. <a href="https://patents.justia.com/patent/10219635">Justia Patents</a></li>
+<li>MEGR 2156 course notes, section 2.3 Clearances and Tolerances (starting clearances of 0.2 to 0.3 mm per side for a moving pin in a hole, and to verify them with a test coupon).</li>
+</ol>
+<p><small>AI was used to help find sources 2 to 8 and to draft the text of this page from my notes, measurements, and CAD and slicer screenshots. I reviewed and edited the draft.</small></p>
+<p>Tools: Bambu Lab A1 3D printer, Bambu Studio slicer, SolidWorks, translucent PETG, Overture Matte PLA, a spring, thread inserts, and M3 screws.</p>
