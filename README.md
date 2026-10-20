@@ -54,7 +54,7 @@ MASACOVA-portfolio/
 │       ├── L07/
 │       │   └── index.html      <- L7: [Topic]
 │       ├── L08/
-│       │   └── index.html      <- L8: Gears
+│       │   └── index.html      <- L8: Useful Print (Almond Dispenser)
 │       ├── L09/
 │       │   └── index.html      <- L9: Pulleys
 │       ├── L10/
