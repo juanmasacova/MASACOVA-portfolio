@@ -203,6 +203,12 @@ title: "L8 – Useful Print: Almond Dispenser"
 
 <h2>3D Print</h2>
 
+<h3>Video of the Print</h3>
+<video controls preload="metadata" style="max-width: 360px; margin: 1rem auto;">
+  <source src="PrintProcess.mp4" type="video/mp4">
+</video>
+<p>The Bambu Lab A1 printing the base in translucent PETG. The round connector sits on the build plate, and tree supports grow up inside it.</p>
+
 <h3>Print Summary</h3>
 <p>I printed the base in translucent PETG and the other parts in Overture Matte PLA, all on my own Bambu Lab A1 with a 0.4 mm nozzle and a textured PEI plate. I sliced in Bambu Studio, with the 0.20mm Standard @BBL A1 process.</p>
 <img src="basesettings1.png" alt="Bambu Studio panel showing PETG Translucent as the filament and the 0.20mm Standard @BBL A1 process, with layer height 0.2 mm and line widths">
@@ -225,7 +231,7 @@ title: "L8 – Useful Print: Almond Dispenser"
 </div>
 
 <h3>5. Supports</h3>
-<p>I used supports on the base. I turned them on, because the A1 profile has them off by default. I used <strong>tree (auto)</strong> supports with a <strong>30 degree</strong> threshold angle, so any surface that overhangs more than that gets support. I left "on build plate only" unchecked, so supports can also grow from the part itself, and I turned on "remove small overhangs." The supports sit 0.3 mm below the part they hold up (top Z distance), 0.2 mm above the bed or part under them (bottom Z distance), and 0.5 mm away from the sides of the part. Two interface layers with 0.5 mm line spacing form a denser skin under the part. That gives a smoother surface and makes the supports easier to remove. The base pattern spacing is 2.5 mm. The supports use 3.95 m of filament (11.88 g) on top of 19.13 m (57.51 g) for the model itself. I needed them because the base has a funnel and a gate box that overhang the round connector. [CHECK: confirm this reason.]</p>
+<p>I used supports on the base. I turned them on, because the A1 profile has them off by default. I used <strong>tree (auto)</strong> supports with a <strong>30 degree</strong> threshold angle, so any surface that overhangs more than that gets support. I left "on build plate only" unchecked, so supports can also grow from the part itself, and I turned on "remove small overhangs." The supports sit 0.3 mm below the part they hold up (top Z distance), 0.2 mm above the bed or part under them (bottom Z distance), and 0.5 mm away from the sides of the part. Two interface layers with 0.5 mm line spacing form a denser skin under the part. That gives a smoother surface and makes the supports easier to remove. The base pattern spacing is 2.5 mm. The supports use 3.95 m of filament (11.88 g) on top of 19.13 m (57.51 g) for the model itself. I needed them because the base prints with the round connector on the plate, so the funnel, the gate box, and the underside of the internal thread overhang. The video shows the tree supports growing up inside the round connector. [CHECK: confirm this reason.]</p>
 <img src="basesettings5.png" alt="Bambu Studio support settings with support enabled, type tree (auto), threshold angle 30 degrees">
 <img src="basesettings6.png" alt="Bambu Studio advanced support settings with top Z distance 0.3 mm, bottom Z distance 0.2 mm, support/object xy distance 0.5 mm, and 2 top interface layers">
 
@@ -236,7 +242,7 @@ title: "L8 – Useful Print: Almond Dispenser"
 <p>[TODO: how the parts are arranged on the plate and why. The base is printed on its own, in translucent PETG. State how the paddle, gate, and legs were arranged.]</p>
 
 <h3>12. Reasons for the Build Orientation</h3>
-<p>I printed the base with the round connector on the build plate and the gate box above it. [CHECK: confirm this orientation and these reasons.] That puts the large, flat ring of the connector on the plate, so the first layer has a lot of contact and the connector, which has to be round to fit the jar thread, prints with circular layers. The funnel and gate box overhang from there, which is why the base needs supports.</p>
+<p>I printed the base with the round connector on the build plate and the gate box above it, as the video shows. [CHECK: confirm these reasons.] That puts the large, flat ring of the connector on the plate, so the first layer has a lot of contact and the connector, which has to be round to fit the jar thread, prints with circular layers. The funnel and gate box overhang from there, which is why the base needs supports.</p>
 
 <h3>13. Slicer Settings and Reasons</h3>
 <p>The settings were the same for the base and the other parts, apart from the filament.</p>
