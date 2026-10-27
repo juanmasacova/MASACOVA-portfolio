@@ -121,7 +121,7 @@ title: "L9 – Laser Cutting: Parametric Lamp Diffuser"
 </div>
 <p>By the time we cut the final parts we were using a different wood, which measured between 2.70 and 2.80 mm. I set PlateThickness to 2.75 mm, the middle of that range. Because the model is parametric, the change was one number.</p>
 
-<p><strong>Kerf.</strong> I measured the kerf with a square coupon, D &times; D, cut on the laser cutter. I measured the square with calipers in the X and Y directions and calculated the kerf as D minus the measured width, three times in each direction.</p>
+<p><strong>Kerf.</strong> I measured the kerf with a square coupon, D &times; D, cut on the laser cutter. I chose D = 30 mm. I measured the square with calipers in the X and Y directions and calculated the kerf as D minus the measured width, three times in each direction.</p>
 <div class="table-wrap">
 <table>
 <tr><th>Kerf measurement #</th><th>1</th><th>2</th><th>3</th><th>Mean</th></tr>
@@ -181,7 +181,17 @@ title: "L9 – Laser Cutting: Parametric Lamp Diffuser"
 <p>The laser cutting the parts for the shade on the LA 3, in one continuous clip that is sped up.</p>
 
 <h3>Kerf Coupon and Fit Test</h3>
-<p>Before cutting the final kit we ran the two tests that the lab requires. The kerf coupon is a D &times; D square. We measured its width in X and Y, and the results are the kerf table in the Design section: 0.11 mm in X and 0.19 mm in Y. The fit test was a small parameter study in the style of Taguchi. It checks the press fit between a tab and its slot, built from the measured thickness and kerf. When we cut the parts we saw how they fit, and we used the parametric equations to change the slot values and get a better fitting part. The values before and after the change are in the Parameter Table.</p>
+<p><strong>Kerf coupon (Step 2).</strong> The coupon is a 30 &times; 30 mm square (D = 30 mm). Measured with calipers, the kerf (D minus the measured width) was 0.11 mm in X and 0.19 mm in Y, so the square came out about 29.89 mm wide in X and 29.81 mm wide in Y. The full measurements are in the kerf table in the Design section.</p>
+<p><strong>Fit coupon (Step 3).</strong> The fit test was a small parameter study in the style of Taguchi. The coupon has one tab and 3 slots drawn at 3 different widths, built from the measured thickness and kerf. The laser adds the kerf to every slot, so each slot cuts out about 0.15 mm wider than it is drawn.</p>
+<div class="table-wrap">
+<table>
+<tr><th>Slot</th><th>Drawn width</th><th>Expected cut width (drawn + 0.15 mm kerf)</th><th>Result</th></tr>
+<tr><td>Tight</td><td>2.5 mm</td><td>about 2.65 mm</td><td>Tight fit</td></tr>
+<tr><td>Target</td><td>2.6 mm (PlateThickness &minus; Kerf)</td><td>about 2.75 mm, the thickness of the plate</td><td>Rating not recorded</td></tr>
+<tr><td>Loose</td><td>2.7 mm</td><td>about 2.85 mm</td><td>Rating not recorded</td></tr>
+</table>
+</div>
+<p><strong>Decision (Step 4).</strong> When we cut the parts we saw how they fit, and we used the parametric equations to change the slot values and get a better fitting part. The values before and after the change are in the Parameter Table.</p>
 
 <h3>Layout and Nesting</h3>
 <img src="CutPathSheet.png" alt="Cut path drawing on the 12 by 12 inch sheet: two sets of nested circles on the diagonal, each with four small slots in the inner ring, and four curved column outlines arranged in the corners around the circles">
