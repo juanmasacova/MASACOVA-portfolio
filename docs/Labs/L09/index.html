@@ -76,33 +76,33 @@ title: "L9 – Laser Cutting: Parametric Lamp Diffuser"
 <li><strong>Joints.</strong> The column tabs press into slots in the small rings, which is the press fit the lab requires, and the big rings sit in notches on the columns. I used the same kinds of slot throughout so that one measured value, the kerf, controls every joint.</li>
 <li><strong>Control factors (the things we chose).</strong> The slot width is the material thickness plus the clearance, and the slot length is a fixed 3/8 in (9.525 mm) adjusted for the kerf. The rings are sized so that two sets fit on one 12 &times; 12 in sheet, and the inner ring sits inside the opening of the outer ring so that the circles share material.</li>
 <li><strong>Noise factors (the things we cannot fully control).</strong> Thickness variation in the wood, kerf variation, focus, and where a part sits on the laser bed. The focus error is absorbed by the kerf and the clearance, and it is hard to put a number on because it changes with the thickness of the wood and the flatness of the bed.</li>
-<li><strong>Tight fits first, then adjusted.</strong> The wood is fairly compliant, so the first cut used a minimal clearance of 0.005 mm, only covering the variation in the stock thickness (about &plusmn;0.2 mm on a 3 mm sheet). After the first cut we saw how the parts actually fit and changed the slot values through the equations to get a better fitting part.</li>
+<li><strong>Tight fit, scaled down after the first cut.</strong> The wood is fairly compliant, so we aimed for a tight fit with a minimal clearance of 0.005 mm, which only covers the variation in the stock thickness (about &plusmn;0.2 mm on a 3 mm sheet). Our first cut was drawn with larger slots and the fit was too big, so we scaled the slots down through the equations.</li>
 </ul>
 
 <h3>Parameter Table</h3>
 <div class="table-wrap">
 <table>
-<tr><th>Variable name</th><th>First cut</th><th>Final (cut files)</th><th>Units</th><th>Source (measured or chosen)</th><th>What it controls</th></tr>
-<tr><td>PlateThickness</td><td>2.75</td><td>2.75</td><td>mm</td><td>Measured (Step 1)</td><td>Extrusion depth of every wood part, and the base for the width of every slot and notch</td></tr>
-<tr><td>Kerf</td><td>0.15</td><td>0.15</td><td>mm</td><td>Measured (Step 2): mean of X 0.11 mm and Y 0.19 mm</td><td>How much narrower the slots are drawn than the plate</td></tr>
-<tr><td>Clearance</td><td>0.005</td><td>0.25</td><td>mm</td><td>Chosen (Step 4). The first cut used 0.005 mm. The final value is implied by the ring slot width in the cut file: 2.85 = 2.75 + 0.25 &minus; 0.15.</td><td>Extra room added to the slots on top of the kerf allowance</td></tr>
-<tr><td>Ring slot width (SlotH in the ring file)</td><td>2.605</td><td>2.85</td><td>mm</td><td>Calculated: PlateThickness + clearance &minus; Kerf</td><td>Narrow side of the slots the column tabs press into</td></tr>
-<tr><td>Ring slot length (SlotW in the ring file)</td><td>9.38</td><td>9.37</td><td>mm</td><td>Calculated: w &minus; Kerf + clearance, with w = 3/8 in (9.525 mm)</td><td>Long side of the slots the column tabs press into</td></tr>
-<tr><td>Column notch width (SlotW in the column file)</td><td>2.60</td><td>3.50</td><td>mm</td><td>Calculated for the first cut: PlateThickness &minus; Kerf. Opened to 3.50 mm after the fit check.</td><td>Width of the notches that hold the big rings</td></tr>
+<tr><th>Variable name</th><th>First cut (fit too big)</th><th>Final</th><th>Units</th><th>Source (measured or chosen)</th><th>What it controls</th></tr>
+<tr><td>PlateThickness</td><td>&mdash;</td><td>2.75</td><td>mm</td><td>Measured (Step 1)</td><td>Extrusion depth of every wood part, and the base for the width of every slot and notch</td></tr>
+<tr><td>Kerf</td><td>&mdash;</td><td>0.15</td><td>mm</td><td>Measured (Step 2): mean of X 0.11 mm and Y 0.19 mm</td><td>How much narrower the slots are drawn than the plate</td></tr>
+<tr><td>Clearance</td><td>&mdash;</td><td>0.005</td><td>mm</td><td>Chosen (Step 4)</td><td>Extra room added to the slots on top of the kerf allowance</td></tr>
+<tr><td>Ring slot width (SlotH in the ring file)</td><td>2.85</td><td>2.605</td><td>mm</td><td>Calculated: PlateThickness + clearance &minus; Kerf</td><td>Narrow side of the slots the column tabs press into</td></tr>
+<tr><td>Ring slot length (SlotW in the ring file)</td><td>9.37</td><td>9.38</td><td>mm</td><td>Calculated: w &minus; Kerf + clearance, with w = 3/8 in (9.525 mm)</td><td>Long side of the slots the column tabs press into</td></tr>
+<tr><td>Column notch width (SlotW in the column file)</td><td>3.50</td><td>2.60</td><td>mm</td><td>Calculated: PlateThickness &minus; Kerf</td><td>Width of the notches that hold the big rings</td></tr>
 <tr><td>Big ring outer and inner diameter</td><td colspan="2">177.8 and 127.0</td><td>mm</td><td>Chosen (7.0 in and 5.0 in)</td><td>Size of the two wide middle rings</td></tr>
 <tr><td>Small ring outer and inner diameter</td><td colspan="2">127.0 and 76.2</td><td>mm</td><td>Chosen (5.0 in and 3.0 in)</td><td>Size of the top and bottom rings, which nest in the big ring's opening</td></tr>
 </table>
 </div>
-<p>The first-cut values come from the equations shown in the next section, and the final values are the dimensions in the DXF files we cut from. After the first cut we saw how the parts fit and changed the values through the equations, which is why the slots are larger in the final files.</p>
+<p>The first-cut slot values are the dimensions in the DXF files we cut from first. The fit was too big, so we scaled the slots down through the equations to the final values, which are the ones in the equations screenshots in the next section.</p>
 
 <h3>Proof That the Design Is Parametric</h3>
-<p>All of the slot dimensions come from the global variables below, so changing the thickness, the kerf, or the clearance regenerates every slot. These screenshots show the equations with the first-cut values. We changed the values through the same equations after the first cut.</p>
+<p>All of the slot dimensions come from the global variables below, so changing the thickness, the kerf, or the clearance regenerates every slot. These screenshots show the equations with the final values.</p>
 <img src="ParamtericEquationsTopAndBottom.png" alt="SolidWorks equations table for the ring file with w equal to 3/8 in, PlateThickness 2.75 mm, kerf 0.15 mm, clearance 0.005 mm, SlotW equal to w minus kerf plus clearance which is 0.37 in, and SlotH equal to PlateThickness plus clearance minus kerf which is 0.10 in">
 <p><strong>Global variables for the rings:</strong> the slot length, SlotW, and the slot width, SlotH, are equations of w, PlateThickness, kerf, and clearance.</p>
 <img src="ParamtericEquationsColumns.png" alt="SolidWorks equations table for the column file with PlateThickness 2.75 mm, Kerf 0.15 mm, clearance 0.005 mm, and SlotW equal to PlateThickness minus Kerf which is 2.60 mm">
 <p><strong>Global variables for the columns:</strong> the notch width is the plate thickness minus the kerf.</p>
 
-<p><strong>What changes when I change the thickness variable.</strong> The first sheet I measured had a mean thickness of 2.88 mm, and the final sheet is 2.75 mm. Setting the variable to each value updates the dimensions like this (calculated from the first-cut equations above, with a clearance of 0.005 mm):</p>
+<p><strong>What changes when I change the thickness variable.</strong> The first sheet I measured had a mean thickness of 2.88 mm, and the final sheet is 2.75 mm. Setting the variable to each value updates the dimensions like this (calculated from the equations above, with a clearance of 0.005 mm):</p>
 <div class="table-wrap">
 <table>
 <tr><th>PlateThickness</th><th>Column notch width (PlateThickness &minus; Kerf)</th><th>Ring slot width (PlateThickness + clearance &minus; Kerf)</th><th>Ring slot length</th></tr>
@@ -131,14 +131,14 @@ title: "L9 – Laser Cutting: Parametric Lamp Diffuser"
 </div>
 <p>The kerf in the Y direction is about 0.08 mm larger than in the X direction. I used the average of the two, 0.15 mm, as the kerf variable.</p>
 
-<p><strong>Slot and tab dimensions.</strong> The laser removes a strip of material, the kerf, along every path. A slot drawn at the plate thickness would therefore cut out wider than the plate, and the joint would be loose. So each slot is drawn narrower than the plate by the kerf, and the clearance is added on top. For the first cut I kept the clearance at 0.005 mm, because the wood is soft and compliant and a tight fit seats without cracking it. That gave a column notch of 2.60 mm (2.75 &minus; 0.15), a ring slot width of 2.605 mm (2.75 + 0.005 &minus; 0.15), and a ring slot length of 9.38 mm (3/8 in minus the kerf plus the clearance).</p>
-<p>After the first cut we saw how the parts fit, and we changed the values through the parametric equations to get a better fitting part. The slots in the final cut files are larger: the ring slot is 2.85 mm wide by 9.37 mm long, and the column notch is 3.50 mm wide. The 2.85 mm slot width is the 2.75 mm plate plus 0.25 mm of clearance, less the 0.15 mm kerf, so the final clearance is about 0.25 mm.</p>
+<p><strong>Slot and tab dimensions.</strong> The laser removes a strip of material, the kerf, along every path. A slot drawn at the plate thickness would therefore cut out wider than the plate, and the joint would be loose. So each slot is drawn narrower than the plate by the kerf, and the clearance is added on top. The final values are a column notch of 2.60 mm (2.75 &minus; 0.15), a ring slot width of 2.605 mm (2.75 + 0.005 &minus; 0.15), and a ring slot length of 9.38 mm (3/8 in minus the kerf plus the clearance). I kept the clearance at 0.005 mm because the wood is soft and compliant, so a tight fit seats without cracking it.</p>
+<p>Our first cut used larger slots: 2.85 mm wide by 9.37 mm long for the rings and a 3.50 mm notch in the columns. The fit was too big, so we scaled the slots down through the parametric equations. The fit coupon showed that the 2.6 mm slot, which is the plate thickness minus the kerf, gave the target fit.</p>
 
 <h3>Live Demo Answers</h3>
 <ul>
 <li><strong>What kerf did we measure, and how?</strong> 0.15 mm, the mean of X (0.11 mm) and Y (0.19 mm). We cut a D &times; D square coupon, measured it with calipers in both directions, and calculated the kerf as D minus the measured width.</li>
-<li><strong>What clearance did we choose, and why?</strong> We started at 0.005 mm, because the kerf already accounts for the material the laser removes and the wood is compliant. After the first cut we saw how the parts fit and opened the slots through the equations. The final ring slot is drawn at 2.85 mm, which is about 0.25 mm of clearance over the 2.75 mm plate after the kerf, and the final column notch is 3.50 mm.</li>
-<li><strong>One variable you can change, and what updates.</strong> PlateThickness. With the first-cut equations, changing it from 2.75 mm to 2.88 mm changes the column notch width from 2.60 mm to 2.73 mm and the ring slot width from 2.605 mm to 2.735 mm, and the extrusion depth of every part follows it.</li>
+<li><strong>What clearance did we choose, and why?</strong> 0.005 mm. The kerf already accounts for the material the laser removes, and the wood is compliant, so the clearance only covers the small variation in the stock thickness. Our first cut used larger slots (a 2.85 mm ring slot and a 3.50 mm column notch) and the fit was too big, so we scaled them down through the equations to 2.605 mm and 2.60 mm.</li>
+<li><strong>One variable you can change, and what updates.</strong> PlateThickness. Changing it from 2.75 mm to 2.88 mm changes the column notch width from 2.60 mm to 2.73 mm and the ring slot width from 2.605 mm to 2.735 mm, and the extrusion depth of every part follows it.</li>
 </ul>
 
 <h2>Manufacturing, including Process Research</h2>
@@ -186,7 +186,7 @@ title: "L9 – Laser Cutting: Parametric Lamp Diffuser"
 <p><strong>Fit coupon (Step 3).</strong> The fit test was a small parameter study in the style of Taguchi. We cut three fit coupons with 4 labeled slots each, built from the measured thickness and kerf. Two coupons cover slot widths of 2.5, 2.6, 2.7, and 2.8 mm, and a third covers 2.8, 2.9, 3.0, and 3.1 mm. The laser adds the kerf to every slot, so each slot cuts out about 0.15 mm wider than it is drawn.</p>
 <img class="img-portrait" src="FitCoupons.jpg" alt="Three laser cut fit coupons laid on a wooden table, each with four long rectangular slots labeled with their drawn width: 2.8, 2.7, 2.6, and 2.5 mm on the first two, and 3.1, 3, 2.9, and 2.8 mm on the third, with the small square kerf coupon to the right">
 <p><strong>Fit coupons and kerf coupon.</strong> The labels are the drawn slot widths. The small square on the right is the kerf coupon.</p>
-<p>The tight, target, and loose results in the table below are for the 2.5, 2.6, and 2.7 mm slots. The third coupon covers wider slots, and the final ring slot width of 2.85 mm falls in its range.</p>
+<p>The tight, target, and loose results in the table below are for the 2.5, 2.6, and 2.7 mm slots. The third coupon covers wider slots. The 2.85 mm ring slot of our first cut falls in its range, and that fit was too big.</p>
 <div class="table-wrap">
 <table>
 <tr><th>Slot</th><th>Drawn width</th><th>Expected cut width (drawn + 0.15 mm kerf)</th><th>Result</th></tr>
@@ -195,7 +195,7 @@ title: "L9 – Laser Cutting: Parametric Lamp Diffuser"
 <tr><td>Loose</td><td>2.7 mm</td><td>about 2.85 mm</td><td>Loose fit</td></tr>
 </table>
 </div>
-<p><strong>Decision (Step 4).</strong> When we cut the parts we saw how they fit, and we used the parametric equations to change the slot values and get a better fitting part. The values before and after the change are in the Parameter Table.</p>
+<p><strong>Decision (Step 4).</strong> The 2.6 mm slot gave the target fit. It is the plate thickness minus the kerf, so I used it as the final slot size, with a clearance of 0.005 mm. Our first cut had larger slots and the fit was too big, so we scaled the slots down through the parametric equations. The values before and after the change are in the Parameter Table.</p>
 
 <h3>Layout and Nesting</h3>
 <img src="CutPathSheet.png" alt="Cut path drawing on the 12 by 12 inch sheet: two sets of nested circles on the diagonal, each with four small slots in the inner ring, and four curved column outlines arranged in the corners around the circles">
@@ -212,7 +212,7 @@ title: "L9 – Laser Cutting: Parametric Lamp Diffuser"
 <p>Air assist and exhaust were both on for the whole cut. The air assist blows the smoke and debris out of the cut, and the exhaust removes the smoke from the machine.</p>
 
 <h3>Edge Quality</h3>
-<p>The wood was thin enough that we could not see any taper from the laser focus on the cut edges. The edges had some soot, but it was minimal.</p>
+<p>The wood was thin enough that we could not see any taper from the laser focus on the cut edges. The edges had some soot, but it was minimal. We did not do anything extra to the edges.</p>
 
 <h3>3D Printed Base</h3>
 <p>The base that holds the light source is 3D printed, so this page focuses on the shade. The slicing result for the printed base parts is below.</p>
@@ -228,7 +228,7 @@ title: "L9 – Laser Cutting: Parametric Lamp Diffuser"
 <tr><td>Thu&ndash;Fri, Oct 22&ndash;23, 2026</td><td>1.5 hours</td><td>Designing</td><td>Worked out the concept in Onshape and the hand sketch of the shade parameters: how the parts would be constrained and how everything fit on the sheet.</td><td>Four rings and curved uprights as a parametric design, driven by a small set of variables.</td></tr>
 <tr><td>Thu&ndash;Fri, Oct 22&ndash;23, 2026</td><td>3 hours</td><td>CAD</td><td>Built the test design in Onshape and the final parts in SolidWorks, and set up the global variables and equations for the slots.</td><td>Replaced the test uprights with the curved column. PlateThickness was set to 2.75 mm after the final wood measured 2.70 to 2.80 mm.</td></tr>
 <tr><td>Oct 22&ndash;26, 2026</td><td>30 minutes</td><td>DXF and CAD patterns</td><td>Made the DXF files and the cut layout for the sheet.</td><td>Nested each small ring inside a big ring and placed the two ring sets on the diagonal of the sheet.</td></tr>
-<tr><td>Mon, Oct 26, 2026</td><td>1.5 hours</td><td>Steps 1 to 5: testing and recutting</td><td>Measured the wood (2.88, 2.80, and 2.96 mm on the first sheet) and the kerf (0.11 mm in X and 0.19 mm in Y). Cut the parts with a clearance of 0.005 mm, checked how they fit, and recut. The final cut ran for 3 minutes 34 seconds on the LA 3 at 20% speed and 100% power.</td><td>Kerf of 0.15 mm on average. Opened the slots through the equations: ring slot to 2.85 mm and column notch to 3.50 mm.</td></tr>
+<tr><td>Mon, Oct 26, 2026</td><td>1.5 hours</td><td>Steps 1 to 5: testing and recutting</td><td>Measured the wood (2.88, 2.80, and 2.96 mm on the first sheet) and the kerf (0.11 mm in X and 0.19 mm in Y). The fit of the first cut was too big, so we cut fit coupons with slots from 2.5 to 3.1 mm and recut. The final cut ran for 3 minutes 34 seconds on the LA 3 at 20% speed and 100% power.</td><td>Kerf of 0.15 mm on average. Scaled the slots down through the equations: ring slot to 2.605 mm and column notch to 2.60 mm, with a clearance of 0.005 mm.</td></tr>
 <tr><td>Tue, Oct 27, 2026</td><td>3 hours</td><td>Step 6: portfolio page</td><td>Wrote this portfolio page.</td><td>&mdash;</td></tr>
 <tr><td colspan="2"><strong>Total: about 9.5 hours</strong></td><td colspan="3">From start to finish, which is roughly 10 hours.</td></tr>
 </table>
@@ -237,7 +237,7 @@ title: "L9 – Laser Cutting: Parametric Lamp Diffuser"
 <h3>Mistakes, Troubleshooting, and Changes</h3>
 <ul>
 <li><strong>The wood changed between the test and the final cut.</strong> I measured the first sheet at 2.88 mm, but the wood we used for the final parts measured between 2.70 and 2.80 mm. Since the slots are driven by PlateThickness, I could change one variable, set it to 2.75 mm, and let every slot regenerate.</li>
-<li><strong>The first slot sizes were too tight.</strong> The first cut used a clearance of only 0.005 mm. After we saw how the parts fit, we changed the values through the parametric equations: the ring slot went from 2.605 mm to 2.85 mm wide and the column notch from 2.60 mm to 3.50 mm. Because the slots are driven by variables, this was an edit to the values, not a redraw.</li>
+<li><strong>The first fit was too big.</strong> Our first cut used a 2.85 mm ring slot and a 3.50 mm column notch, and the fit was too big, so we scaled the slots down through the parametric equations to 2.605 mm and 2.60 mm. Because the slots are driven by variables, this was an edit to the values, not a redraw. The fit coupon photo in the Manufacturing section shows the slot widths we tested.</li>
 <li><strong>The kerf was not the same in both directions.</strong> The X and Y measurements differ by 0.08 mm. The test variable table carried a kerf of 0.004 in (0.10 mm), and the final model uses the measured average of 0.15 mm.</li>
 <li><strong>The test geometry was not the final geometry.</strong> The test uprights had a different, angular shape, and the final columns are curved with notches. The slot math carried over, but the final column shape was a new design.</li>
 </ul>
@@ -246,7 +246,8 @@ title: "L9 – Laser Cutting: Parametric Lamp Diffuser"
 <ul>
 <li><strong>Material:</strong> two full sheets of 3 mm (1/8 in) balsa wood. The cut layout is 12 &times; 12 in.</li>
 <li><strong>Tools:</strong> a CO2 laser cutter (LA 3), digital calipers, Onshape and SolidWorks for the CAD, and Bambu Studio for the base.</li>
-<li><strong>Consumables:</strong> filament for the 3D printed base.</li>
+<li><strong>Consumables:</strong> none besides the wood and the filament for the 3D printed base.</li>
+<li><strong>Assembly and cleanup:</strong> assembled by hand with the press fit, with no glue and no tools, and no cleanup supplies.</li>
 </ul>
 
 <h3>Reflection</h3>
