@@ -154,20 +154,21 @@ title: "L9 – Laser Cutting: Parametric Lamp Diffuser"
 </ul>
 
 <h3>Laser Process Record</h3>
+<p>The kerf coupon and the fit coupon were cut with the same settings as the final cut, so each value below applies to all three cuts.</p>
 <div class="table-wrap">
 <table>
-<tr><th>Setting</th><th>Final cut</th></tr>
-<tr><td>Laser cutter (name or number)</td><td>LA 3 (CO2)</td></tr>
-<tr><td>Material type</td><td>Balsa wood</td></tr>
-<tr><td>Nominal thickness</td><td>3 mm (1/8 in)</td></tr>
-<tr><td>Measured thickness (mean)</td><td>2.75 mm (the final sheet measured 2.70 to 2.80 mm)</td></tr>
-<tr><td>Speed</td><td>20%</td></tr>
-<tr><td>Power</td><td>100%</td></tr>
-<tr><td>Frequency or PPI (if applicable)</td><td>25%</td></tr>
-<tr><td>Number of passes</td><td>1</td></tr>
-<tr><td>Focus method and how you confirmed it</td><td>Standard focus, confirmed with the lab tech. Auto focus was off.</td></tr>
-<tr><td>Air assist on? Exhaust on?</td><td>Yes and yes</td></tr>
-<tr><td>How you set origin and alignment</td><td>Used the upper left corner of both the sketch and the material for alignment</td></tr>
+<tr><th>Setting</th><th>Kerf coupon</th><th>Fit coupon</th><th>Final cut</th></tr>
+<tr><td>Laser cutter (name or number)</td><td colspan="3">LA 3 (CO2)</td></tr>
+<tr><td>Material type</td><td colspan="3">Balsa wood</td></tr>
+<tr><td>Nominal thickness</td><td colspan="3">3 mm (1/8 in)</td></tr>
+<tr><td>Measured thickness (mean)</td><td colspan="3">Final sheet: 2.75 mm (measured 2.70 to 2.80 mm). The first sheet measured 2.88 mm in Step 1.</td></tr>
+<tr><td>Speed</td><td colspan="3">20%</td></tr>
+<tr><td>Power</td><td colspan="3">100%</td></tr>
+<tr><td>Frequency or PPI (if applicable)</td><td colspan="3">25%</td></tr>
+<tr><td>Number of passes</td><td colspan="3">1</td></tr>
+<tr><td>Focus method and how you confirmed it</td><td colspan="3">Standard focus, confirmed with the lab tech. Auto focus was off.</td></tr>
+<tr><td>Air assist on? Exhaust on?</td><td colspan="3">Yes and yes</td></tr>
+<tr><td>How you set origin and alignment</td><td colspan="3">Used the upper left corner of both the sketch and the material for alignment</td></tr>
 </table>
 </div>
 
@@ -187,8 +188,8 @@ title: "L9 – Laser Cutting: Parametric Lamp Diffuser"
 <table>
 <tr><th>Slot</th><th>Drawn width</th><th>Expected cut width (drawn + 0.15 mm kerf)</th><th>Result</th></tr>
 <tr><td>Tight</td><td>2.5 mm</td><td>about 2.65 mm</td><td>Tight fit</td></tr>
-<tr><td>Target</td><td>2.6 mm (PlateThickness &minus; Kerf)</td><td>about 2.75 mm, the thickness of the plate</td><td>Rating not recorded</td></tr>
-<tr><td>Loose</td><td>2.7 mm</td><td>about 2.85 mm</td><td>Rating not recorded</td></tr>
+<tr><td>Target</td><td>2.6 mm (PlateThickness &minus; Kerf)</td><td>about 2.75 mm, the thickness of the plate</td><td>Target fit</td></tr>
+<tr><td>Loose</td><td>2.7 mm</td><td>about 2.85 mm</td><td>Loose fit</td></tr>
 </table>
 </div>
 <p><strong>Decision (Step 4).</strong> When we cut the parts we saw how they fit, and we used the parametric equations to change the slot values and get a better fitting part. The values before and after the change are in the Parameter Table.</p>
@@ -221,11 +222,11 @@ title: "L9 – Laser Cutting: Parametric Lamp Diffuser"
 <div class="table-wrap">
 <table>
 <tr><th>Date and time</th><th>Time spent</th><th>Step</th><th>What happened</th><th>Decision or change made</th></tr>
-<tr><td>&mdash;</td><td>1.5 hours</td><td>Designing</td><td>Worked out the concept in Onshape and the hand sketch of the shade parameters: how the parts would be constrained and how everything fit on the sheet.</td><td>Four rings and curved uprights as a parametric design, driven by a small set of variables.</td></tr>
-<tr><td>&mdash;</td><td>3 hours</td><td>CAD</td><td>Built the test design in Onshape and the final parts in SolidWorks, and set up the global variables and equations for the slots.</td><td>Replaced the test uprights with the curved column. PlateThickness was set to 2.75 mm after the final wood measured 2.70 to 2.80 mm.</td></tr>
-<tr><td>&mdash;</td><td>30 minutes</td><td>DXF and CAD patterns</td><td>Made the DXF files and the cut layout for the sheet.</td><td>Nested each small ring inside a big ring and placed the two ring sets on the diagonal of the sheet.</td></tr>
-<tr><td>&mdash;</td><td>1.5 hours</td><td>Steps 1 to 5: testing and recutting</td><td>Measured the wood (2.88, 2.80, and 2.96 mm on the first sheet) and the kerf (0.11 mm in X and 0.19 mm in Y). Cut the parts with a clearance of 0.005 mm, checked how they fit, and recut. The final cut ran for 3 minutes 34 seconds on the LA 3 at 20% speed and 100% power.</td><td>Kerf of 0.15 mm on average. Opened the slots through the equations: ring slot to 2.85 mm and column notch to 3.50 mm.</td></tr>
-<tr><td>&mdash;</td><td>3 hours</td><td>Step 6: portfolio page</td><td>Wrote this portfolio page.</td><td>&mdash;</td></tr>
+<tr><td>Thu&ndash;Fri, Oct 22&ndash;23, 2026</td><td>1.5 hours</td><td>Designing</td><td>Worked out the concept in Onshape and the hand sketch of the shade parameters: how the parts would be constrained and how everything fit on the sheet.</td><td>Four rings and curved uprights as a parametric design, driven by a small set of variables.</td></tr>
+<tr><td>Thu&ndash;Fri, Oct 22&ndash;23, 2026</td><td>3 hours</td><td>CAD</td><td>Built the test design in Onshape and the final parts in SolidWorks, and set up the global variables and equations for the slots.</td><td>Replaced the test uprights with the curved column. PlateThickness was set to 2.75 mm after the final wood measured 2.70 to 2.80 mm.</td></tr>
+<tr><td>Oct 22&ndash;26, 2026</td><td>30 minutes</td><td>DXF and CAD patterns</td><td>Made the DXF files and the cut layout for the sheet.</td><td>Nested each small ring inside a big ring and placed the two ring sets on the diagonal of the sheet.</td></tr>
+<tr><td>Mon, Oct 26, 2026</td><td>1.5 hours</td><td>Steps 1 to 5: testing and recutting</td><td>Measured the wood (2.88, 2.80, and 2.96 mm on the first sheet) and the kerf (0.11 mm in X and 0.19 mm in Y). Cut the parts with a clearance of 0.005 mm, checked how they fit, and recut. The final cut ran for 3 minutes 34 seconds on the LA 3 at 20% speed and 100% power.</td><td>Kerf of 0.15 mm on average. Opened the slots through the equations: ring slot to 2.85 mm and column notch to 3.50 mm.</td></tr>
+<tr><td>Tue, Oct 27, 2026</td><td>3 hours</td><td>Step 6: portfolio page</td><td>Wrote this portfolio page.</td><td>&mdash;</td></tr>
 <tr><td colspan="2"><strong>Total: about 9.5 hours</strong></td><td colspan="3">From start to finish, which is roughly 10 hours.</td></tr>
 </table>
 </div>
