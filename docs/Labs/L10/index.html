@@ -4,7 +4,7 @@ title: "L10 – RC 2 Sliding Fit: Pill Box"
 <h1>L10 – RC 2 Sliding Fit: Pill Box</h1>
 
 <h2>Objective</h2>
-<p>This week's goal was to design and 3D print a pair of parts that show an RC 2 sliding fit on a resin (SLA) print, as defined in the Machinery's Handbook. The parts also have to be useful, not just a plain hole and shaft. I am making a to-go pill box for supplements: a rectangular box with a lid that slides over it and covers the top, the sides, and one end. The sliding lid is the RC 2 fit. The two parts together have to stay under 20 mL, including supports.</p>
+<p>This week's goal was to design and 3D print a pair of parts that show an RC 2 sliding fit on a resin (SLA) print, as defined in the Machinery's Handbook. The parts also have to be useful, not just a plain hole and shaft. I am making a to-go pill box for supplements: a rectangular box with a lid that slides over it and covers the top and both sides. The sliding lid is the RC 2 fit. The two parts together have to stay under 20 mL, including supports.</p>
 
 <h2>1. Research and Planning</h2>
 
@@ -18,7 +18,7 @@ title: "L10 – RC 2 Sliding Fit: Pill Box"
 <p>An RC 2 fit is used where a part has to be located accurately but still has to move by hand. Typical examples are locating pins on jigs and fixtures, gears and pulleys that are shifted along a shaft, parts in telescoping assemblies, and low-speed control levers. A lid that slides over a box is the same situation. The lid has to land in the same place every time so it closes flush, and it has to move easily enough to open with one hand. A pill box is carried in a pocket or a bag, so a lid that is too loose would rattle or slide open, and one that is too tight would be hard to open.</p>
 
 <h3>What I Am Making</h3>
-<p>I take supplements that are 7.5 mm in diameter and 22 mm long, and I want the box to hold at least two. The box holds them side by side. The lid is a rectangular cover that slides over the box and encloses the top wall, both side walls, and one end wall. It also wraps 2 mm under the bottom of the box on both sides, and those two lips sit in a groove along the bottom edges of the box. The lip height equals the groove height, so the bottom of the assembly is flush.</p>
+<p>I take supplements that are 7.5 mm in diameter and 22 mm long, and I want the box to hold at least two. The box holds them side by side. The lid is a rectangular cover that slides over the box and encloses the top wall and both side walls. It also wraps 2 mm under the bottom of the box on both sides, and those two lips sit in a groove along the bottom edges of the box. The lip height equals the groove height, so the bottom of the assembly is flush.</p>
 <div class="table-wrap">
 <table>
 <tr><th>Item</th><th>Value</th><th>Why</th></tr>
@@ -27,7 +27,7 @@ title: "L10 – RC 2 Sliding Fit: Pill Box"
 <tr><td>Wall thickness</td><td>2 mm</td><td>Strong enough for a handled part and still a small volume.</td></tr>
 <tr><td>Box outside</td><td>20 &times; 28 mm and 12.5 mm tall</td><td>Cavity plus two 2 mm walls in each direction. The 20 mm width is the fit dimension.</td></tr>
 <tr><td>Lip thickness</td><td>1.5 mm</td><td>Sets the height of the groove in the box. The height fit is measured from the box rim to the groove ceiling: 12.5 &minus; 1.5 = 11.0 mm.</td></tr>
-<tr><td>Estimated volume of both parts</td><td>About 7 mL</td><td>A rough estimate from the dimensions above, to be checked in the slicer. The limit is 20 mL including supports.</td></tr>
+<tr><td>Volume of both parts</td><td>5.73 mL</td><td>From SolidWorks, for the compensated CAD model (see the CAD Design section). The limit is 20 mL including supports.</td></tr>
 </table>
 </div>
 
@@ -124,6 +124,22 @@ title: "L10 – RC 2 Sliding Fit: Pill Box"
 <p><strong>Exploded view:</strong> the box on the left and the lid on the right.</p>
 <img src="Finalboxassemblypicture.png" alt="Assembled view of the pill box, with the lid covering the box and the open end showing the box face and the two small lips at the bottom">
 <p><strong>Assembled view:</strong> the lid slid over the box. The bottom of the box and the bottom of the lid lips are flush.</p>
+
+<h3>Volume</h3>
+<p>The two parts together have to stay under 20 mL including supports. I checked the volume of each part with Mass Properties in SolidWorks.</p>
+<div class="table-wrap">
+<table>
+<tr><th>Part</th><th>Volume (mm&sup3;)</th><th>Volume (mL)</th></tr>
+<tr><td>Box</td><td>2933.54</td><td>2.93</td></tr>
+<tr><td>Lid</td><td>2799.94</td><td>2.80</td></tr>
+<tr><td><strong>Total</strong></td><td><strong>5733.48</strong></td><td><strong>5.73</strong></td></tr>
+</table>
+</div>
+<p>That is under 30 percent of the limit, which leaves plenty of room for supports. The volume of the supports will be added in the preprocessing section.</p>
+<img src="boxVolumeandMAssproperties.png" alt="SolidWorks Mass Properties window for the box, showing a volume of 2933.54 cubic millimeters">
+<p><strong>Box:</strong> 2933.54 mm&sup3;.</p>
+<img src="lidVolumeandMAssproperties.png" alt="SolidWorks Mass Properties window for the lid, showing a volume of 2799.94 cubic millimeters">
+<p><strong>Lid:</strong> 2799.94 mm&sup3;.</p>
 
 <h2>3. Preprocessing for 3D Printing</h2>
 
