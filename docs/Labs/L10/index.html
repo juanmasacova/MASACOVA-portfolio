@@ -78,6 +78,52 @@ title: "L10 – RC 2 Sliding Fit: Pill Box"
 </div>
 
 <h2>2. CAD Design</h2>
+<p>I modeled both parts in SolidWorks. Every dimension that matters for the fit is driven by a global variable, so changing one number, the compensation offset &delta;, updates the box and the lid together. The variables are in the two equation tables below. The box and the lid each carry the same list, and each part's sketches are tied to the variables with equations.</p>
+
+<h3>Design Decisions</h3>
+<ul>
+<li><strong>What nominal size did I select?</strong> Two nominal sizes, one for each fit. The width fit is 20 mm, which is the outside width of the box. The height fit is 11.0 mm, which is the distance from the box rim to the groove ceiling (the 12.5 mm box height minus the 1.5 mm lip). I chose 20 mm so the cavity is wide enough for two 7.5 mm pills side by side, and the 11.0 mm follows from the pill height, the 2 mm walls, and the lip.</li>
+<li><strong>What tolerances did I apply?</strong> The RC 2 classes from the Machinery's Handbook: H6 for the hole (the lid's inner dimensions) and g5 for the shaft (the box's outer dimensions). I set the targets at the middle of each limit range (20.0064 mm and 19.9873 mm for the width, 11.0051 mm and 10.9898 mm for the height), so there is room on both sides for printing error.</li>
+<li><strong>How did I decide the design would achieve the RC 2 fit?</strong> The CAD dimensions are the RC 2 targets moved by the compensation: the lid's inner dimensions are the target plus 2&delta;, and the box's outer dimensions are the target minus 2&delta;. With &delta; = 0.03 mm, the clearance in CAD is 0.139 mm for the width fit and 0.135 mm for the height fit. These are larger than the RC 2 clearance on purpose, because the printer removes about 4&delta; = 0.12 mm of clearance, which leaves the 0.019 mm and 0.015 mm targets. The CAD alone cannot confirm the fit. The measurement of the printed parts in section 5 does.</li>
+<li><strong>How did I account for printing and curing variation?</strong> With the offset &delta; described in section 1. It is one global variable, so after I measure the first print I can change a single number and regenerate both parts.</li>
+</ul>
+
+<h3>Key Dimensions</h3>
+<p>These are the values the variables evaluate to with &delta; = 0.03 mm.</p>
+<div class="table-wrap">
+<table>
+<tr><th>Variable</th><th>What it controls</th><th>Equation</th><th>Value (mm)</th></tr>
+<tr><td>lid_in_w</td><td>Lid inner width (hole, width fit)</td><td>W_hole_t + 2&delta;</td><td>20.0664</td></tr>
+<tr><td>box_w</td><td>Box outer width (shaft, width fit)</td><td>W_shaft_t &minus; 2&delta;</td><td>19.9273</td></tr>
+<tr><td>lid_in_h</td><td>Lid inner height, inner top wall to lip top (hole, height fit)</td><td>H_hole_t + 2&delta;</td><td>11.0651</td></tr>
+<tr><td>box_rim_groove</td><td>Box rim to groove ceiling (shaft, height fit)</td><td>H_shaft_t &minus; 2&delta;</td><td>10.9298</td></tr>
+<tr><td>box_h</td><td>Box total height</td><td>box_rim_groove + lip_t</td><td>12.4298</td></tr>
+<tr><td>cav_w</td><td>Cavity width</td><td>box_w &minus; 2 &times; wall</td><td>15.9273</td></tr>
+<tr><td>cav_h</td><td>Cavity height</td><td>box_h &minus; 2 &times; wall</td><td>8.4298</td></tr>
+<tr><td>cav_l, box_l</td><td>Cavity length and box length</td><td>24, and cav_l + 2 &times; wall</td><td>24 and 28</td></tr>
+<tr><td>groove_w, groove_h</td><td>Groove in the box (not a fit surface)</td><td>lip_w + 0.5, and lip_t</td><td>2.5 and 1.5</td></tr>
+<tr><td>lid_w, lid_h</td><td>Lid outside width and height</td><td>lid_in_w + 2 &times; wall, and lid_in_h + wall + lip_t</td><td>24.0664 and 14.5651</td></tr>
+</table>
+</div>
+<p>The cavity comes out at 15.93 mm by 8.43 mm, which still holds two 7.5 mm pills side by side (15 mm needed across) with 22 mm of the 24 mm length used by a pill.</p>
+
+<h3>Global Variables</h3>
+<img src="boxequations.png" alt="SolidWorks Equations, Global Variables, and Dimensions window for the box, listing the global variables delta, wall, lip_t, lip_w, groove_extra, end_gap, the four RC 2 targets, and the derived dimensions, with the box sketch equations underneath">
+<p><strong>Box:</strong> the global variables and the equations that drive the box sketches (box length, box width, box height, the rim-to-groove height, the groove width, and the shell wall).</p>
+<img src="lidequations.png" alt="SolidWorks Equations, Global Variables, and Dimensions window for the lid, with the same global variables and the lid sketch equations underneath">
+<p><strong>Lid:</strong> the same variables, with the equations that drive the lid sketches (outer width, outer height, and the inner width and height of the cut).</p>
+
+<h3>Box and Lid</h3>
+<img src="boxCAD.png" alt="SolidWorks model of the box, a rectangular open-top box with a step cut along its bottom edge for the lid lip">
+<p><strong>Part A, the box:</strong> a rectangular box with an open top for the pills. A groove is cut into the bottom edge, where the lid's lip sits.</p>
+<img src="lidCAD.png" alt="SolidWorks model of the lid seen from the open end, a rectangular cover with a top wall and two side walls, and a small lip along the bottom inside edge of each side wall">
+<p><strong>Part B, the lid:</strong> a cover that goes over the top and both sides of the box. A small lip along the bottom inside edge of each side wall goes into the groove in the box.</p>
+
+<h3>Exploded and Assembled Views</h3>
+<img src="explodedviewassembly.png" alt="Exploded view of the assembly, with the box on the left and the lid on the right, shown apart from each other">
+<p><strong>Exploded view:</strong> the box on the left and the lid on the right.</p>
+<img src="Finalboxassemblypicture.png" alt="Assembled view of the pill box, with the lid covering the box and the open end showing the box face and the two small lips at the bottom">
+<p><strong>Assembled view:</strong> the lid slid over the box. The bottom of the box and the bottom of the lid lips are flush.</p>
 
 <h2>3. Preprocessing for 3D Printing</h2>
 
@@ -88,6 +134,13 @@ title: "L10 – RC 2 Sliding Fit: Pill Box"
 <h2>6. Lessons Learned</h2>
 
 <h2>Download</h2>
+<p>SolidWorks files for each part. Put all of the files in the same folder before opening them.</p>
+<ul>
+<li>Box (Part A): <a href="box.SLDPRT" download>box.SLDPRT</a></li>
+<li>Lid (Part B): <a href="lid.SLDPRT" download>lid.SLDPRT</a></li>
+<li>Assembly: <a href="assembly.SLDASM" download>assembly.SLDASM</a></li>
+<li>Global variables: <a href="equations.txt" download>equations.txt</a></li>
+</ul>
 
 <h2>Sources</h2>
 <ol>
