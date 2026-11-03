@@ -4,9 +4,78 @@ title: "L10 – RC 2 Sliding Fit: Pill Box"
 <h1>L10 – RC 2 Sliding Fit: Pill Box</h1>
 
 <h2>Objective</h2>
-<p>This week's goal was to design and 3D print a pair of parts that demonstrate an RC 2 sliding fit on a resin (SLA) print, as defined in the Machinery's Handbook. The parts have to do something useful, not just be a plain hole and shaft. I am making a small to-go pill box with a sliding cover.</p>
+<p>This week's goal was to design and 3D print a pair of parts that show an RC 2 sliding fit on a resin (SLA) print, as defined in the Machinery's Handbook. The parts also have to be useful, not just a plain hole and shaft. I am making a to-go pill box for supplements: a rectangular box with a lid that slides over it and covers the top, the sides, and one end. The sliding lid is the RC 2 fit. The two parts together have to stay under 20 mL, including supports.</p>
 
 <h2>1. Research and Planning</h2>
+
+<h3>The RC 2 Fit</h3>
+<p>The Machinery's Handbook describes the fit this way: "RC 2 Sliding fits are intended for accurate location, but with greater maximum clearance than class RC 1. Parts made to this fit move and turn easily but are not intended to run freely, and in the larger sizes may seize with small temperature changes" [1]. For a lid, that is the behavior I want: it should locate accurately on the box and slide on and off by hand, without rattling.</p>
+<p>The limits come from Table 8a of ANSI/ASME B4.1, which lists them in thousandths of an inch for each nominal size range. In RC 2 the hole is class H6 and the shaft is class g5. The table gives the minimum and maximum clearance, and the upper and lower deviation of each part from the nominal size.</p>
+<img src="RC2Table.jpg" alt="Photo of Table 8a, American National Standard Running and Sliding Fits, ANSI/ASME B4.1-1967 (R2020), page 654, showing classes RC 1 to RC 4 with clearance and standard tolerance limits for the hole and the shaft for each nominal size range">
+<p><strong>Table 8a from the Machinery's Handbook (page 654).</strong> I used the Class RC 2 columns in two rows: 0.71 to 1.19 in for the 20 mm width and 0.40 to 0.71 in for the 11 mm height.</p>
+
+<h3>Where This Fit Is Used</h3>
+<p>An RC 2 fit is used where a part has to be located accurately but still has to move by hand. Typical examples are locating pins on jigs and fixtures, gears and pulleys that are shifted along a shaft, parts in telescoping assemblies, and low-speed control levers. A lid that slides over a box is the same situation. The lid has to land in the same place every time so it closes flush, and it has to move easily enough to open with one hand. A pill box is carried in a pocket or a bag, so a lid that is too loose would rattle or slide open, and one that is too tight would be hard to open.</p>
+
+<h3>What I Am Making</h3>
+<p>I take supplements that are 7.5 mm in diameter and 22 mm long, and I want the box to hold at least two. The box holds them side by side. The lid is a rectangular cover that slides over the box and encloses the top wall, both side walls, and one end wall. It also wraps 2 mm under the bottom of the box on both sides, and those two lips sit in a groove along the bottom edges of the box. The lip height equals the groove height, so the bottom of the assembly is flush.</p>
+<div class="table-wrap">
+<table>
+<tr><th>Item</th><th>Value</th><th>Why</th></tr>
+<tr><td>Pill size</td><td>7.5 mm diameter by 22 mm long</td><td>The supplements I carry.</td></tr>
+<tr><td>Cavity (inside the box)</td><td>16 &times; 24 mm and 8.5 mm tall</td><td>Two pills side by side need 15 mm of width, and one pill needs 22 mm of length and 7.5 mm of height. This leaves about 1 mm spare in each direction.</td></tr>
+<tr><td>Wall thickness</td><td>2 mm</td><td>Strong enough for a handled part and still a small volume.</td></tr>
+<tr><td>Box outside</td><td>20 &times; 28 mm and 12.5 mm tall</td><td>Cavity plus two 2 mm walls in each direction. The 20 mm width is the fit dimension.</td></tr>
+<tr><td>Lip thickness</td><td>1.5 mm</td><td>Sets the height of the groove in the box. The height fit is measured from the box rim to the groove ceiling: 12.5 &minus; 1.5 = 11.0 mm.</td></tr>
+<tr><td>Estimated volume of both parts</td><td>About 7 mL</td><td>A rough estimate from the dimensions above, to be checked in the slicer. The limit is 20 mL including supports.</td></tr>
+</table>
+</div>
+
+<h3>Hand Sketch</h3>
+<img src="HandSketch.jpg" alt="Hand sketch of the pill box: Part A, the box with a groove along its bottom edge, and Part B, the lid that slides over it, shown at an angle. A bottom view shows the rectangular box with the lid lips along two edges. Dimensions in green are the RC 2 controlled dimensions.">
+<p><strong>Hand sketch of both parts.</strong> Part A is the box, and Part B is the lid that engulfs it. The dimensions in green are controlled by the RC 2 fit. The bottom view shows the lid lips along the two long edges of the box.</p>
+<p>Two dimension pairs are controlled by the RC 2 fit. The same clearance is shared by the two surfaces on each pair.</p>
+<ul>
+<li><strong>Width fit, 20 mm:</strong> the outer side walls of the box (the shaft) against the inner side walls of the lid (the hole).</li>
+<li><strong>Height fit, 11.0 mm:</strong> the box rim to the groove ceiling (the shaft) against the inner top wall of the lid to the top of its lip (the hole). The rim touches the lid's inner top wall, and the groove ceiling touches the top of the lid's lip.</li>
+</ul>
+<p>The rest of the lip and groove, including the groove width and the lip's lower and side faces, are not fit surfaces, so they have loose clearance.</p>
+
+<h3>Tolerance Range</h3>
+<p>The two dimensions are in millimeters, so I converted them to inches to read the table (1 thou = 0.001 in = 0.0254 mm).</p>
+<div class="table-wrap">
+<table>
+<tr><th>Fit</th><th>Table row</th><th>Clearance (thou)</th><th>Hole H6 (thou)</th><th>Shaft g5 (thou)</th></tr>
+<tr><td>Width, 20 mm = 0.7874 in</td><td>0.71 to 1.19 in</td><td>0.3 to 1.2</td><td>+0.5 / 0</td><td>&minus;0.3 / &minus;0.7</td></tr>
+<tr><td>Height, 11.0 mm = 0.4331 in</td><td>0.40 to 0.71 in</td><td>0.25 to 0.95</td><td>+0.4 / 0</td><td>&minus;0.25 / &minus;0.55</td></tr>
+</table>
+</div>
+<div class="table-wrap">
+<table>
+<tr><th>Fit</th><th>Hole, lid (mm)</th><th>Shaft, box (mm)</th><th>Clearance (mm)</th><th>Target hole (mm)</th><th>Target shaft (mm)</th></tr>
+<tr><td>Width, 20 mm</td><td>20.0000 to 20.0127</td><td>19.9822 to 19.9924</td><td>0.0076 to 0.0305</td><td>20.0064</td><td>19.9873</td></tr>
+<tr><td>Height, 11.0 mm</td><td>11.0000 to 11.0102</td><td>10.9860 to 10.9937</td><td>0.0064 to 0.0241</td><td>11.0051</td><td>10.9898</td></tr>
+</table>
+</div>
+<p>The targets are the middle of each limit range, so there is room on both sides for printing error. For the width fit, the target clearance is (0.3 + 1.2) / 2 = 0.75 thou = 0.0191 mm. For the height fit, it is (0.25 + 0.95) / 2 = 0.6 thou = 0.0152 mm.</p>
+
+<h3>Shrinkage and Expansion of the Resin</h3>
+<p>The Clear Resin V5 data sheet does not list a shrinkage value [2]. It does describe the standard post-cure I will use: Form Cure L for 5 minutes at room temperature. The closest numbers I found come from Formlabs' design specifications for the Form 4 generation, measured with Grey Resin V5 at 50 micron layers [3]:</p>
+<ul>
+<li><strong>XY tolerance:</strong> &plusmn;0.15% for features from 1 to 30 mm, with a lower limit of &plusmn;0.02 mm. That is &plusmn;0.030 mm at 20 mm and &plusmn;0.020 mm at 11 mm. No Z-axis tolerance is given.</li>
+<li><strong>Gaps and holes print small:</strong> a 0.4 mm gap printed at 0.34 mm, and a 0.5 mm hole printed at 0.42 mm. Outer surfaces therefore grow by about 0.03 to 0.04 mm per side.</li>
+</ul>
+<p>For my parts, that means the inside of the lid (the hole) will print smaller than the CAD, and the outside of the box (the shaft) will print larger. Together they take away about 0.12 to 0.16 mm of clearance, which is several times the whole RC 2 window of about 0.02 mm. The printer's own accuracy is also about as big as that window, so I do not expect RC 2 to come out from a single print without measurement. My classmates suggested designing in about 0.3 mm of clearance. I did not use it, because 0.3 mm is about 12 thou, roughly ten times the largest RC 2 clearance, and it would give a loose slide and not an accurate fit.</p>
+<p>My plan is to compensate with one offset, &delta;, applied to each fit surface. The lid's inner dimensions increase by 2&delta; and the box's outer dimensions decrease by 2&delta;. I start with &delta; = 0.03 mm, from the Formlabs data, and I will adjust it after I measure the first print.</p>
+<div class="table-wrap">
+<table>
+<tr><th>Dimension</th><th>Target (mm)</th><th>CAD value with &delta; = 0.03 mm (mm)</th></tr>
+<tr><td>Lid inner width (hole)</td><td>20.0064</td><td>20.0664</td></tr>
+<tr><td>Box outer width (shaft)</td><td>19.9873</td><td>19.9273</td></tr>
+<tr><td>Lid inner height (hole)</td><td>11.0051</td><td>11.0651</td></tr>
+<tr><td>Box rim to groove ceiling (shaft)</td><td>10.9898</td><td>10.9298</td></tr>
+</table>
+</div>
 
 <h2>2. CAD Design</h2>
 
@@ -21,3 +90,9 @@ title: "L10 – RC 2 Sliding Fit: Pill Box"
 <h2>Download</h2>
 
 <h2>Sources</h2>
+<ol>
+<li>Machinery's Handbook. <em>Table 8a, American National Standard Running and Sliding Fits</em>, ANSI/ASME B4.1-1967 (R2020), page 654.</li>
+<li>Formlabs. <em>Clear Resin V5 Technical Data Sheet</em>. <a href="https://formlabs.com/tds/clear-resin-v5-tds">https://formlabs.com/tds/clear-resin-v5-tds</a></li>
+<li>Formlabs. <em>Design specifications for 3D models (Form 4 generation)</em>. <a href="https://formlabs.com/support/Design-specifications-for-3D-models-Form-4-generation/">https://formlabs.com/support/Design-specifications-for-3D-models-Form-4-generation/</a></li>
+</ol>
+<p><small>AI was used to help find sources 2 and 3 and to draft the text of this page from my notes, calculations, and sketch. I reviewed and edited the draft.</small></p>
