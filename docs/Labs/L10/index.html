@@ -192,6 +192,45 @@ title: "L10 – RC 2 Sliding Fit: Pill Box"
 <p>The CAD already includes the shrinkage allowance from section 1. I applied &delta; = 0.03 mm to each fit surface, so the lid's inner width and height are 2&delta; larger than the RC 2 target and the box's outer width and rim-to-groove height are 2&delta; smaller. Over the two parts that is 0.12 mm of extra clearance in CAD, which is the amount I expect the printer to take away. The Formlabs numbers I used were measured at 50 micron layers [3], and I print at 25 microns, so &delta; is a starting estimate that I will adjust after I measure the first print.</p>
 
 <h2>4. Post-Processing</h2>
+<p>After printing, I washed and cured both parts, removed the supports, and sanded the sides a little so the lid would slide more easily. I forgot to photograph the support removal and the cure, so the wash is the only process stage with a photo.</p>
+
+<h3>Wash, Cure, and Support Removal</h3>
+<img src="WashStage.jpg" alt="The parts in the metal wash basket above the tank of the wash machine, with the liquid level markings for 10, 14, and 15 liters visible on the tank">
+<p><strong>Wash:</strong> the parts in the basket of the wash machine.</p>
+<div class="table-wrap">
+<table>
+<tr><th>Stage</th><th>What I did</th></tr>
+<tr><td>Wash</td><td>5 minutes in the wash machine.</td></tr>
+<tr><td>Cure</td><td>5 minutes. For Clear Resin V5, the data sheet lists a standard cure of 5 minutes at room temperature on a Form Cure L, and a max-strength cure of 15 minutes at 60&nbsp;&deg;C [2].</td></tr>
+<tr><td>Support removal</td><td>I removed the supports from both parts. Small stubs (tether stubs) were left where the supports touched the parts, and some of them were on the faces that set the fit.</td></tr>
+<tr><td>Sanding</td><td>I sanded the sides a little to make the lid slide more easily.</td></tr>
+</table>
+</div>
+
+<h3>Surface Finish, Accuracy, and Deformation</h3>
+<img src="FinishedBoxAndLid.jpg" alt="The finished box and lid on a laptop, with the lid partly slid off the box. Both parts have a frosted look and a few fine scratches are visible on the box.">
+<p><strong>Finished parts:</strong> the box with the lid partly slid off.</p>
+<ul>
+<li><strong>Surface finish:</strong> the parts felt very smooth. They look frosted, with a few fine scratches on the box.</li>
+<li><strong>Deformation:</strong> I could not find any warping on either part.</li>
+<li><strong>Accuracy:</strong> measured below. The width fit came out much looser than the RC 2 range.</li>
+</ul>
+
+<h3>Dimensional Deviations</h3>
+<p>I measured the width of both parts with digital calipers after curing and sanding. I did not measure before sanding, so I cannot separate the printing error from the material I sanded off.</p>
+<img src="BoxOuterWidthMeasurement.jpg" alt="Digital calipers across the outside width of the box, reading 19.75 mm">
+<p><strong>Box outer width:</strong> 19.75 mm.</p>
+<img src="LidInnerWidthMeasurement.jpg" alt="Digital calipers with the inside jaws against the inner side walls of the lid, reading 20.15 mm">
+<p><strong>Lid inner width:</strong> 20.15 mm.</p>
+<div class="table-wrap">
+<table>
+<tr><th>Dimension</th><th>CAD (mm)</th><th>Measured (mm)</th><th>Measured &minus; CAD (mm)</th><th>RC 2 limits (mm)</th></tr>
+<tr><td>Box outer width (shaft)</td><td>19.9273</td><td>19.75</td><td>&minus;0.18</td><td>19.9822 to 19.9924</td></tr>
+<tr><td>Lid inner width (hole)</td><td>20.0664</td><td>20.15</td><td>+0.08</td><td>20.0000 to 20.0127</td></tr>
+<tr><td>Clearance</td><td>0.1391</td><td>0.40</td><td>+0.26</td><td>0.0076 to 0.0305</td></tr>
+</table>
+</div>
+<p>The measured clearance is 0.40 mm. That is about 13 times the largest RC 2 clearance (0.0305 mm), and about 21 times the 0.019 mm I was aiming for. My compensation assumed the lid's inner width would print smaller than the CAD and the box would print larger. The measurements went the other way: the lid came out 0.08 mm wider than the CAD, and the box came out 0.18 mm narrower, although the sanding is part of that. The calipers read to 0.01 mm, and I measured each dimension once, so each number carries an uncertainty of a few hundredths of a millimeter. The lid's 2 mm walls may also flex a little under the caliper jaws, which would make its inner width read larger.</p>
 
 <h2>5. Fit Test</h2>
 
