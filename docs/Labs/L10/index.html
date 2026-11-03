@@ -142,6 +142,54 @@ title: "L10 – RC 2 Sliding Fit: Pill Box"
 <p><strong>Lid:</strong> 2799.94 mm&sup3;.</p>
 
 <h2>3. Preprocessing for 3D Printing</h2>
+<p>I prepared the print in PreForm for a Formlabs Form 4 printing Clear Resin V5. The box and the lid went on one build plate.</p>
+
+<h3>Print Setup</h3>
+<img src="PreFormJobSetup.png" alt="PreForm Job Setup panel showing the printer MatureImpala, a Form 4, with a Clear V5 cartridge and tank, material Clear V5, layer thickness 0.025 mm, and default print settings">
+<p><strong>Job setup:</strong> the Form 4 named MatureImpala, with a Clear V5 cartridge and tank, Clear V5 as the material, a layer thickness of 0.025 mm, and the default print settings.</p>
+<div class="table-wrap">
+<table>
+<tr><th>Item</th><th>Value</th></tr>
+<tr><td>Machine</td><td>Formlabs Form 4 (MatureImpala), firmware 1.17.1</td></tr>
+<tr><td>Material</td><td>Clear Resin V5</td></tr>
+<tr><td>Layer height</td><td>0.025 mm</td></tr>
+<tr><td>Print time</td><td>1 h 1 min</td></tr>
+<tr><td>Wall thickness</td><td>2 mm (set in CAD, the part is printed solid)</td></tr>
+<tr><td>Total volume with supports</td><td>10.16 mL</td></tr>
+<tr><td>Allowance for shrinkage</td><td>&delta; = 0.03 mm per fit surface, 0.12 mm of total clearance (see below)</td></tr>
+</table>
+</div>
+
+<h3>Layout and Build Orientation</h3>
+<img src="PreFormLayoutAndSummary.png" alt="PreForm build plate preview showing the box and the lid, each tilted and supported on its own base of supports, with a summary of 1 hour 1 minute total print time and a volume of 10.16 mL">
+<p><strong>Layout and summary:</strong> the box and the lid on one plate, each tilted on its own supports. The summary shows a total print time of 1 h 1 min and a volume of 10.16 mL.</p>
+<p><strong>Layout:</strong> both parts are on one build plate with space between them, so the supports of one do not touch the other.</p>
+<p><strong>Orientation:</strong> I printed both parts tilted, and not flat on the plate. Tilting them keeps the area of each layer small, which lowers the force needed to peel each layer off the tank, and it avoids large flat faces lying parallel to the plate. The supports are under the lower side of each part.</p>
+
+<h3>Supports</h3>
+<img src="PreFormSupportSettings.png" alt="PreForm Supports panel with auto placement, touchpoint size 0.55 mm, minima, overhangs at density 1.00 and angle 18 degrees, stabilization at density 1.94, reinforcements at density 1.00, tooth length minimum 2.10 mm, internal supports on model allowed, bottom diameter 0.60 mm, and a maximum of 3 teeth">
+<p><strong>Support settings:</strong> auto placement, with all four support types turned on.</p>
+<div class="table-wrap">
+<table>
+<tr><th>Setting</th><th>Value</th><th>What it does</th></tr>
+<tr><td>Touchpoint placement</td><td>Auto</td><td>PreForm places the supports.</td></tr>
+<tr><td>Touchpoint size</td><td>0.55 mm</td><td>The size of the contact point on the part. A smaller contact leaves a smaller mark.</td></tr>
+<tr><td>Minima</td><td>On</td><td>Supports the lowest points of each part.</td></tr>
+<tr><td>Overhangs</td><td>On, density 1.00, angle 18&deg;</td><td>Supports surfaces that overhang past the 18&deg; angle.</td></tr>
+<tr><td>Stabilization</td><td>On, density 1.94</td><td>Adds supports that keep the part steady during printing.</td></tr>
+<tr><td>Reinforcements</td><td>On, density 1.00</td><td>Strengthens the supports.</td></tr>
+<tr><td>Tooth length (min)</td><td>2.10 mm</td><td>The shortest tooth at the end of a support.</td></tr>
+<tr><td>Internal supports on model</td><td>Allowed</td><td>Supports can also be placed on interior surfaces.</td></tr>
+<tr><td>Bottom diameter</td><td>0.60 mm</td><td>The diameter of the support at the base of a tooth.</td></tr>
+<tr><td>Teeth (max)</td><td>3</td><td>The most teeth one support can have.</td></tr>
+</table>
+</div>
+
+<h3>Volume</h3>
+<p>The slicer shows 10.16 mL for the whole print, which includes the supports. SolidWorks gave 5.73 mL for the two parts alone, so the supports account for about 4.4 mL. That is under the 20 mL limit, with about 9.8 mL to spare.</p>
+
+<h3>Allowance for Shrinkage</h3>
+<p>The CAD already includes the shrinkage allowance from section 1. I applied &delta; = 0.03 mm to each fit surface, so the lid's inner width and height are 2&delta; larger than the RC 2 target and the box's outer width and rim-to-groove height are 2&delta; smaller. Over the two parts that is 0.12 mm of extra clearance in CAD, which is the amount I expect the printer to take away. The Formlabs numbers I used were measured at 50 micron layers [3], and I print at 25 microns, so &delta; is a starting estimate that I will adjust after I measure the first print.</p>
 
 <h2>4. Post-Processing</h2>
 
