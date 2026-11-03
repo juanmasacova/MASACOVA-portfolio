@@ -192,7 +192,7 @@ title: "L10 – RC 2 Sliding Fit: Pill Box"
 <p>The CAD already includes the shrinkage allowance from section 1. I applied &delta; = 0.03 mm to each fit surface, so the lid's inner width and height are 2&delta; larger than the RC 2 target and the box's outer width and rim-to-groove height are 2&delta; smaller. Over the two parts that is 0.12 mm of extra clearance in CAD, which is the amount I expect the printer to take away. The Formlabs numbers I used were measured at 50 micron layers [3], and I print at 25 microns, so &delta; is a starting estimate that I will adjust after I measure the first print.</p>
 
 <h2>4. Post-Processing</h2>
-<p>After printing, I washed and cured both parts, removed the supports, and sanded the sides a little so the lid would slide more easily. I forgot to photograph the support removal and the cure, so the wash is the only process stage with a photo.</p>
+<p>After printing, I washed and cured both parts, removed the supports, and sanded the side walls of the box with a file so the lid would slide more easily. I forgot to photograph the support removal and the cure, so the wash is the only process stage with a photo.</p>
 
 <h3>Wash, Cure, and Support Removal</h3>
 <img src="WashStage.jpg" alt="The parts in the metal wash basket above the tank of the wash machine, with the liquid level markings for 10, 14, and 15 liters visible on the tank">
@@ -203,7 +203,7 @@ title: "L10 – RC 2 Sliding Fit: Pill Box"
 <tr><td>Wash</td><td>5 minutes in the wash machine.</td></tr>
 <tr><td>Cure</td><td>5 minutes. For Clear Resin V5, the data sheet lists a standard cure of 5 minutes at room temperature on a Form Cure L, and a max-strength cure of 15 minutes at 60&nbsp;&deg;C [2].</td></tr>
 <tr><td>Support removal</td><td>I removed the supports from both parts. Small stubs (tether stubs) were left where the supports touched the parts, and some of them were on the faces that set the fit.</td></tr>
-<tr><td>Sanding</td><td>I sanded the sides a little to make the lid slide more easily.</td></tr>
+<tr><td>Sanding</td><td>I sanded the side walls of the box by hand with a file of unknown grit, to make the lid slide more easily.</td></tr>
 </table>
 </div>
 
@@ -233,6 +233,40 @@ title: "L10 – RC 2 Sliding Fit: Pill Box"
 <p>The measured clearance is 0.40 mm. That is about 13 times the largest RC 2 clearance (0.0305 mm), and about 21 times the 0.019 mm I was aiming for. My compensation assumed the lid's inner width would print smaller than the CAD and the box would print larger. The measurements went the other way: the lid came out 0.08 mm wider than the CAD, and the box came out 0.18 mm narrower, although the sanding is part of that. The calipers read to 0.01 mm, and I measured each dimension once, so each number carries an uncertainty of a few hundredths of a millimeter. The lid's 2 mm walls may also flex a little under the caliper jaws, which would make its inner width read larger.</p>
 
 <h2>5. Fit Test</h2>
+<p>I measured the four fit dimensions with digital calipers, which read to 0.01 mm. The two width measurements are in section 4. The two height measurements are below.</p>
+<img src="BoxHeightMeasurement.jpg" alt="Digital calipers across the box from the rim to the groove ceiling, reading 10.69 mm">
+<p><strong>Box, rim to groove ceiling:</strong> 10.69 mm.</p>
+<img src="LidInnerHeightMeasurement.jpg" alt="Digital calipers with the inside jaws against the lid's inner top wall and the top of its lip, reading 10.84 mm">
+<p><strong>Lid, inner top wall to lip top:</strong> 10.84 mm.</p>
+
+<h3>Measurements Compared to RC 2</h3>
+<div class="table-wrap">
+<table>
+<tr><th>Fit</th><th>Part</th><th>CAD (mm)</th><th>Measured (mm)</th><th>RC 2 limits (mm)</th></tr>
+<tr><td rowspan="3">Width</td><td>Lid inner width (hole)</td><td>20.0664</td><td>20.15</td><td>20.0000 to 20.0127</td></tr>
+<tr><td>Box outer width (shaft)</td><td>19.9273</td><td>19.75</td><td>19.9822 to 19.9924</td></tr>
+<tr><td><strong>Clearance</strong></td><td>0.1391</td><td><strong>0.40</strong></td><td>0.0076 to 0.0305</td></tr>
+<tr><td rowspan="3">Height</td><td>Lid inner height (hole)</td><td>11.0651</td><td>10.84</td><td>11.0000 to 11.0102</td></tr>
+<tr><td>Box rim to groove ceiling (shaft)</td><td>10.9298</td><td>10.69</td><td>10.9860 to 10.9937</td></tr>
+<tr><td><strong>Clearance</strong></td><td>0.1353</td><td><strong>0.15</strong></td><td>0.0064 to 0.0241</td></tr>
+</table>
+</div>
+<p>Neither fit is inside the RC 2 range. The width clearance is 0.40 mm, about 13 times the largest RC 2 clearance. The height clearance is 0.15 mm, about 6 times its largest RC 2 clearance. The lid's inner width is above its RC 2 limit, and the other three dimensions are below theirs.</p>
+
+<h3>How the Parts Behave</h3>
+<ul>
+<li><strong>Sliding:</strong> the lid slides on and off smoothly, with only a bit of friction.</li>
+<li><strong>Play:</strong> there is little to no wiggle when I push the lid sideways or up and down.</li>
+<li><strong>Staying on:</strong> the lid stays on when I tilt the box. It comes off when I tilt the box and shake it.</li>
+<li><strong>Contact:</strong> the surfaces rub slightly as the lid slides.</li>
+<li><strong>Class check:</strong> I showed the parts to my professor, who said they were good to go.</li>
+</ul>
+
+<h3>Does It Slide Smoothly but Locate Accurately?</h3>
+<p>It slides smoothly, as an RC 2 fit should. By hand it also feels like it locates well, with little wiggle. The measurements do not support calling it RC 2, though. The clearance is 0.15 to 0.40 mm, and the lid falling off when shaken shows that it does not hold its position very firmly. I think the feel and the numbers disagree because I sanded the side walls of the box by hand with a file. The walls are probably not even, so the lid can rub on a few high spots even though most of the gap is wide. My calipers also read one spot at a time, so a single reading may not match where the parts touch. I cannot show that from these measurements, so I am reporting this as a close sliding fit, not as an RC 2 fit.</p>
+
+<h3>What the Height Fit Shows About the Compensation</h3>
+<p>I did not sand the height surfaces, so the height fit is the cleaner of the two tests. Both height dimensions printed about 0.23 mm smaller than the CAD: the lid's inner height by 0.23 mm, and the box by 0.24 mm. Because they shrank together, the printed clearance (0.15 mm) is close to the clearance I drew in CAD (0.135 mm). That means the 0.12 mm of clearance I expected the printer to take away (&delta; = 0.03 mm) did not disappear on this fit. A smaller &delta; would have worked better, and &delta; near zero would put the printed height clearance at roughly 0.03 mm. The width fit is less reliable, because it was measured after sanding. A single 0.23 mm deviation is also much larger than the &plusmn;0.02 mm that Formlabs lists at this size [3], so I would measure the height dimensions at more points before trusting it.</p>
 
 <h2>6. Lessons Learned</h2>
 
