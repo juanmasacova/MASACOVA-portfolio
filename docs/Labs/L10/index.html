@@ -200,7 +200,7 @@ title: "L10 – RC 2 Sliding Fit: Pill Box"
 <div class="table-wrap">
 <table>
 <tr><th>Stage</th><th>What I did</th></tr>
-<tr><td>Wash</td><td>5 minutes in the wash machine.</td></tr>
+<tr><td>Wash</td><td>5 minutes in the wash machine with isopropyl alcohol.</td></tr>
 <tr><td>Cure</td><td>5 minutes. For Clear Resin V5, the data sheet lists a standard cure of 5 minutes at room temperature on a Form Cure L, and a max-strength cure of 15 minutes at 60&nbsp;&deg;C [2].</td></tr>
 <tr><td>Support removal</td><td>I removed the supports from both parts. Small stubs (tether stubs) were left where the supports touched the parts, and some of them were on the faces that set the fit.</td></tr>
 <tr><td>Sanding</td><td>I sanded the side walls of the box by hand with a file of unknown grit, to make the lid slide more easily.</td></tr>
@@ -269,6 +269,40 @@ title: "L10 – RC 2 Sliding Fit: Pill Box"
 <p>I did not sand the height surfaces, so the height fit is the cleaner of the two tests. Both height dimensions printed about 0.23 mm smaller than the CAD: the lid's inner height by 0.23 mm, and the box by 0.24 mm. Because they shrank together, the printed clearance (0.15 mm) is close to the clearance I drew in CAD (0.135 mm). That means the 0.12 mm of clearance I expected the printer to take away (&delta; = 0.03 mm) did not disappear on this fit. A smaller &delta; would have worked better, and &delta; near zero would put the printed height clearance at roughly 0.03 mm. The width fit is less reliable, because it was measured after sanding. A single 0.23 mm deviation is also much larger than the &plusmn;0.02 mm that Formlabs lists at this size [3], so I would measure the height dimensions at more points before trusting it.</p>
 
 <h2>6. Lessons Learned</h2>
+
+<p><strong>What challenges arose in achieving the RC 2 fit?</strong> The hardest part was getting dimensions that were useful for the fit from a 3D printer, while keeping the two parts small enough to stay under 20 mL. The RC 2 clearance range is only about 0.02 mm, which is about the same as the printer's own accuracy, so every printing effect mattered. I also had to leave room for the 2 mm walls, the lips, and the pills inside that small volume. In the end the measured clearances were 0.40 mm for the width and 0.15 mm for the height, so I did not reach RC 2.</p>
+
+<p><strong>Did surface roughness, printer calibration, or curing affect the fit?</strong></p>
+<ul>
+<li><strong>Surface roughness:</strong> it made the fit harder to get right, especially after sanding. Filing the box's side walls by hand left them uneven, which hid the true clearance and made the lid rub on a few spots.</li>
+<li><strong>Curing:</strong> I think curing made the parts a little smaller. I did not measure before and after curing, so I cannot say by how much.</li>
+<li><strong>Printer calibration:</strong> I did not test it separately, so I cannot say whether it played a part.</li>
+<li><strong>Support stubs:</strong> the small stubs left where the supports touched sat on some of the fit faces. They had to be removed, which added to the unevenness.</li>
+</ul>
+
+<p><strong>How could I improve accuracy next time?</strong> I would orient the parts so the supports and their stubs are not on the fit faces. I would also measure both parts before any sanding, and measure each dimension at several points. For the compensation, the height fit suggests a smaller &delta; than the 0.03 mm I used, and I would set it from measured data.</p>
+
+<p><strong>Time spent:</strong> about 5 hours 48 minutes in total.</p>
+<div class="table-wrap">
+<table>
+<tr><th>Task</th><th>Time</th></tr>
+<tr><td>Research</td><td>About 1.5 hours</td></tr>
+<tr><td>CAD</td><td>About 3 minutes</td></tr>
+<tr><td>Printing</td><td>About 1.5 hours</td></tr>
+<tr><td>Post-processing</td><td>About 45 minutes</td></tr>
+<tr><td>Writing this page</td><td>About 2 hours</td></tr>
+<tr><td><strong>Total</strong></td><td><strong>About 5 hours 48 minutes</strong></td></tr>
+</table>
+</div>
+
+<p><strong>Resources used:</strong> Formlabs Form 4 printer, PreForm, SolidWorks, Clear Resin V5, a wash machine with isopropyl alcohol, a cure station, digital calipers, a file, the Machinery's Handbook, and Formlabs' design guide and data sheet.</p>
+
+<p><strong>Mistakes:</strong></p>
+<ul>
+<li><strong>Orientation:</strong> I printed the parts with support stubs landing on some of the fit faces. I should have oriented them to keep those faces clear.</li>
+<li><strong>Sanding before measuring:</strong> I filed the box before I measured it, so I could not separate the printing error from the material I removed.</li>
+<li><strong>Missing photos:</strong> I forgot to photograph the support removal and cure stages.</li>
+</ul>
 
 <h2>Download</h2>
 <p>SolidWorks files and STL files for each part. Put all of the SolidWorks files in the same folder before opening them.</p>
