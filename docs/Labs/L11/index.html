@@ -1,16 +1,160 @@
 ---
-title: "L11 – Motor Selection"
+title: "L11 – Snap Fit Design for SLA Printing (Form 4)"
 ---
-<h1>L11 – Motor Selection</h1>
+<h1>L11 – Snap Fit Design for SLA Printing (Form 4)</h1>
 
 <h2>Objective</h2>
-<p></p>
+<p>This week's goal was to design, print and test a small artifact made of two or more parts that snap together, using the Form 4 SLA printer. I designed a <strong>box with a hinged lid</strong>. The snap fit is the hinge: two collinear cylinders stick out of the lid in opposite directions, and each one is pressed into a C-shaped cavity in the box, where it snaps in and then turns as the hinge pin. <mark>[TODO: one sentence on what the box is for and what it holds.]</mark></p>
 
-<h2>Analyze</h2>
-<p></p>
+<h3>Final Product</h3>
+<!-- TODO: photo of the finished, assembled box with the lid open and closed -->
+<mark>[TODO: finished box photo, open and closed. Filename: finalproduct.jpg]</mark>
 
-<h2>Decide</h2>
-<p><em>Reference your concept selection (Pugh matrix) here. How does this design follow from that decision?</em></p>
+<h2>Snap-fit Research</h2>
+<p>I used the design guide <em>Snap-Fit Joints for Plastics &ndash; A Design Guide</em> [1] to decide how to model, dimension and check the hinge. Page, figure and table numbers below refer to that guide.</p>
 
-<h2>Communicate</h2>
-<p></p>
+<h3>Which Snap-fit Type I Used</h3>
+<p>The guide groups snap joints into cantilever, U-shaped, torsion and annular types (p. 4). My hinge is a cylinder pressed through the narrow opening of a C-shaped cavity. The C is a ring that has been cut open, so it looks like a discontinuous annular joint. The guide treats this case directly: when slits break up the ring, the load is mostly bending, and the joint is classified as a <strong>cantilever arm for dimensioning</strong> (Fig. 4, p. 5). So the two jaws of the C are the cantilever arms. They bend outward when the pin goes through the opening and spring back once the pin is seated in the round part of the C. After that, the pin only rotates, so the hinge is a snap fit used as a pivot, and the snap fit does not have to hold the lid shut. <mark>[TODO: confirm "cantilever (jaws of the C)" is the type you want to state, or say hybrid if you also count the lid walls flexing.]</mark></p>
+
+<h3>Key Design Principles</h3>
+<ul>
+<li><strong>Deflect briefly, then return to stress-free.</strong> A snap joint works because a protruding feature is deflected during assembly and then catches in an undercut. After assembly it should go back to a stress-free state (p. 3). A joint that stays strained in the hinge position will creep and get loose.</li>
+<li><strong>Undercut equals deflection.</strong> The deflection the arm sees while mating is equal to the undercut (Fig. 12, p. 11). For my hinge the undercut is how much the pin diameter exceeds the opening of the C.</li>
+<li><strong>Size the arm for permissible strain.</strong> The guide puts the dimensioning equations in terms of the permissible strain &epsilon; of the outer fiber at the root, not stress, because stress limits change with temperature (Table 1, p. 9).</li>
+<li><strong>Taper the arm.</strong> Letting the thickness drop linearly to half its root value raises the permissible deflection by more than 60% compared with a constant section (1.09 vs. 0.67 in Table 1, p. 9 and p. 12). It also uses less material and gives a more even strain along the arm (p. 2 and p. 8).</li>
+<li><strong>The root is the weak point.</strong> The critical cross section is always at the root of the arm, so it needs a fillet. The guide shows that the stress concentration drops quickly as the fillet radius R grows relative to the thickness h, and gains little beyond R/h = 0.6 (Fig. 9, p. 8). A radius that large makes a thick section next to a thin one, so the guide recommends a compromise and says the radius should never be below 0.015 in (about 0.38 mm).</li>
+<li><strong>One part is assumed rigid.</strong> The guide first assumes the mating part stays rigid, which is a safe assumption. If both parts bend, the deflection is shared (p. 7, and Section E, p. 24). In my hinge the lid cylinders are solid and stiff, so the jaws of the C take the full undercut.</li>
+</ul>
+
+<h3>Mechanical Principles</h3>
+<p><strong>Deflection and permissible strain.</strong> For a rectangular arm of constant thickness the permissible deflection is y = 0.67 &epsilon; l&sup2; / h, and for an arm that tapers to half its thickness it is y = 1.09 &epsilon; l&sup2; / h (Table 1, p. 9), where l is the arm length and h the root thickness. A longer arm and a thinner root allow more deflection for the same strain. A thicker arm is stiffer and needs more force, but it can only deflect a little before it reaches the strain limit.</p>
+<p><strong>Permissible strain.</strong> During a single brief snap, the guide allows partially crystalline plastics to be strained almost to the yield point and amorphous plastics to about 70% of the yield strain (p. 11). For frequent separation and rejoining it says to use about 60% of the single-assembly value (Table 2, p. 12). Materials without a clear yield point can take about half the elongation at break (Fig. 13, p. 11).</p>
+<p><strong>Deflection force.</strong> The force that bends one arm is P = (b h&sup2; / 6) &middot; (E<sub>s</sub> &epsilon; / l) for a rectangular section (Table 1, p. 9). E<sub>s</sub> is the strain-dependent secant modulus, which is lower than the normal modulus because the material is outside its linear range during the snap (p. 7 and Fig. 16, p. 13). For a ring-segment section such as the C, the guide gives the same form with a geometric factor K and a section modulus Z (shape C, Table 1, with Figs. 10 and 11, p. 10).</p>
+<p><strong>Undercut and mating force.</strong> Pressing the pin in has to overcome the deflection force and the friction at the contact, so the mating force is W = P &middot; (&mu; + tan &alpha;) / (1 &minus; &mu; tan &alpha;) (Fig. 17, p. 14), where &alpha; is the lead-in angle and &mu; the friction coefficient (Table 3, p. 15). A shallow lead-in angle gives an easy assembly. The same equation with the return angle &alpha;' gives the force to pull the pin back out. A steep return angle makes the joint hard or impossible to separate.</p>
+<p><strong>Stiffness and geometry.</strong> The force needed grows with b h&sup2; and shrinks with arm length, while the allowed deflection grows with l&sup2; / h. So the geometry sets the trade-off: long, thin, tapered jaws bend easily and allow a larger undercut, and short, thick jaws grip hard but can break.</p>
+
+<h3>Annotated Sketches</h3>
+<p>These sketches show the deflection and undercut geometry, the stress concentration at the root and the fillet radius, and the taper used to lower the strain.</p>
+<!-- TODO: three annotated sketches or diagrams -->
+<mark>[TODO: sketch 1 &ndash; deflection and undercut geometry (pin diameter, C opening, undercut y, lead-in angle &alpha;, return angle &alpha;')]</mark><br>
+<mark>[TODO: sketch 2 &ndash; stress concentration at the jaw root and the root radius R]</mark><br>
+<mark>[TODO: sketch 3 &ndash; thickness taper or curvature of the jaw]</mark>
+
+<h3>How SLA Resin Properties Change the Design</h3>
+<p>The allowable deflection comes straight from the resin's strain limit, and SLA resins vary a lot. A tough or durable resin can bend a long way, and a standard resin is brittle and breaks at small strains. Printed and fully cured SLA parts are also stiffer and more brittle than the same resin before curing, so the datasheet values for the cured material are the ones to use. The resin sets &epsilon;<sub>pm</sub> and E<sub>s</sub>, and that decides how thin and long the jaws have to be.</p>
+<p>I printed in Formlabs <strong>Clear Resin V5</strong> (FLGPCL05) [2]. Its datasheet gives the properties below for parts printed on a Form 4 at 100 &micro;m and washed for 5 minutes in isopropyl alcohol. The properties change a lot with the post-cure, and a longer, warmer cure makes the part stronger and stiffer but less stretchy.</p>
+<div class="table-wrap">
+<table>
+<tr><th>Property (Clear Resin V5)</th><th>Green</th><th>Post-cured 5 min, ambient</th><th>Post-cured 15 min at 60 &deg;C</th></tr>
+<tr><td>Ultimate tensile strength</td><td>46 MPa</td><td>51 MPa</td><td>60 MPa</td></tr>
+<tr><td>Tensile modulus</td><td>2200 MPa</td><td>2575 MPa</td><td>2750 MPa</td></tr>
+<tr><td>Elongation at break</td><td>13%</td><td>10%</td><td>8%</td></tr>
+<tr><td>Flexural strength</td><td>83 MPa</td><td>92 MPa</td><td>105 MPa</td></tr>
+<tr><td>Flexural modulus</td><td>2100 MPa</td><td>2450 MPa</td><td>2700 MPa</td></tr>
+</table>
+</div>
+<p>The datasheet does not list a yield point, so the guide's rule for materials without a clear yield point applies: the permissible strain is about half the elongation at break (Fig. 13, p. 11). The guide's secant modulus curves (Fig. 16) are for other plastics, so I used the datasheet flexural modulus for E<sub>s</sub>, because the jaws deflect in bending. <mark>[TODO: which post-cure you used, the &epsilon;<sub>pm</sub> you chose and the 60% reduction for frequent opening and closing.]</mark></p>
+
+<h3>How the Research Shaped My Design</h3>
+<mark>[TODO: short summary of what you took from the guide and applied. Example items: C-jaw modeled as a cantilever, tapered jaws, root fillet R, undercut limited by &epsilon;<sub>pm</sub>, lead-in angle chosen for an easy assembly, clearance for the hinge to turn.]</mark>
+
+<h3>Design Calculations</h3>
+<p>I did the calculations by hand first.</p>
+<!-- TODO: photo of handwritten math -->
+<mark>[TODO: photo of handwritten calculations. Filename: snapfitcalcs.jpg]</mark>
+<div class="table-wrap">
+<table>
+<tr><th>Quantity</th><th>Symbol</th><th>Value</th><th>How I got it</th></tr>
+<tr><td>Pin (cylinder) diameter</td><td>d</td><td><mark>[TODO]</mark></td><td>Chosen</td></tr>
+<tr><td>C opening width</td><td>w</td><td><mark>[TODO]</mark></td><td>Chosen</td></tr>
+<tr><td>Undercut</td><td>y</td><td><mark>[TODO]</mark></td><td><mark>[TODO]</mark></td></tr>
+<tr><td>Permissible strain</td><td>&epsilon;<sub>pm</sub></td><td><mark>[TODO]</mark></td><td>Resin datasheet and Table 2</td></tr>
+<tr><td>Jaw length</td><td>l</td><td><mark>[TODO]</mark></td><td>From y = 1.09 &epsilon; l&sup2; / h</td></tr>
+<tr><td>Jaw root thickness</td><td>h</td><td><mark>[TODO]</mark></td><td><mark>[TODO]</mark></td></tr>
+<tr><td>Jaw width</td><td>b</td><td><mark>[TODO]</mark></td><td>Chosen</td></tr>
+<tr><td>Root radius</td><td>R</td><td><mark>[TODO]</mark></td><td>R/h and the 0.015 in minimum</td></tr>
+<tr><td>Secant modulus</td><td>E<sub>s</sub></td><td><mark>[TODO]</mark></td><td>Datasheet or Fig. 16</td></tr>
+<tr><td>Deflection force</td><td>P</td><td><mark>[TODO]</mark></td><td>P = (b h&sup2; / 6)(E<sub>s</sub> &epsilon; / l)</td></tr>
+<tr><td>Friction coefficient</td><td>&mu;</td><td><mark>[TODO]</mark></td><td>Table 3</td></tr>
+<tr><td>Lead-in angle</td><td>&alpha;</td><td><mark>[TODO]</mark></td><td>Chosen</td></tr>
+<tr><td>Mating force</td><td>W</td><td><mark>[TODO]</mark></td><td>W = P (&mu; + tan &alpha;) / (1 &minus; &mu; tan &alpha;)</td></tr>
+</table>
+</div>
+
+<h2>Design</h2>
+
+<h3>Type of Snap Fit and Intended Function</h3>
+<p>The snap fit is a cantilever-type snap in the form of a C-shaped cavity that grips a cylindrical pin, used as a hinge. It holds the lid on the box and lets the lid turn open and shut. <mark>[TODO: what the box holds and how the lid is meant to be used. Add whether you want the hinge separable (lid can be popped off) or non-separable, and why.]</mark></p>
+
+<h3>CAD Screenshots</h3>
+<!-- TODO: screenshots at sketch, model, assembly stages -->
+<mark>[TODO: sketch stage screenshot(s)]</mark><br>
+<mark>[TODO: part model screenshot(s): box with C cavities, lid with the two cylinders]</mark><br>
+<mark>[TODO: assembly screenshot]</mark>
+
+<h3>Exploded and Assembled Views</h3>
+<mark>[TODO: exploded view, assembled view closed, assembled view open to show the hinge motion]</mark>
+
+<h3>Design Intent</h3>
+<mark>[TODO: I will write this from your notes. Please tell me: the C cavity opening, wall thickness and jaw shape, the undercut, the lead-in and return angles, and where the hinge sits on the box.]</mark>
+
+<h3>How I Applied the Design Guide</h3>
+<mark>[TODO: I will write this once I have your final dimensions: taper, root fillet, undercut vs. &epsilon;<sub>pm</sub>, jaw length.]</mark>
+
+<h3>Iterations and Adjustments</h3>
+<mark>[TODO: what you changed to balance printability, flexibility and strength, and why.]</mark>
+
+<h3>Separable or Non-separable</h3>
+<mark>[TODO: how the return angle and undercut make the hinge separable or not.]</mark>
+
+<h2>Preprocessing</h2>
+<h3>Print Setup in PreForm</h3>
+<div class="table-wrap">
+<table>
+<tr><th>Item</th><th>Value</th></tr>
+<tr><td>Machine</td><td>Formlabs Form 4</td></tr>
+<tr><td>Resin</td><td><mark>[TODO]</mark></td></tr>
+<tr><td>Layer height</td><td><mark>[TODO]</mark></td></tr>
+<tr><td>Estimated print time</td><td><mark>[TODO]</mark></td></tr>
+<tr><td>Build volume used</td><td><mark>[TODO]</mark></td></tr>
+<tr><td>Clearance used for the snap-fit engagement</td><td><mark>[TODO]</mark></td></tr>
+<tr><td>Wall thickness</td><td><mark>[TODO]</mark></td></tr>
+<tr><td>Support strategy</td><td><mark>[TODO]</mark></td></tr>
+<tr><td>Isotropic or anisotropic</td><td><mark>[TODO: and why]</mark></td></tr>
+</table>
+</div>
+<h3>Build Orientation and Reasoning</h3>
+<mark>[TODO: orientation of the box and lid, and why. Mention the hinge cylinders and C jaws.]</mark>
+<h3>Layout on the Build Plate</h3>
+<mark>[TODO: layout screenshot showing your parts and the 2&ndash;3 student parts sharing the plate.]</mark>
+<h3>Slicer Settings Screenshot</h3>
+<mark>[TODO: PreForm screenshot with the print details]</mark>
+
+<h2>Post-Processing</h2>
+<h3>Wash, Cure and Support Removal</h3>
+<mark>[TODO: photos of each stage]</mark>
+<div class="table-wrap">
+<table>
+<tr><th>Step</th><th>Method</th><th>Time</th></tr>
+<tr><td>Wash</td><td><mark>[TODO]</mark></td><td><mark>[TODO]</mark></td></tr>
+<tr><td>Cure</td><td><mark>[TODO]</mark></td><td><mark>[TODO]</mark></td></tr>
+<tr><td>Support removal</td><td><mark>[TODO]</mark></td><td><mark>[TODO]</mark></td></tr>
+</table>
+</div>
+<h3>Observations</h3>
+<mark>[TODO: how curing affected the flexibility or fit; SLA vs. PLA (FDM) mechanical differences; surface finish and dimensional precision.]</mark>
+
+<h2>Validation</h2>
+<mark>[TODO: photos or a short video of the assembled box in class. Does the snap engage securely? Too tight or too loose? Were adjustments needed? Add measured details if you have them.]</mark>
+
+<h2>Lessons Learned</h2>
+<mark>[TODO: I will write this from your notes. Please send: total hours and where they went, resin and materials used, cost, mistakes, and what you would change. Topics to cover: resin flexibility and clearance, SLA tolerances and orientation, SLA vs. FDM snap fits.]</mark>
+
+<h2>Download</h2>
+<mark>[TODO: links to the CAD files, e.g. box.SLDPRT, lid.SLDPRT and the STL files.]</mark>
+
+<h2>Sources</h2>
+<ol>
+<li>Bayer MaterialScience. <em>Snap-Fit Joints for Plastics &ndash; A Design Guide</em>. Provided on Canvas for this course.</li>
+<li>Formlabs. <em>Clear Resin V5 Technical Data Sheet</em> (FLGPCL05), Rev. 01, March 20, 2024.</li>
+</ol>
