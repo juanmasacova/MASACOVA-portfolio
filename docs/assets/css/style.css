@@ -286,3 +286,20 @@ img {
     max-width: 100%;
   }
 }
+
+/* Side-by-side image rows (final project page) */
+.img-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: flex-start;
+  margin: 1rem 0;
+}
+
+.img-row img {
+  flex: 1 1 240px;
+  min-width: 0;
+  max-height: 420px;
+  object-fit: contain;
+  background: #f5f5f5;
+}

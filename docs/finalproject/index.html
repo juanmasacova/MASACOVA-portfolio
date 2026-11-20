@@ -1,16 +1,186 @@
 ---
-title: "Final Project – [Topic]"
+title: "Final Project – Rotary Medical Tube Cutter"
 ---
-<h1>Final Project – [Topic]</h1>
+<h1>Final Project – Rotary Medical Tube Cutter</h1>
 
-<h2>Objectives</h2>
-<p></p>
+<img src="cad_barrel_assembly.jpg" alt="CAD assembly of the rotating barrel sitting on rollers inside the upright stand">
 
-<h2>Problem to Solve</h2>
-<p></p>
+<h2>Objective</h2>
+<p>Over two weeks, we use the Spiral Design Process to plan, prototype, test, and refine a working prototype that solves a real problem. The final prototype has to include parts from the manufacturing technologies used in class: FDM, SLA on the Form 4 (the SLA part can be no larger than about one quarter of the build plate), and the laser cutter.</p>
+<p>This page covers Week 1: choosing a problem, developing the first concept, and testing the critical features. This is a two-person project with James McAdam. We are building a rotary cutter for medical tubing that is used in quality control. It replaces an existing pneumatic chopping cutter that crushes thin tubes and leaves its blade exposed.</p>
 
-<h2>Part 1</h2>
-<p></p>
+<h2>Research</h2>
 
-<h2>Part 2</h2>
-<p></p>
+<h3>Spiral Design Process</h3>
+<img class="img-portrait" style="max-width:560px" src="spiral_model.jpg" alt="Spiral model diagram with four quadrants: determine objectives, identify and resolve risks, development and test, and plan the next iteration. Cumulative cost grows outward and progress runs around the spiral.">
+<p><strong>The spiral model diagram.</strong> Source: Wikipedia, <em>Spiral model</em> [3].</p>
+<p>Barry Boehm introduced the spiral model in 1986 and published it in a wider paper in 1988, as a way to manage software projects where the biggest danger is building the wrong thing or hitting a risk late [1]. It is drawn as a spiral because the same four activities repeat in every loop, and each loop costs more than the one before it [2]. The names vary between sources. The assignment's names are planning, risk analysis, engineering, and evaluation, and they map onto Boehm's four quadrants like this:</p>
+<div class="table-wrap">
+<table>
+<tr><th>Quadrant</th><th>What it means</th><th>What it means for the tube cutter</th></tr>
+<tr><td><strong>1. Planning:</strong> determine objectives, alternatives, and constraints</td><td>Decide what this loop has to accomplish and what limits it.</td><td>For this loop, the objective is to show that the rotation and the cut-depth motion can be done rigidly and predictably.</td></tr>
+<tr><td><strong>2. Risk analysis:</strong> identify and resolve risks</td><td>Find what is most likely to fail and deal with it first.</td><td>The rotation and the cut-depth mechanism are the riskiest unknowns, so they come before any electronics or final parts.</td></tr>
+<tr><td><strong>3. Engineering:</strong> develop and test</td><td>Build the prototype for this loop and test it.</td><td>A fully FDM prototype of the barrel, rollers, stand, and depth lobe.</td></tr>
+<tr><td><strong>4. Evaluation:</strong> plan the next iteration</td><td>Review the result and fold what was learned into the next loop.</td><td>Class feedback and the test results go into the next version of the cutter.</td></tr>
+</table>
+</div>
+<p>The spiral process is the natural order of designing something. The same general questions come back after every iteration, and each pass refines the design. For this project, the first loop goes after the riskiest unknowns, the rotation and the cut-depth mechanism, before any time is spent on electronics or final parts.</p>
+
+<h3>FDM Anisotropy</h3>
+<p>An FDM part is built from extruded lines of plastic laid down layer by layer. The strength inside a line is high, because the polymer chains are entangled. Between neighboring lines and between layers, the bond is weaker and the part has small voids [4][5]. As a result, a printed part is strong along the direction of the lines and weak across them, with the exact values depending on the polymer and on how well the layers fuse [4]. Formlabs cites an experiment where the yield strength of an FDM part in the Z direction was about 55% of its yield strength in the X direction [5]. That is one data point and the ratio changes with material and settings, but it shows that orientation is a design decision and not a slicer detail.</p>
+<p>This is especially important for pins. It is natural to print a tall cylinder standing up, but without the right safety factor that is the weakest way to make a part that has forces acting across it from mating parts. For the cutter, the axle pins and anything that carries the cutting load need to be oriented so the load runs along the layers, or be moved to a different process.</p>
+<h3>SLA Shrinkage</h3>
+<p>An SLA print comes off the printer in a "green" state, where some polymer bonds are not fully formed. Post-curing with light and heat forms the missing bonds, which makes the part stronger and stiffer, but it also pulls the material together and causes minor shrinkage [6]. Formlabs builds the expected shrinkage into each resin's print settings, so a part printed and cured with the recommended steps should come out near its CAD size [6]. This means the compensation only works if the wash and cure steps are followed. Curing a resin beyond its optimum can also cause brittleness or warping, and each resin needs its own time and temperature [7].</p>
+<p>Formlabs does not publish a single shrinkage percentage. What it does publish for the Form 4 is the result after compensation. Features from 1 to 30 mm have a typical tolerance of &plusmn;0.15% with a lower limit of &plusmn;0.02 mm, and features from 31 to 80 mm have &plusmn;0.2% with a lower limit of &plusmn;0.06 mm [8].</p>
+<p>Any precision SLA part in the cutter, like the blade holder, will need its critical clearances checked after curing.</p>
+
+<h3>Laser Cut Kerf</h3>
+<img class="img-portrait" style="max-width:560px" src="laser_kerf.jpg" alt="Diagram of a laser beam cutting through a sheet, showing the taper angle and the top kerf width being wider than the bottom kerf width">
+<p><strong>Kerf through the thickness of a sheet.</strong> The cut is slightly wider at the top than at the bottom. Source: Durmapress [9].</p>
+<p>Kerf is the width of material that the laser removes. The cut line in the file sits in the middle of the kerf, so half of the kerf comes off each side of the line [9][10]. Parts come out slightly smaller than drawn, and holes come out slightly larger. Typical kerf for a CO<sub>2</sub> cutter is about 0.18 mm in 1 to 3 mm acrylic and about 0.20 mm in 3 mm birch plywood [9]. It depends on the material, the thickness, and the power, and it can differ between cut directions on the same machine [12].</p>
+<p>Kerf is only a fraction of a millimeter, but it is enough to change how tight-tolerance features fit together. The usual way to compensate is to measure the kerf for the specific material and then offset the cut paths by half the kerf. The offset goes outward on parts that should stay full size, and inward on holes [10][11]. To measure it, cut a square of known size, measure it with calipers, and take the difference. Half of that difference is the offset [11]. Kerf has to be accounted for on every part of the cutter that has a tight fit.</p>
+
+<h2>Problem Definition</h2>
+<p>These are the problems we considered.</p>
+
+<h3>1. Surgical tubing cutter for quality control</h3>
+<p>Cuts along two directions, uses a razor blade for the actual cut, fits two different types of tubing, and keeps the blade covered when not in use. It has to handle durometers from 50A to 72D and outer diameters from 0.21 to 0.40 in.</p>
+
+<h3>2. End effector for a personal cobot project</h3>
+<p>Two scissor lifts revolved around a remote center of motion for movement along an arc, a limited-slip differential so the arm can be powered with the least resistance, and a second axis of rotation for full mobility around half of a sphere.</p>
+
+<h3>3. Self-watering planter</h3>
+<p>Monitors soil moisture for different plants and drips water on a routine interval, adjusted by the sensor reading. Tracking air temperature and sun exposure would let it adjust for cloudy or cold days, when less water evaporates and more of the supplied water reaches the plant.</p>
+
+<h3>4. Desk-mounted cup holder</h3>
+<p>A universal cup holder that clamps to a desk. It keeps the desk clear while keeping a drink nearby during long work sessions. It would need to hold up to 5 lb and fit cups of different diameters.</p>
+
+<h3>5. Backpack hook for a desk</h3>
+<p>I have nowhere within reach of my desk to put my backpack. This would be a cantilever that supports the backpack and a frame that attaches it to the desk.</p>
+
+<h3>6. Raspberry Pi case with a clear lid</h3>
+<p>A case with access to the ports and a clear lid so I can see the LEDs while troubleshooting. It also needs space to insert and remove SD cards. It would prevent damage to the board and clean up its look while still allowing me to work on it.</p>
+
+<h3>7. Multi-angle phone stand</h3>
+<p>A phone stand with multiple angles so I can video call hands free.</p>
+
+<h2>Problem Selection</h2>
+<p><strong>Selected problem:</strong> a rotary medical tube cutter.</p>
+<p>This problem is the most mechanically demanding of the ones we considered, and it has the strongest case for solving something meaningful.</p>
+
+<h3>The Current Cutter</h3>
+<div class="img-row">
+<img src="img_5908_1024.jpg" alt="The existing pneumatic tube cutter with the blade holder above the tube channel and red air lines running to the cylinder">
+<img src="img_5909_1024.jpg" alt="Front of the existing cutter with two black push buttons and a tube fed through the guide">
+</div>
+<div class="img-row">
+<img src="img_5910_1024.jpg" alt="Side view of the existing cutter showing the exposed razor blade above the tube">
+</div>
+<p>The existing cutter is pneumatic. A cylinder drives a razor blade straight down through the tube, and the operator fires it with the two push buttons. It has two problems:</p>
+<ol>
+<li><strong>It crushes smaller tubes.</strong> The chopping motion pushes the whole wall down at once, so thinner and softer tubes give way and deform before the blade gets through. The cut piece is used to measure inner and outer diameter, so any deformation ruins the sample.</li>
+<li><strong>The blade is exposed.</strong> New safety standards no longer allow exposed blades, and the blade on this cutter is open at the front whenever it is not cutting.</li>
+</ol>
+
+<h3>Where the Cut Piece Goes</h3>
+<div class="img-row">
+<img src="img_5905_1024.jpg" alt="A hand holding the microscope plate, which has holes labeled from .210 to .400 inch in .010 inch steps">
+<img src="img_5902_1024.jpg" alt="The plate sitting on the stage of the measuring microscope">
+</div>
+<p>After cutting, the tube sample is carried to the measuring microscope on a plate. The plate has one hole for each tube size from 0.210 to 0.400 in, in 0.010 in steps, which covers the whole range the cutter has to handle. The measurement is taken on the cut face, so the cut has to be square, clean, and free of crushing.</p>
+
+<h3>How the New Design Solves Both</h3>
+<p><strong>Crushing:</strong> Instead of chopping, the blade rotates around the fixed tube and feeds slowly deeper into the wall. Only a small part of the wall is being cut at any moment, so the tube is never squeezed flat. One machine can then handle every durometer and diameter in the range by changing the feed and speed, not the blade.</p>
+<p><strong>Exposed blade:</strong> The blade lives inside the rotating barrel and is enclosed by the housing, so it cannot be reached during operation. Removable front guard plates cover it and come off only for blade changes.</p>
+
+<h3>Requirements</h3>
+<div class="table-wrap">
+<table>
+<tr><th>Requirement</th><th>Value</th></tr>
+<tr><td>Tube outer diameter</td><td>0.21 to 0.40 in</td></tr>
+<tr><td>Tube durometer</td><td>50A to 72D</td></tr>
+<tr><td>Cut plane</td><td>Within a few thousandths of an inch of the outer face of the tool</td></tr>
+<tr><td>Blade</td><td>Razor blade, enclosed, removable for replacement</td></tr>
+<tr><td>Tube feed</td><td>From the side, because the available tube length varies</td></tr>
+<tr><td>Controls</td><td>Rotation speed and feed rate set for each tube type</td></tr>
+</table>
+</div>
+
+<h3>Challenges</h3>
+<ul>
+<li><strong>Cut plane:</strong> the blade has to cut right at the face of the plate that carries the sample to the microscope, so the cutting plane has to be within a few thousandths of an inch of the outermost part of the tool.</li>
+<li><strong>Holding the tube:</strong> friction from cutting a soft tube must not spin the tube with the cutter, or the run is wasted.</li>
+<li><strong>Vibration:</strong> small vibrations mean the blade position on one revolution does not match the next, which leaves scoring on the face that gets measured.</li>
+<li><strong>Controls:</strong> electronics will set the rotation and feed rate for each cut. The controller needs the inner and outer diameter, the cutter depth relative to the outer radius, the rpm, the durometer, and how many cuts the blade has made since it was replaced. That is much more to enter than cutting by hand, so the interface has to be quick. One way to reduce the input is to measure the outer diameter with a sensor, so only the inner diameter has to be entered.</li>
+<li><strong>Feed direction:</strong> feeding the tube from the top would keep gravity off the rotating part, but the tube length varies, so it has to feed from the side.</li>
+<li><strong>Beating the old method:</strong> the new cutter has to do a better job than a straight chop and still be nearly as easy to use. This is a common problem in automation: a method refined by hand over a long time is cheap and fast, so an automated one has to match it at a lower operating cost or give results good enough to justify the added cost.</li>
+</ul>
+
+<h2>Concept Development</h2>
+<img src="concept_sketch.jpg" alt="Hand sketch on grid paper of the cutter layout, with handwritten labels for the tube enclosing mechanism, the sleeve with a V-grip, the lobe driven by a linear actuator with return springs, a counterweight, the microscope plate, and the removable front guard plates">
+<p><strong>Concept sketch.</strong> The tube runs through a central sleeve with a V-grip to hold it. The blade holder is pushed in by a lobe driven by a linear actuator with return springs. A counterweight balances the rotating barrel. The microscope plate sits at the front, and removable guard plates cover the blade.</p>
+<p>Download: <a href="2156%20sketches.pdf" download>Concept sketch (PDF)</a></p>
+
+<div class="img-row">
+<img src="cad_upright.jpg" alt="CAD of the upright stand with two rollers at the bottom that the barrel rides on">
+<img src="cad_barrel_assembly.jpg" alt="CAD of the barrel sitting in the upright stand on the rollers">
+<img src="cad_depth_lobe.jpg" alt="CAD of the depth mechanism with the angled lobe and push cap inside a square housing">
+</div>
+<p><strong>CAD of the first prototype.</strong> Left: the upright stand. Middle: the barrel in the stand. Right: the depth mechanism.</p>
+<p>Download: <a href="Final%20Project%20Prototype%20Assem.stl" download>Final Project Prototype Assem.stl</a></p>
+
+<h2>Testing Critical Features</h2>
+<p>We decided to test the rotation and the cut-depth motion, because they are the two biggest unknowns. The prototype has a version of the mechanism that controls each. The barrel needs rollers to rotate on, and the original plan was two rollers on top and two on the bottom, held between two enclosing prints. For the cut depth, a lobe is pushed inward to drive the blade holder toward the center of the barrel. Springs and M3 screws control the motion and hold the pieces together.</p>
+<p>The lobe profile is the biggest open question. If the angle is too shallow, the lobe can bind, because friction is higher than the force pushing on it. If it is too steep, the ratio of linear travel to change in depth puts a lot of strain on the linear actuator and thrust bushing, and it limits how precisely the depth can be controlled. This prototype tests a 15&deg; lobe, since that seems to be a recommended middle ground, and it can be adjusted from the test results.</p>
+<p>The goal is to find issues we have not addressed yet and to show that the motion can be done rigidly and predictably without excessive binding. The prototype is fully FDM printed, but part of the point is to identify which parts would suit a different process. It also has to confirm which electronics package suits the design, so we can order parts in time for assembly.</p>
+
+<h3>Prints</h3>
+<p>The prototype took four prints because of the number of parts. The first two ran overnight on our personal printers, a Bambu Lab A1 and a P1S. The A1 print with the barrel and the bottom of the stand succeeded. The P1S print failed because of a clogged nozzle, and only the rollers finished. The remaining parts were printed in the lab on the Prusa Core One printers.</p>
+<div class="img-row">
+<img src="slicer_a1_barrel_stand.jpg" alt="Bambu Studio plate for the A1 with the barrel and the bottom of the stand in PLA at 0.25 mm layers">
+<img src="slicer_p1s_failed.jpg" alt="Bambu Studio plate for the P1S, a 6 hour 12 minute print using 217.69 g of PLA">
+</div>
+<p><strong>Slicer plates for prints 1 and 2.</strong> The A1 plate is on the left. The P1S plate on the right is the print that failed.</p>
+<div class="img-row">
+<img src="slicer_prusa_upright_lobe.jpg" alt="PrusaSlicer plate with the front and rear uprights, the lobe, the push cap, and the depth slide in PETG">
+<img src="slicer_prusa_rollers.jpg" alt="PrusaSlicer plate with two rollers and two axle pins, a 45 minute print using 16.46 g of PETG">
+<img src="img_6229_1024.jpg" alt="The finished rollers and axle pins on the bed of the Prusa Core One">
+</div>
+<p><strong>Slicer plates for prints 3 and 4, and the finished rollers and axle pins.</strong></p>
+<video controls preload="metadata" poster="print_video_poster.jpg" style="max-width: 360px; margin: 1rem auto;">
+  <source src="print_video.mp4" type="video/mp4">
+</video>
+<div class="table-wrap">
+<table>
+<tr><th>Print</th><th>Printer</th><th>Material</th><th>Parts</th><th>Time</th><th>Result</th></tr>
+<tr><td>1</td><td>Bambu Lab A1</td><td>PLA, 0.25 mm layers</td><td>Barrel, bottom of stand</td><td>Overnight</td><td>Succeeded</td></tr>
+<tr><td>2</td><td>Bambu Lab P1S</td><td>PLA, 0.25 mm layers, tree supports</td><td>Remaining parts</td><td>6 h 12 min (217.69 g)</td><td>Failed, clogged nozzle (only the rollers finished)</td></tr>
+<tr><td>3</td><td>Prusa Core One (lab)</td><td>PETG, 0.20 mm SPEED, 15% infill</td><td>Front and rear uprights, lobe, push cap, depth slide</td><td>&mdash;</td><td>Succeeded</td></tr>
+<tr><td>4</td><td>Prusa Core One (lab)</td><td>PETG, 0.20 mm SPEED, 15% infill</td><td>2 rollers, 2 axle pins</td><td>45 min (16.46 g)</td><td>Succeeded</td></tr>
+</table>
+</div>
+<!-- TODO: photos of the assembled prototype and the results of the rotation and lobe tests. -->
+
+<h2>Video Presentation</h2>
+<!-- TODO: add the 30-second video explaining the selected problem. -->
+
+<h2>Lessons Learned</h2>
+<p>Splitting the print across our personal printers overnight saved lab time, but it meant a failure was not caught until morning. The clogged nozzle on the P1S cost us parts and forced reprints in the lab right before the in-class showcase.</p>
+<!-- TODO: in-class feedback, what changes in the next loop of the spiral, my own part of the work, and time spent. -->
+
+<h2>Sources</h2>
+<ol>
+<li>Boehm, B. W. "A Spiral Model of Software Development and Enhancement." <em>IEEE Computer</em>, 1988. <a href="https://faculty.washington.edu/hazeline/misc/reserve/boehm_spiralmodel.pdf">https://faculty.washington.edu/hazeline/misc/reserve/boehm_spiralmodel.pdf</a></li>
+<li>George Mason University. <em>Domain Modeling of the Spiral Process Model</em>. <a href="https://mason.gmu.edu/~kersch/KBSE_folder/ESPM_folder/ESPM_DM.html">https://mason.gmu.edu/~kersch/KBSE_folder/ESPM_folder/ESPM_DM.html</a></li>
+<li>Wikipedia. <em>Spiral model</em> (diagram). <a href="https://en.wikipedia.org/wiki/Spiral_model">https://en.wikipedia.org/wiki/Spiral_model</a></li>
+<li>DoITPoMS, University of Cambridge. <em>Fused Deposition Modelling</em>. <a href="https://www.doitpoms.ac.uk/tlplib/add_manuf/fdm.php">https://www.doitpoms.ac.uk/tlplib/add_manuf/fdm.php</a></li>
+<li>Formlabs. <em>Validating Isotropy in SLA 3D Printing</em>. <a href="https://formlabs.com/blog/isotropy-in-SLA-3D-printing">https://formlabs.com/blog/isotropy-in-SLA-3D-printing</a></li>
+<li>Formlabs. <em>Introduction to Post-Curing Prints</em>. <a href="https://formlabs.com/support/Introduction-to-Post-Curing-Prints/">https://formlabs.com/support/Introduction-to-Post-Curing-Prints/</a></li>
+<li>Formlabs. <em>How to Post-Cure Your Resin 3D Prints</em>. <a href="https://formlabs.com/blog/how-to-post-cure-3d-prints/">https://formlabs.com/blog/how-to-post-cure-3d-prints/</a></li>
+<li>Formlabs. <em>Stereolithography 3D Printers Tech Specs</em> (Form 4 typical dimensional tolerances). <a href="https://formlabs.com/3d-printers/resin/tech-specs/">https://formlabs.com/3d-printers/resin/tech-specs/</a></li>
+<li>Durmapress. <em>What Is Laser Cutting Kerf?</em> <a href="https://www.durmapress.com/laser-cutting-kerf/">https://www.durmapress.com/laser-cutting-kerf/</a></li>
+<li>Stanford BDML. <em>Adding Offset for Kerf</em>. <a href="https://bdml.stanford.edu/pmwiki/pmwiki.php/Main/AddingOffsetForKerf">https://bdml.stanford.edu/pmwiki/pmwiki.php/Main/AddingOffsetForKerf</a></li>
+<li>Instructables. <em>Kerf Correction for Laser Cutting With MakerCase</em>. <a href="https://www.instructables.com/Kerf-Correction-for-Laser-Cutting-With-MakerCase">https://www.instructables.com/Kerf-Correction-for-Laser-Cutting-With-MakerCase</a></li>
+<li>UCLA Design Media Arts FabLab. <em>What is kerf?</em> <a href="https://support.dma.ucla.edu/fablab/?p=176">https://support.dma.ucla.edu/fablab/?p=176</a></li>
+</ol>
+<p><small>AI was used to help find sources and to draft the text of this page from our project notes, images, and sketches. I reviewed and edited the draft.</small></p>
